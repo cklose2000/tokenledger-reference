@@ -1,0 +1,117 @@
+schema_version: tokenledger-control-matrix/v1
+version: v1
+design_status: local_collection_implemented_external_operating_tests_pending
+scope: Synthetic reporting demonstration; no operating-effectiveness or audit opinion asserted.
+evidence_root: docs/evidence/{period}/{run_id}
+statuses: [passed, failed, missing, not_run, not_applicable]
+controls:
+  - id: KPI-01
+    name: Source completeness
+    objective: completeness
+    control_activity: Reconcile each billing, usage, subscription, and compute source to the accepted stream by period, source ID, count, and signed amount.
+    system_mechanism: tl validate --reconcile-sources using pre-ingestion source manifests and rejected-event records.
+    evidence_artifact: [source-manifests.json, source-reconciliation.json, source-reconciliation.receipt.json]
+    frequency: Every ingest batch and monthly close
+    owner_role: Source ingestion owner
+    test_procedure: Inject missing, duplicate, rejected, and altered-value events; assert detection and trace every variance to source and activity IDs.
+    assertion: All expected source events are present exactly once or appear as unresolved exceptions; all signed amounts reconcile.
+    scope_note: A manifest computed by recounting the loaded stream is not independent completeness evidence.
+  - id: KPI-02
+    name: Append-only integrity
+    objective: validity
+    control_activity: Restrict source writes to the validated append boundary and review source mutations and privilege changes.
+    system_mechanism: Scoped ingestion identity and separate query/rebuild identities per ADR-003; native mutation tests and BigQuery audit-log queries.
+    evidence_artifact: [append-only-negative-tests.json, audit-log-extract.jsonl, audit-log-coverage.json, stream-integrity.receipt.json]
+    frequency: Per release negative tests; monthly audit-log review
+    owner_role: Platform security owner
+    test_procedure: Verify append success and denied mutations; verify actor identity, query scope, log retention/coverage and a known positive log record before interpreting zero mutation rows.
+    assertion: No unauthorized source mutation occurred within a complete observed scope, and ordinary writer authority cannot mutate prior rows.
+    scope_note: Missing cloud logs are not_run or missing; no log rows alone cannot establish integrity.
+  - id: KPI-03
+    name: Definition change control
+    objective: accuracy
+    control_activity: Version released metric definitions immutably and review every change with an ADR, disclosure note, and restatement bridge.
+    system_mechanism: Definition hashes in git and receipts; tl controls check-definitions in CI; restatement receipts in the canonical metric ledger, projected into the evidence bundle.
+    evidence_artifact: [definition-change-history.json, definition-hashes.json, definition-approvals.json, restatements.jsonl, disclosure-notes.md]
+    frequency: Every definition change and each release
+    owner_role: Metrics definition owner with independent finance approver
+    test_procedure: Attempt to edit a released version; require rejection. Add a new version and prove the expected cohort/value changes with the old version still reproducible.
+    assertion: Each report uses an approved identified definition; methodology changes are traceable and their effect is presented.
+    scope_note: A new filename alone is not approval; a clean change history is not proof of reviewer independence.
+  - id: KPI-04
+    name: Full disclosure re-performance
+    objective: accuracy
+    control_activity: Recompute every disclosed value from its original input manifest, query, definition, code version, and information cutoff.
+    system_mechanism: tl receipt ID over the complete pack manifest; exact result comparison with exhaustive selection.
+    evidence_artifact: [disclosed-population.json, receipt-reperformance.jsonl, reperformance-summary.receipt.json]
+    frequency: Every quarterly disclosure pack
+    owner_role: Reporting QA owner independent of definition author
+    test_procedure: Enumerate all disclosed values including footnotes; replay all receipts, inject tampered input/version/query cases, and require failures to be surfaced.
+    assertion: Every disclosed value is reproduced exactly under its recorded calculation contract.
+    scope_note: The 50-row development sample is not this quarterly control; sample success cannot be reported as an exhaustive rate.
+  - id: KPI-05
+    name: Cutoff and as-of
+    objective: cutoff
+    control_activity: Freeze reporting period, knowledge cutoff, and stream watermark; account for late events without overwriting original reports.
+    system_mechanism: --asof and --known-at on metric runs; tl restate and original-run manifests.
+    evidence_artifact: [close-cutoff-manifest.json, late-arrival-report.json, restatements.jsonl, cutoff.receipt.json]
+    frequency: Monthly and quarterly close
+    owner_role: Close reporting owner
+    test_procedure: Append an event inside and outside the close knowledge boundary; verify original replay, affected rolling periods, deltas, and responsible activity IDs.
+    assertion: Reports contain only the permitted information and all identified later changes are traceable to the original close.
+    scope_note: Economic time and ingestion time are separate; warehouse time travel is not the historical retention control.
+  - id: KPI-06
+    name: Recognized-revenue tie-out
+    objective: accuracy
+    control_activity: Tie distinct metric revenue inputs through an explicit gross/net/fee/credit bridge to the period general ledger.
+    system_mechanism: revenue_ledger compared with a separately identified synthetic ERP export and approved mapping/threshold configuration.
+    evidence_artifact: [erp-export-manifest.json, gaap-revenue-bridge.csv, gaap-tieout.receipt.json, tieout-approvals.json]
+    frequency: Monthly and quarterly close
+    owner_role: Revenue Accounting controller
+    test_procedure: Reconcile by period/account/source; inject duplicate cuts, misclassified fees, missing credits, and commit/invoice double counting; require explicit exception resolution.
+    assertion: Reported revenue inputs reconcile to recognized revenue under a documented accounting and presentation policy.
+    scope_note: Synthetic exact-cent threshold is zero; any production materiality threshold needs separate approval. Net-of-fee KPIs may require a bridge rather than direct equality to GAAP revenue.
+  - id: KPI-07
+    name: Segregation of duties
+    objective: validity
+    control_activity: Separate definition authoring, stream ingestion, independent approval, and disclosure publishing authority.
+    system_mechanism: Authenticated principals and approved role assignments bound to process receipts; CI checks reject conflicting identities.
+    evidence_artifact: [principal-role-map.json, release-role-report.json, independent-approval.json, segregation-tests.json]
+    frequency: Every release and quarterly access review
+    owner_role: Reporting governance owner
+    test_procedure: Attempt publication and approval with the author identity, including aliases; reject conflicts and verify distinct authenticated approver and publisher evidence.
+    assertion: No single unreviewed identity can author a definition, approve it, and publish a disclosure pack.
+    scope_note: A role field is a claim until bound to identity. Phase 0 self-review is not evidence of an operating independent-approval control.
+  - id: KPI-08
+    name: Presentation consistency
+    objective: presentation
+    control_activity: Produce disclosure tables only from recorded metric outputs, with every numeric disclosure mapped to a receipt.
+    system_mechanism: tl pack validates metrics/out and emits an immutable pack manifest with file, definition, query, and receipt hashes.
+    evidence_artifact: [pack-manifest.json, pack-hash-verification.json, disclosure-value-map.json]
+    frequency: Every pack generation and publication candidate
+    owner_role: Disclosure pack publisher
+    test_procedure: Tamper with a metric CSV, receipt, table, or footnote number; reject unmatched values and verify an approved rerun regenerates a consistent pack.
+    assertion: Presentation is generated from the approved metric population without unreceipted quantitative additions.
+    scope_note: Document parameter labels are distinguished from business observations; externally calibrated figures remain confined to critique artifacts.
+  - id: KPI-09
+    name: Access review
+    objective: validity
+    control_activity: Review source-write and pack-publish permissions against approved roles, including inherited access and changes since the prior review.
+    system_mechanism: IAM and publisher-permission exports, canonical permission diff, named independent reviewer acknowledgment.
+    evidence_artifact: [iam-current.json, iam-prior.json, iam-diff.json, access-review-signoff.json]
+    frequency: Quarterly and after material privilege changes
+    owner_role: Security access-review owner
+    test_procedure: Insert an overprivileged or orphaned principal and verify the diff/exception; inspect inherited grants and documented remediation/signoff.
+    assertion: Access remains authorized, reviewed, and limited to the documented control boundary.
+    scope_note: First review has an explicit no-prior-review baseline, not a fabricated empty prior IAM export.
+  - id: KPI-10
+    name: Scaffold and metric SQL change management
+    objective: accuracy
+    control_activity: Review and test scaffold, query, adapter, and accounting changes at the exact revision used by reporting.
+    system_mechanism: Phase PRs, full tests, gitleaks, code/query hashes, CI artifacts, process receipts, and independent release approval where required.
+    evidence_artifact: [pull-request-evidence.json, ci-results.json, verification-artifact-hashes.json, process-receipts.jsonl]
+    frequency: Every change and release
+    owner_role: Engineering release owner
+    test_procedure: Reject stale or missing checks, changed heads after approval, incompatible query versions, and unverified releases; tie the pack to the approved revision.
+    assertion: Reporting logic is traceable to a reviewed and verified code revision with retained evidence.
+    scope_note: Local self-review may create a development PR but does not assert independent financial-control approval.
