@@ -1,0 +1,27 @@
+name: contract_signed
+version: v1
+customer_required: true
+description: Contract signed. Synthetic USD activity.
+features:
+  contract_id:
+    type: string
+  term_months:
+    type: integer
+    min: 1
+  commit_usd:
+    type: money
+    min: 0
+  discount_pct:
+    type: number
+    min: 0
+    max: 1
+  channel:
+    type: string
+    enum:
+    - direct
+    - aws_marketplace
+    - gcp_marketplace
+    - azure_marketplace
+  start: &id001
+    type: date
+  end: *id001

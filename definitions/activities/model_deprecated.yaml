@@ -1,0 +1,8 @@
+name: model_deprecated
+version: v1
+customer_required: true
+description: Model deprecated. Synthetic USD activity.
+features:
+  model: &id001
+    type: string
+  replacement_model: *id001

@@ -1,0 +1,11 @@
+name: contract_expired
+version: v1
+customer_required: true
+description: Contract expired. Synthetic USD activity.
+features:
+  contract_id: &id001
+    type: string
+  unconsumed_commit_usd:
+    type: money
+    min: 0
+  reason: *id001

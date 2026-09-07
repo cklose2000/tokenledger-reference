@@ -1,0 +1,31 @@
+name: revenue_recognized
+version: v1
+customer_required: true
+description: Revenue recognized. Synthetic USD activity.
+features:
+  period:
+    type: date
+  net_usd:
+    type: money
+  source:
+    type: string
+    enum:
+    - usage
+    - subscription
+    - commit_drawdown
+  source_document:
+    type: string
+  recognition_kind:
+    type: string
+    enum:
+    - usage
+    - subscription
+    - credit
+    - commit_expiry
+  channel:
+    type: string
+    enum:
+    - direct
+    - aws_marketplace
+    - gcp_marketplace
+    - azure_marketplace

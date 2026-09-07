@@ -1,0 +1,27 @@
+name: customer_created
+version: v1
+customer_required: true
+description: Customer created. Synthetic USD activity.
+features:
+  segment:
+    type: string
+    enum:
+    - enterprise
+    - mid_market_api
+    - startup_api
+    - marketplace
+    - consumer_subscription
+    - team_subscription
+    - claude_code_seats
+  channel:
+    type: string
+    enum:
+    - direct
+    - aws_marketplace
+    - gcp_marketplace
+    - azure_marketplace
+  country:
+    type: string
+  parent_customer:
+    type: string
+    nullable: true

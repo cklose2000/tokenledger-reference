@@ -1,0 +1,15 @@
+name: model_released
+version: v1
+customer_required: true
+description: Model released. Synthetic USD activity.
+features:
+  model:
+    type: string
+  generation:
+    type: integer
+    min: 1
+  release_date:
+    type: date
+  training_cost_usd_estimate:
+    type: money
+    min: 0

@@ -1,0 +1,12 @@
+name: capacity_energized
+version: v1
+customer_required: true
+description: Capacity energized. Synthetic USD activity.
+features:
+  capacity_id: &id001
+    type: string
+  provider: *id001
+  region: *id001
+  mw:
+    type: number
+    min: 0

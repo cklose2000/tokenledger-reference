@@ -1,0 +1,8 @@
+name: customer_merged
+version: v1
+customer_required: true
+description: Customer merged. Synthetic USD activity.
+features:
+  ultimate_parent: &id001
+    type: string
+  reason: *id001

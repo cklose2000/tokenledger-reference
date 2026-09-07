@@ -1,0 +1,28 @@
+name: subscription_downgraded
+version: v1
+customer_required: true
+description: Subscription downgraded. Synthetic USD activity.
+features:
+  subscription_id:
+    type: string
+  plan:
+    type: string
+    enum:
+    - pro
+    - max
+    - team
+    - enterprise
+  seats:
+    type: integer
+    min: 1
+  price_per_seat:
+    type: money
+    min: 0
+  billing_period:
+    type: string
+    enum:
+    - monthly
+    - annual
+  period_start: &id001
+    type: date
+  period_end: *id001

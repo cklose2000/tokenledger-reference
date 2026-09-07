@@ -1,0 +1,7 @@
+name: customer_churned
+version: v1
+customer_required: true
+description: Customer churned. Synthetic USD activity.
+features:
+  reason:
+    type: string

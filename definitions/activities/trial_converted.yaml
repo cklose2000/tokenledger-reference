@@ -1,0 +1,18 @@
+name: trial_converted
+version: v1
+customer_required: false
+description: Trial converted. Synthetic USD activity.
+features:
+  trial_id: &id001
+    type: string
+  subscription_id: *id001
+  plan:
+    type: string
+    enum:
+    - pro
+    - max
+    - team
+    - enterprise
+  seats:
+    type: integer
+    min: 1

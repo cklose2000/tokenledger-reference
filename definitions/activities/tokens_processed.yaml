@@ -1,0 +1,39 @@
+name: tokens_processed
+version: v1
+customer_required: true
+description: Tokens processed. Synthetic USD activity.
+features:
+  usage_batch_id: &id001
+    type: string
+  model: *id001
+  model_release_date:
+    type: date
+  token_type:
+    type: string
+    enum:
+    - input
+    - output
+    - cache_read
+    - cache_write
+  tokens:
+    type: integer
+    min: 1
+  list_price_per_mtok:
+    type: number
+    min: 0
+  effective_price_per_mtok:
+    type: number
+    min: 0
+  channel:
+    type: string
+    enum:
+    - direct
+    - aws_marketplace
+    - gcp_marketplace
+    - azure_marketplace
+  workload:
+    type: string
+    enum:
+    - api
+    - claude_code
+    - agent_platform

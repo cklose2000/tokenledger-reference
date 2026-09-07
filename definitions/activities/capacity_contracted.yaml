@@ -1,0 +1,24 @@
+name: capacity_contracted
+version: v1
+customer_required: true
+description: Capacity contracted. Synthetic USD activity.
+features:
+  capacity_id: &id001
+    type: string
+  provider: *id001
+  region: *id001
+  mw:
+    type: number
+    min: 0
+  usd_per_mwh:
+    type: money
+    min: 0
+  start: &id002
+    type: date
+  end: *id002
+  purpose:
+    type: string
+    enum:
+    - inference
+    - training
+    - mixed

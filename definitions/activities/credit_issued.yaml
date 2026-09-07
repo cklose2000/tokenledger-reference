@@ -1,0 +1,14 @@
+name: credit_issued
+version: v1
+customer_required: true
+description: Credit issued. Synthetic USD activity.
+features:
+  credit_id: &id001
+    type: string
+  invoice_id: *id001
+  period:
+    type: date
+  amount_usd:
+    type: money
+    min: 0
+  reason: *id001

@@ -1,0 +1,8 @@
+name: trial_expired
+version: v1
+customer_required: false
+description: Trial expired. Synthetic USD activity.
+features:
+  trial_id: &id001
+    type: string
+  reason: *id001

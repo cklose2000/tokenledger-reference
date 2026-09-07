@@ -1,0 +1,18 @@
+name: seat_removed
+version: v1
+customer_required: true
+description: Seat removed. Synthetic USD activity.
+features:
+  subscription_id:
+    type: string
+  plan:
+    type: string
+    enum:
+    - pro
+    - max
+    - team
+    - enterprise
+  seats: &id001
+    type: integer
+    min: 1
+  seats_after: *id001

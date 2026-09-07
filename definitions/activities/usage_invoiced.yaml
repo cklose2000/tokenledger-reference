@@ -1,0 +1,29 @@
+name: usage_invoiced
+version: v1
+customer_required: true
+description: Usage invoiced. Synthetic USD activity.
+features:
+  invoice_id: &id001
+    type: string
+  usage_batch_id: *id001
+  contract_id:
+    type: string
+    nullable: true
+  period_start: &id002
+    type: date
+  period_end: *id002
+  gross_usd: &id003
+    type: money
+    min: 0
+  discount_usd: *id003
+  net_usd: *id003
+  channel_fee_usd: *id003
+  commit_applied_usd: *id003
+  cash_due_usd: *id003
+  channel:
+    type: string
+    enum:
+    - direct
+    - aws_marketplace
+    - gcp_marketplace
+    - azure_marketplace

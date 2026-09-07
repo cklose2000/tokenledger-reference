@@ -1,0 +1,19 @@
+name: trial_started
+version: v1
+customer_required: false
+description: Trial started. Synthetic USD activity.
+features:
+  trial_id:
+    type: string
+  plan:
+    type: string
+    enum:
+    - pro
+    - max
+    - team
+    - enterprise
+  seats:
+    type: integer
+    min: 1
+  end:
+    type: date

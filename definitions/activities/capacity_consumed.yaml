@@ -1,0 +1,23 @@
+name: capacity_consumed
+version: v1
+customer_required: true
+description: Capacity consumed. Synthetic USD activity.
+features:
+  capacity_id: &id001
+    type: string
+  provider: *id001
+  region: *id001
+  mwh:
+    type: number
+    min: 0
+  purpose:
+    type: string
+    enum:
+    - inference
+    - training
+    - mixed
+  model: *id001
+  allocation_basis: *id001
+  period_start: &id002
+    type: date
+  period_end: *id002
