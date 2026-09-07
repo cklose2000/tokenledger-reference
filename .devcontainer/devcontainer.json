@@ -1,0 +1,10 @@
+{
+  "name": "tokenledger evaluator",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "postCreateCommand": "python -m pip install -e \".[dev]\"",
+  "remoteEnv": {
+    "PYTHONUTF8": "1"
+  }
+}

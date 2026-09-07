@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "Please cite this software if you use its reporting methods or benchmark."
+title: tokenledger
+type: software
+authors:
+  - family-names: Klose
+    given-names: Chandler
+version: "v0.2.0-rc.4"
+repository-code: "https://github.com/cklose2000/tokenledger"
+license: Apache-2.0

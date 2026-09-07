@@ -1,0 +1,7 @@
+* text=auto eol=lf
+*.parquet binary
+*.duckdb binary
+*.png binary
+*.pdf binary
+# Frozen source and receipt artifacts retain exact bytes on every platform.
+data/challenge/** -text

@@ -1,0 +1,4 @@
+tokenledger
+Project design: Chandler Klose.
+Implementation assistance: GPT-6, recorded as the model in source commits.
+Apache-2.0; third-party dependencies retain their respective licenses.
