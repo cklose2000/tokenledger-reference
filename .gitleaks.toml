@@ -1,0 +1,11 @@
+title = "Exact public source hash exceptions"
+[extend]
+useDefault = true
+[[rules]]
+id = "generic-api-key"
+[[rules.allowlists]]
+condition = "AND"
+regexTarget = "match"
+description = "Verified source-file digests in this frozen synthetic release only"
+paths = ['''^data/challenge/first/business/pack/2026\-07\-31/086be4d3be5a4493b32ff5a482d0c326/run\.json$''', '''^data/challenge/first/business/runs/086be4d3be5a4493b32ff5a482d0c326/run\.json$''', '''^data/challenge/first/business/runs/c16ed72ec3cb40028a8c6d4c27460ba7/run\.json$''', '''^data/challenge/first/business/runs/e180711eede44e2d88c1b2ba85522ee3/run\.json$''', '''^data/challenge/first/business/runs/e26cfb19dbb94e198395de96c178c51d/run\.json$''', '''^data/challenge/first/business/runs/f68de99ce8584f049edd1c68018a1f25/run\.json$''', '''^data/challenge/first/close/runs/dcfd0f9f425546ff9bb40de769706dc1/run\.json$''', '''^data/challenge/first/runs/9afce45ac07e4ae0a73c9054fada966f/run\.json$''', '''^release\-files\.json$''']
+regexes = ['''^token_ledger\.sql"\s*:\s*"3c937b8e464b0bdb51c79718e520be67314f5ad3a8c9e9fbf731b5d4ab8b9d80"$''', '''^auth\.py"\s*:\s*"73700f9077ab6aa43ed47ed7b46d6f671d3fa0e65db6fc2aa1fde7719f42c2d3"$''', '''^access\.py"\s*:\s*"10bce98faee0e0874f5e0ba8de2bd1398cdbe469c2f06437f527c632df404ad8"$''', '''^usage_tokens\.sql"\s*:\s*"82b78b3da32d4b94c3bd7f6920734a756bfac15e20f3785121dc1f014c408305"$''', '''^tokens_processed\.yaml"\s*:\s*"b9b040257545749347192641d585bb47543e03e02a95367968c55a29fbb63d5d"$''', '''^token_ledger\.sql"\s*:\s*"bf5190dd7efe70995f72eb575f27ef69b2c77a3e67b944504090e1bf714b9788"$''']

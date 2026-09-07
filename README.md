@@ -48,3 +48,8 @@ No personal usage data, credentials, private receipt ledgers or original private
 Git history are included. Generic source adapters in the implementation are
 inactive without an explicitly bound application; they are not public feature
 claims. See [RELEASE.md](RELEASE.md) for preparation provenance and verification.
+
+The [frozen challenge assignment](data/challenge/first/TASKS.md) includes the
+actual receipt IDs and expected outputs for this candidate. The
+[reference scorecard](data/challenge/first/reference-score/scorecard.md) was
+produced by actual source and receipt re-performance.

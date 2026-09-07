@@ -1,1 +1,12 @@
-{"bigquery":"not_run","challenge":"not_run","clean_install":"not_run","codespaces":"not_run","matched_agent_benchmark":"not_run","status":"prepared_not_published","tag":"v0.2.0-rc.4"}
+{
+  "bigquery": "not_run",
+  "challenge": "passed",
+  "clean_install": "passed_linux_container",
+  "codespaces": "not_run",
+  "matched_agent_benchmark": "not_run",
+  "status": "prepared_not_published",
+  "tag": "v0.2.0-rc.4",
+  "hosted_codespaces": "not_run",
+  "source_scope": "synthetic only",
+  "public_receipt_history": "reconstructed_local_history_only"
+}

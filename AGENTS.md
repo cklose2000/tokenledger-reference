@@ -25,3 +25,21 @@ scorecard. Your own PASS statement is not verification. Wrong answers, missing
 tasks or changed evidence must fail. The exercise is open-book; it makes no
 claim of independent QA or held-out agent accuracy. Keep unknown token usage
 unknown rather than estimating it.
+
+## Frozen release assignment
+
+Use `data/challenge/first/TASKS.md` and its visible `expected.json`.
+Fixture `058168fe58cab620a36e54f2d03ea6b5086fcba385d2b54e3b4d19da34cd164f`; proof `mr-5fff9b5a43ea5ed96a745f343b422e6d`.
+
+```sh
+tl challenge verify data/challenge/first --json
+tl challenge task data/challenge/first july_yield --json
+tl challenge task data/challenge/first late_invoice --json
+tl challenge task data/challenge/first nrr_definition --json
+tl challenge task data/challenge/first failed_close --json
+tl challenge grade data/challenge/first --answer data/challenge/first/expected.json --output data/score/first --json
+```
+
+The last command is the visible reference answer. Copy and edit the answer
+for your own submission; the grader checks every required field. The saved
+scorecard is `data/challenge/first/reference-score/scorecard.md`.

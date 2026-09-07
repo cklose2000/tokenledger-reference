@@ -1,0 +1,35 @@
+{
+  "scope": "exact verified public source hashes only; all other default detection remains enabled",
+  "files": [
+    {
+      "source": "tl/views/sql/token_ledger.sql",
+      "field": "token_ledger.sql",
+      "sha256": "3c937b8e464b0bdb51c79718e520be67314f5ad3a8c9e9fbf731b5d4ab8b9d80"
+    },
+    {
+      "source": "tl/bigquery/auth.py",
+      "field": "auth.py",
+      "sha256": "73700f9077ab6aa43ed47ed7b46d6f671d3fa0e65db6fc2aa1fde7719f42c2d3"
+    },
+    {
+      "source": "tl/bigquery/access.py",
+      "field": "access.py",
+      "sha256": "10bce98faee0e0874f5e0ba8de2bd1398cdbe469c2f06437f527c632df404ad8"
+    },
+    {
+      "source": "tl/usage/sql/usage_tokens.sql",
+      "field": "usage_tokens.sql",
+      "sha256": "82b78b3da32d4b94c3bd7f6920734a756bfac15e20f3785121dc1f014c408305"
+    },
+    {
+      "source": "definitions/activities/tokens_processed.yaml",
+      "field": "tokens_processed.yaml",
+      "sha256": "b9b040257545749347192641d585bb47543e03e02a95367968c55a29fbb63d5d"
+    },
+    {
+      "source": "scaffolds/token_ledger.sql",
+      "field": "token_ledger.sql",
+      "sha256": "bf5190dd7efe70995f72eb575f27ef69b2c77a3e67b944504090e1bf714b9788"
+    }
+  ]
+}
