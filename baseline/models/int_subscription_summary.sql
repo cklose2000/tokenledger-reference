@@ -1,0 +1,10 @@
+select month,plan,sum(beginning_seats)::bigint beginning_seats,sum(ending_seats)::bigint paid_seats,
+sum(gross_adds)::bigint gross_adds,sum(cancelled_seats)::bigint cancelled_seats,sum(seat_removals)::bigint seat_removals,
+sum(plan_transfers_net)::bigint plan_transfers_net,sum(ending_seats-beginning_seats)::bigint net_adds,
+sum(seat_days)::double/max(days) daily_weighted_paid_seats,sum(account_days)::double/max(days) daily_weighted_paid_accounts,
+count(distinct customer) filter(where beginning_seats>0)::bigint beginning_paid_accounts,
+count(distinct customer) filter(where ending_seats>0)::bigint paid_accounts,
+count(distinct customer) filter(where upgraded>0)::bigint upgraded_accounts,
+count(distinct customer) filter(where downgraded>0)::bigint downgraded_accounts,
+count(distinct customer) filter(where ending_seats>beginning_seats and beginning_seats>0)::bigint expanded_accounts,
+sum(revenue_cents)::bigint revenue_cents from {{ref('fact_seats')}} group by 1,2

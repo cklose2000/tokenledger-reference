@@ -1,0 +1,412 @@
+version: v1
+target: duckdb-local
+cutoffs:
+- asof
+- known_at
+- watermark
+money: integer cents, exact
+counts: integers, exact
+ratios: absolute tolerance 0.000001; compare numerators and denominators separately
+nulls: NULL equals NULL only; missing and duplicate keys fail
+provenance: upstream_ids are dependency evidence, never a metric dimension; differences
+  retain both source sets
+outputs:
+  journal_lines:
+    key:
+    - _source
+    - activity_id
+    - month
+    - account
+    spine: journals
+    question: Revenue recognition and period cutoff
+    columns:
+    - activity_id
+    - _source
+    - customer
+    - month
+    - account
+    - amount_cents
+    - upstream_ids
+    units:
+      activity_id: dimension
+      _source: dimension
+      customer: count or metadata
+      month: dimension
+      account: dimension
+      amount_cents: cents
+      upstream_ids: source activity IDs
+  close_accounts:
+    key:
+    - month
+    - account
+    spine: close_accounts
+    question: Revenue and balance-sheet close
+    columns:
+    - month
+    - account
+    - amount_cents
+    units:
+      month: dimension
+      account: dimension
+      amount_cents: cents
+  close_rollforward:
+    key:
+    - month
+    - account
+    spine: close_rollforward
+    question: Deferred revenue and receivable movement
+    columns:
+    - month
+    - account
+    - movement_cents
+    - beginning_cents
+    - ending_cents
+    units:
+      month: dimension
+      account: dimension
+      movement_cents: cents
+      beginning_cents: cents
+      ending_cents: cents
+  fact_revenue:
+    key:
+    - _source
+    - activity_id
+    - month
+    spine: recognition
+    question: Independent recognition before aggregation
+    columns:
+    - activity_id
+    - _source
+    - customer
+    - month
+    - source
+    - recognition_kind
+    - source_document
+    - channel
+    - revenue_cents
+    - upstream_ids
+    units:
+      activity_id: dimension
+      _source: dimension
+      customer: count or metadata
+      month: dimension
+      source: count or metadata
+      recognition_kind: count or metadata
+      source_document: count or metadata
+      channel: count or metadata
+      revenue_cents: cents
+      upstream_ids: source activity IDs
+  net_rev_per_mtok:
+    key:
+    - month
+    - model
+    - generation
+    - token_type
+    - channel
+    - workload
+    - segment
+    spine: net_rev_per_mtok
+    cuts:
+    - model
+    - generation
+    - token_type
+    - channel
+    - workload
+    - segment
+    question: Token revenue yield, net of discounts and fees
+    columns:
+    - month
+    - model
+    - generation
+    - token_type
+    - channel
+    - workload
+    - segment
+    - tokens
+    - net_revenue_cents
+    - channel_fee_cents
+    - revenue_before_channel_fees_cents
+    - net_of_discounts_and_fees_per_mtok
+    - net_of_discounts_per_mtok
+    units:
+      month: dimension
+      model: dimension
+      generation: dimension
+      token_type: dimension
+      channel: dimension
+      workload: dimension
+      segment: dimension
+      tokens: tokens
+      net_revenue_cents: cents
+      channel_fee_cents: cents
+      revenue_before_channel_fees_cents: cents
+      net_of_discounts_and_fees_per_mtok: USD/Mtok
+      net_of_discounts_per_mtok: USD/Mtok
+  cost_per_mtok:
+    key:
+    - month
+    - model
+    - generation
+    - token_type
+    - channel
+    - workload
+    - segment
+    spine: cost_per_mtok
+    cuts:
+    - model
+    - generation
+    - token_type
+    - channel
+    - workload
+    - segment
+    question: Cost to serve tokens and inference margin
+    columns:
+    - month
+    - model
+    - generation
+    - token_type
+    - channel
+    - workload
+    - segment
+    - tokens
+    - allocated_inference_cost_cents
+    - net_revenue_cents
+    - cost_per_mtok
+    - inference_gross_margin
+    units:
+      month: dimension
+      model: dimension
+      generation: dimension
+      token_type: dimension
+      channel: dimension
+      workload: dimension
+      segment: dimension
+      tokens: tokens
+      allocated_inference_cost_cents: cents
+      net_revenue_cents: cents
+      cost_per_mtok: USD/Mtok
+      inference_gross_margin: ratio
+  rev_per_mw:
+    key:
+    - month
+    - purpose
+    spine: rev_per_mw
+    question: Contracted and utilized compute revenue yield
+    columns:
+    - month
+    - purpose
+    - status
+    - t12m_net_revenue_cents
+    - cost_cents
+    - average_contracted_mw
+    - average_energized_mw
+    - utilized_mw
+    - energized_utilization
+    - revenue_per_contracted_mw
+    - revenue_per_utilized_mw
+    units:
+      month: dimension
+      purpose: dimension
+      status: status
+      t12m_net_revenue_cents: cents
+      cost_cents: cents
+      average_contracted_mw: MW
+      average_energized_mw: MW
+      utilized_mw: MW
+      energized_utilization: ratio
+      revenue_per_contracted_mw: USD/MW
+      revenue_per_utilized_mw: USD/MW
+  consumption_nrr:
+    key:
+    - month
+    - lens
+    spine: consumption_nrr
+    question: Consumption retention and all four lenses
+    columns:
+    - month
+    - lens
+    - cohort_customers
+    - all_base_cents
+    - base_revenue_cents
+    - current_revenue_cents
+    - expansion_cents
+    - contraction_cents
+    - churn_cents
+    - status
+    - nrr
+    - expansion_share
+    - contraction_share
+    - churn_share
+    - cohort_revenue_coverage
+    units:
+      month: dimension
+      lens: dimension
+      cohort_customers: count or metadata
+      all_base_cents: cents
+      base_revenue_cents: cents
+      current_revenue_cents: cents
+      expansion_cents: cents
+      contraction_cents: cents
+      churn_cents: cents
+      status: status
+      nrr: ratio
+      expansion_share: ratio
+      contraction_share: ratio
+      churn_share: ratio
+      cohort_revenue_coverage: ratio
+  nrr_members:
+    key:
+    - lens
+    - ultimate_parent
+    spine: nrr_members
+    question: Exact frozen-cohort assignment before retention aggregation
+    columns:
+    - lens
+    - ultimate_parent
+    - base_cents
+    - current_cents
+    - in_cohort
+    units:
+      lens: dimension
+      ultimate_parent: dimension
+      base_cents: cents
+      current_cents: cents
+      in_cohort: boolean
+  model_vintage:
+    key:
+    - month
+    - model
+    - generation
+    - months_since_release
+    - channel
+    - workload
+    spine: model_vintage
+    cuts:
+    - channel
+    - workload
+    question: Model vintage revenue mix and age curves
+    columns:
+    - month
+    - model
+    - generation
+    - months_since_release
+    - channel
+    - workload
+    - revenue_cents
+    - revenue_share
+    - released_last_12_months_share
+    units:
+      month: dimension
+      model: dimension
+      generation: dimension
+      months_since_release: dimension
+      channel: dimension
+      workload: dimension
+      revenue_cents: cents
+      revenue_share: ratio
+      released_last_12_months_share: ratio
+  subscriptions:
+    key:
+    - month
+    - plan
+    spine: subscriptions
+    question: Paid seats, churn, exposure, ARPU, ARPA and conversion
+    columns:
+    - month
+    - plan
+    - beginning_seats
+    - paid_seats
+    - gross_adds
+    - cancelled_seats
+    - seat_removals
+    - plan_transfers_net
+    - net_adds
+    - daily_weighted_paid_seats
+    - daily_weighted_paid_accounts
+    - beginning_paid_accounts
+    - paid_accounts
+    - upgraded_accounts
+    - downgraded_accounts
+    - expanded_accounts
+    - revenue_cents
+    - trials_started
+    - trial_cohort_converted
+    - trial_cohort_resolved
+    - gross_churn_monthly
+    - gross_churn_annualized
+    - gross_churn_daily_exposure_lens
+    - arpu
+    - arpa
+    - upgrade_rate
+    - downgrade_rate
+    - seat_expansion_account_rate
+    - trial_conversion_resolved_cohort_rate
+    - trial_cohort_pending
+    units:
+      month: dimension
+      plan: dimension
+      beginning_seats: count or metadata
+      paid_seats: count or metadata
+      gross_adds: count or metadata
+      cancelled_seats: count or metadata
+      seat_removals: count or metadata
+      plan_transfers_net: count or metadata
+      net_adds: count or metadata
+      daily_weighted_paid_seats: count or metadata
+      daily_weighted_paid_accounts: count or metadata
+      beginning_paid_accounts: count or metadata
+      paid_accounts: count or metadata
+      upgraded_accounts: count or metadata
+      downgraded_accounts: count or metadata
+      expanded_accounts: count or metadata
+      revenue_cents: cents
+      trials_started: count or metadata
+      trial_cohort_converted: count or metadata
+      trial_cohort_resolved: count or metadata
+      gross_churn_monthly: ratio
+      gross_churn_annualized: ratio
+      gross_churn_daily_exposure_lens: ratio
+      arpu: USD/paid seat
+      arpa: USD/paid account
+      upgrade_rate: ratio
+      downgrade_rate: ratio
+      seat_expansion_account_rate: ratio
+      trial_conversion_resolved_cohort_rate: ratio
+      trial_cohort_pending: count or metadata
+  customer_cohorts:
+    key:
+    - month
+    - threshold_cents
+    spine: customer_cohorts
+    question: Enterprise customer thresholds
+    columns:
+    - month
+    - threshold_cents
+    - customers
+    - cohort_revenue_cents
+    - total_revenue_cents
+    - net_revenue_share
+    units:
+      month: dimension
+      threshold_cents: cents
+      customers: count or metadata
+      cohort_revenue_cents: cents
+      total_revenue_cents: cents
+      net_revenue_share: ratio
+  cohort_members:
+    key:
+    - month
+    - threshold_cents
+    - ultimate_parent
+    spine: cohort_members
+    question: Exact enterprise cohort membership
+    columns:
+    - month
+    - ultimate_parent
+    - revenue_cents
+    - threshold_cents
+    units:
+      month: dimension
+      ultimate_parent: dimension
+      revenue_cents: cents
+      threshold_cents: cents

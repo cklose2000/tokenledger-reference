@@ -1,0 +1,30 @@
+version: 2
+sources:
+- name: raw
+  schema: raw
+  tables:
+  - name: capacity_consumed
+  - name: capacity_contracted
+  - name: capacity_energized
+  - name: contract_expired
+  - name: contract_renewed
+  - name: contract_signed
+  - name: credit_issued
+  - name: customer_churned
+  - name: customer_created
+  - name: customer_merged
+  - name: model_deprecated
+  - name: model_released
+  - name: seat_added
+  - name: seat_removed
+  - name: subscription_cancelled
+  - name: subscription_downgraded
+  - name: subscription_renewed
+  - name: subscription_started
+  - name: subscription_upgraded
+  - name: tokens_processed
+  - name: trial_converted
+  - name: trial_expired
+  - name: trial_started
+  - name: usage_invoiced
+  - name: allocation

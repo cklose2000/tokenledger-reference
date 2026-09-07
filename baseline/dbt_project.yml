@@ -1,0 +1,17 @@
+name: tokenledger_baseline
+version: '1.0'
+config-version: 2
+profile: tokenledger_baseline
+model-paths: [models]
+macro-paths: [macros]
+test-paths: [tests]
+models:
+  tokenledger_baseline:
+    +materialized: table
+    staging:
+      +materialized: view
+vars:
+  asof: '2026-07-31'
+  first_month: '2024-02-01'
+  nrr_floor_cents: 1000000
+  changed_since: 0
