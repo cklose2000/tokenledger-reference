@@ -1,0 +1,40 @@
+name: subscriptions
+version: v1
+grain: month and plan
+dimensions:
+- month
+- plan
+allowed_cuts:
+- plan
+default_cuts: []
+inclusions:
+- converted paid subscriptions
+- seat removals and account cancellations
+- plan transfers shown separately
+- resolved trial cohorts for conversion rate
+exclusions:
+- trial seats from paid populations
+- plan transfers from gross churn
+- unresolved trials from conversion denominator
+known_gaming_vectors:
+- beginning versus daily exposure denominator
+- trial inclusion
+- transfer misclassification
+- new adds that churn in-period
+- unresolved trial selection
+disclosure_note: Beginning balance is the state immediately before the first UTC day. Intraday state changes
+  apply on their UTC day; final same-day state determines exposure. Annualized churn is undefined when monthly
+  churn is outside [0,1]. One active paid subscription per customer at a time is the v1 scope.
+formula:
+  prose: Paid-seat state and flows over half-open UTC day intervals; earned revenue over daily average paid
+    seats/accounts for ARPU/ARPA. Gross churn is removals plus cancellation seats divided by beginning paid
+    seats.
+  sql: tl/metrics/sql/subscriptions.sql
+recognition_policy: definitions/policies/recognition/v1.yaml
+allocation_version: v1
+rounding: Monetary source and allocations in integer cents; USD output has 2 decimals; ratios round to 12 decimals.
+null_behavior: Zero denominators are null, never zero or infinity. Insufficient window history is labeled.
+  Empty families emit no_observations.
+units: Money fields ending _cents are rendered as _usd. Token unit prices are USD per million tokens; ratios
+  are fractions, not percent; capacity is MW.
+definition_change: Create a new version path and a restatement/disclosure bridge; do not edit released v1.

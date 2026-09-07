@@ -1,0 +1,18 @@
+name: usage_tokens
+version: v1
+grain: account / local source / session / token category / requested interval
+formula:
+  prose: Sum nonnegative differences between consecutive known cumulative observations wholly inside the half-open requested interval. Any missing or decreasing adjacent reading makes that category unknown.
+  sql: tl/usage/sql/usage_tokens.sql
+dimensions: [account, source, scope_id, token_kind, basis, model, cost_basis, first_observed_at, last_observed_at]
+default_cuts: []
+allowed_cuts: []
+value_units:
+  observed_tokens: tokens
+  observations: count
+  measured_intervals: count
+  excluded_intervals: count
+inclusions: [Knowledge-visible validated local cumulative counters, Zero-growth repeated counter notifications]
+exclusions: [Opening balance, Intervals crossing the start boundary, Observations at or after the end, Last counters as additive usage, Cross-session totals, Unobserved tails, Billed amounts]
+known_gaming_vectors: [Claiming full account coverage from local evidence, Summing cumulative or overlapping categories, Treating missing or reset readings as zero, Inferring model or bill from subscription]
+disclosure_note: Partial observed counter growth only. Input and output are additive when reconciled; cache and reasoning are separate overlapping categories. First reading is an opening balance. Per-token model/project and cross-session lineage are unknown. No provider-revenue or cost inference.

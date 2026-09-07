@@ -1,0 +1,10 @@
+model: synthetic-g3
+version: v1
+synthetic: true
+unit: MWh per million tokens
+coefficients:
+  input: 0.0128
+  output: 0.0512
+  cache_read: 0.00192
+  cache_write: 0.016
+disclosure_note: Fictional engineering assumptions; not measured lab energy consumption.

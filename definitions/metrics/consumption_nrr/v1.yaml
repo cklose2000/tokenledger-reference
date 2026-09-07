@@ -1,0 +1,59 @@
+name: consumption_nrr
+version: v1
+grain: as-of date and fixed-parent cohort lens
+dimensions:
+- month
+- lens
+allowed_cuts: []
+default_cuts: []
+inclusions:
+- usage and commit-funded usage
+- zero-spend cohort members
+- ultimate-parent mapping at the same cutoffs for both windows
+exclusions:
+- new customers outside base cohort
+- one-time credits
+- unused-commit expiry
+- subscriptions except labeled inclusive lens
+known_gaming_vectors:
+- cohort floor selection
+- survivorship bias
+- acquisition mapping asymmetry
+- annualized tiny denominators
+- subscription mix
+disclosure_note: Base floor is >= USD 10,000. The quarter lens compares the last three months with the same
+  quarter a year earlier; floor uses quarter revenue times four. The base cohort and both windows share the
+  same current-known parent map. Publish all lenses and coverage.
+lenses:
+- lens: base_t12m
+  months: 12
+  floor_usd: 10000
+  annualization: 1
+  include_subscription: false
+- lens: floor_100k
+  months: 12
+  floor_usd: 100000
+  annualization: 1
+  include_subscription: false
+- lens: t3m_annualized
+  months: 3
+  floor_usd: 10000
+  annualization: 4
+  include_subscription: false
+- lens: subscription_inclusive
+  months: 12
+  floor_usd: 10000
+  annualization: 1
+  include_subscription: true
+formula:
+  prose: Same-parent cohort current-window consumption revenue divided by base-window revenue. Current = base
+    + expansion - contraction - churn, in cents.
+  sql: tl/metrics/sql/consumption_nrr.sql
+recognition_policy: definitions/policies/recognition/v1.yaml
+allocation_version: v1
+rounding: Monetary source and allocations in integer cents; USD output has 2 decimals; ratios round to 12 decimals.
+null_behavior: Zero denominators are null, never zero or infinity. Insufficient window history is labeled.
+  Empty families emit no_observations.
+units: Money fields ending _cents are rendered as _usd. Token unit prices are USD per million tokens; ratios
+  are fractions, not percent; capacity is MW.
+definition_change: Create a new version path and a restatement/disclosure bridge; do not edit released v1.

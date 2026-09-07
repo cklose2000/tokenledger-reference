@@ -1,0 +1,13 @@
+schema_version: tokenledger-controls-policy/v1
+version: v1
+synthetic: true
+released_definitions_base: 972b1ea867c3b5e51360e7473cfde56f675c46ce
+revenue_presentation: Synthetic gross revenue with marketplace fees presented separately. This fixture mapping is not an ASC 606 principal-agent conclusion.
+variance_threshold_cents: 0
+fee_allocation: Once per fully recognized invoice; fee-bearing recognition spanning multiple months is unsupported and rejected pending a new allocation policy.
+accounts:
+  consumption: '4000'
+  subscription: '4010'
+  commit_expiry: '4020'
+  credit: '4090'
+external_evidence: Collected bytes and declared identities require independent verification; collection never grants a passed control.

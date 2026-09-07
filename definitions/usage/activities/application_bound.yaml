@@ -1,0 +1,7 @@
+name: application_bound
+version: v1
+customer_required: true
+features:
+  application: {type: string, enum: [personal-usage]}
+  binding_id: {type: string}
+  catalog_sha256: {type: sha256}

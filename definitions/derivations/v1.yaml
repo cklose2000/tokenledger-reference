@@ -1,0 +1,16 @@
+version: v1
+restatement:
+  identity: metric name and canonical dimensions; version is compared separately
+  comparison: values, units and availability status; unchanged values are not restatements
+  monetary_delta: new minus old in exact decimal USD, never float
+  ratio_delta: new minus old times 100, in percentage points
+  missing: absent or unavailable endpoints have null deltas, never imputed zero
+  causes: enumerate all valid subsets of at most four source-document groups
+  bound: 4
+  proof_scope: minimum-cardinality sufficient group set under the recorded current query
+  unresolved: larger populations, execution changes, or invalid counterfactuals are labeled
+sensitivity:
+  headline: base_t12m
+  lenses: [base_t12m, floor_100k, t3m_annualized, subscription_inclusive]
+  delta: lens NRR minus headline NRR in percentage points; null if either is unavailable
+  diagnostics: cohort counts and revenue amounts describe observed data when status is unavailable

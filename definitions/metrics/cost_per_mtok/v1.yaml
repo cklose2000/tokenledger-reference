@@ -1,0 +1,41 @@
+name: cost_per_mtok
+version: v1
+grain: month and selected token dimensions
+dimensions:
+- month
+allowed_cuts:
+- model
+- generation
+- token_type
+- channel
+- workload
+- segment
+default_cuts:
+- model
+- token_type
+inclusions:
+- all processed token types
+- contract-priced inference meters
+exclusions:
+- training cost
+- mixed-purpose cost
+known_gaming_vectors:
+- training/inference classification
+- energy allocation coefficients
+- unmatched meters
+- cache denominator mix
+disclosure_note: Model-month inference cost rounds each meter to cents, then allocates by tokens times pinned
+  energy coefficients with deterministic largest remainders. Training and mixed-purpose costs are separate
+  in the compute/revenue-per-MW family.
+formula:
+  prose: Allocated inference meter cost divided by processed tokens in millions. Margin is one minus allocated
+    inference cost divided by net usage revenue.
+  sql: tl/metrics/sql/cost_per_mtok.sql
+recognition_policy: definitions/policies/recognition/v1.yaml
+allocation_version: v1
+rounding: Monetary source and allocations in integer cents; USD output has 2 decimals; ratios round to 12 decimals.
+null_behavior: Zero denominators are null, never zero or infinity. Insufficient window history is labeled.
+  Empty families emit no_observations.
+units: Money fields ending _cents are rendered as _usd. Token unit prices are USD per million tokens; ratios
+  are fractions, not percent; capacity is MW.
+definition_change: Create a new version path and a restatement/disclosure bridge; do not edit released v1.

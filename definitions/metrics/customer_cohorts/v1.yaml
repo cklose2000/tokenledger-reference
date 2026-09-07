@@ -1,0 +1,36 @@
+name: customer_cohorts
+version: v1
+grain: completed quarter and threshold, ultimate parent
+dimensions:
+- month
+- threshold_cents
+allowed_cuts: []
+default_cuts: []
+inclusions:
+- all recognized revenue families
+- same current-known parent mapping across quarters
+exclusions:
+- incomplete twelve-month history
+known_gaming_vectors:
+- threshold boundary
+- parent consolidation
+- net credit treatment
+- partial history
+disclosure_note: Thresholds are strict > USD 100K, 1M, and 10M. Counts must be monotone. Run a separate original-quarter
+  snapshot for an originally reported table; a later-known run can change prior-quarter membership.
+thresholds_usd:
+- 100000
+- 1000000
+- 10000000
+formula:
+  prose: Count parents with trailing-twelve-month net recognized revenue strictly greater than each threshold;
+    sum their revenue over total revenue.
+  sql: tl/metrics/sql/customer_cohorts.sql
+recognition_policy: definitions/policies/recognition/v1.yaml
+allocation_version: v1
+rounding: Monetary source and allocations in integer cents; USD output has 2 decimals; ratios round to 12 decimals.
+null_behavior: Zero denominators are null, never zero or infinity. Insufficient window history is labeled.
+  Empty families emit no_observations.
+units: Money fields ending _cents are rendered as _usd. Token unit prices are USD per million tokens; ratios
+  are fractions, not percent; capacity is MW.
+definition_change: Create a new version path and a restatement/disclosure bridge; do not edit released v1.

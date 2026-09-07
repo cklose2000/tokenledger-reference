@@ -1,0 +1,39 @@
+name: model_vintage
+version: v1
+grain: month, generation, model age, and selected commercial cuts
+dimensions:
+- month
+- model
+- generation
+- months_since_release
+allowed_cuts:
+- channel
+- workload
+default_cuts:
+- channel
+- workload
+inclusions:
+- all recognized revenue families
+- explicit unallocated subscription and expiry revenue
+exclusions:
+- no hidden removal of unallocated revenue
+known_gaming_vectors:
+- unallocated revenue exclusion
+- release-date selection
+- channel mix
+- credit attribution
+disclosure_note: Consumption follows cent-exact token allocations. Credits inherit the invoice model only if
+  unique. Other ambiguous or non-model revenue is unallocated and stays in the denominator. Model age is calendar
+  months since release.
+formula:
+  prose: Recognized revenue attributed to a model divided by total recognized revenue in the same month/cut.
+    Recent share sums models released in the trailing twelve months.
+  sql: tl/metrics/sql/model_vintage.sql
+recognition_policy: definitions/policies/recognition/v1.yaml
+allocation_version: v1
+rounding: Monetary source and allocations in integer cents; USD output has 2 decimals; ratios round to 12 decimals.
+null_behavior: Zero denominators are null, never zero or infinity. Insufficient window history is labeled.
+  Empty families emit no_observations.
+units: Money fields ending _cents are rendered as _usd. Token unit prices are USD per million tokens; ratios
+  are fractions, not percent; capacity is MW.
+definition_change: Create a new version path and a restatement/disclosure bridge; do not edit released v1.

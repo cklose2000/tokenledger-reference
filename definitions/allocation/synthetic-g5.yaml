@@ -1,0 +1,10 @@
+model: synthetic-g5
+version: v1
+synthetic: true
+unit: MWh per million tokens
+coefficients:
+  input: 0.008192
+  output: 0.032768
+  cache_read: 0.0012288
+  cache_write: 0.01024
+disclosure_note: Fictional engineering assumptions; not measured lab energy consumption.

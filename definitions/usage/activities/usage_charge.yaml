@@ -1,0 +1,15 @@
+name: usage_charge
+version: v1
+customer_required: true
+features:
+  observation_id: {type: string}
+  source: {type: string}
+  scope_id: {type: string}
+  amount_decimal: {type: decimal}
+  currency: {type: string}
+  basis: {type: string, enum: [subscription_billed, metered_billed, credit, estimated, api_equivalent]}
+  interval_start: {type: timestamp}
+  interval_end: {type: timestamp}
+  revision: {type: integer, min: 0}
+  supersedes: {type: string, nullable: true}
+  evidence_sha256: {type: sha256}

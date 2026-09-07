@@ -1,0 +1,20 @@
+name: recognition
+version: v1
+currency: USD
+period_bounds: '[period_start, period_end)'
+reporting_input: StreamReader.snapshot
+knowledge_bounds: '_recorded_at < known_at; ts < day_after_asof; _stream_position <= watermark'
+temporal_windows: after knowledge and watermark filtering
+recognition_pairs:
+  - {source: usage, recognition_kind: usage, family: consumption}
+  - {source: commit_drawdown, recognition_kind: usage, family: consumption}
+  - {source: subscription, recognition_kind: subscription, family: subscription}
+  - {source: usage, recognition_kind: credit, family: credit}
+  - {source: commit_drawdown, recognition_kind: commit_expiry, family: commit_expiry}
+consumption_exclusions: [subscription, credit, commit_expiry]
+disclosure_note: >-
+  Consumption includes usage paid through either cash or commit drawdown.
+  Credit and unused-commit recognition remain separate revenue families.
+  Inclusive as-of dates select economic events through that day. Service period
+  end dates are exclusive; a February invoice ends on March 1, not February 29.
+  This is a synthetic reporting classification, not a general accounting policy.

@@ -1,0 +1,14 @@
+name: synthetic
+version: v1.1
+allocation_version: v1
+allocation_directory: definitions/allocation
+unit: MWh per million tokens
+rounding: integer nano-MWh coefficient, then half-up per token activity
+file_hash_normalization: LF
+allocation_files:
+  synthetic-g1.yaml: 00395ccb2bc45e04756ea328e195c025a1677ff527ec949d253cf8fa24f43146
+  synthetic-g2.yaml: 865dd89b61376f01142f0000ad5a3688823ba38b268a1ed828aa38f666f607e3
+  synthetic-g3.yaml: 248c806c372ded1eb97e73e8605e28683d6b9b42b639bd3398572d80abf06e12
+  synthetic-g4.yaml: 04d42a4cba8b9256a36ba69c5517bc6c653b9ac082915024c6744740108f3fc8
+  synthetic-g5.yaml: 851981153902c1c71a1c7f58fe0e79cae2ec7f3c358e8c0bd346b6f3c41abd96
+change_policy: A coefficient change requires a new allocation and generator version; never reinterpret an existing v1.1 world.

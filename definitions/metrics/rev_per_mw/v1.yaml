@@ -1,0 +1,33 @@
+name: rev_per_mw
+version: v1
+grain: as-of trailing twelve months by compute purpose
+dimensions:
+- month
+- purpose
+allowed_cuts: []
+default_cuts: []
+inclusions:
+- all recognized revenue families in numerator
+- inference contracts from effective start through exclusive end
+exclusions:
+- training and mixed capacity from inference denominators
+known_gaming_vectors:
+- contracted versus energized capacity
+- window length
+- mixed-purpose allocation
+- underutilization
+disclosure_note: Contracted capacity includes unenergized contractual obligations after effective start. Energized
+  capacity follows explicit ramps. Training/mixed capacity and cost are shown separately without assigning
+  revenue to them.
+formula:
+  prose: Twelve-month net recognized revenue divided by contracted MW-hours over total period hours; utilized
+    variant uses consumed MWh over the same hours.
+  sql: tl/metrics/sql/rev_per_mw.sql
+recognition_policy: definitions/policies/recognition/v1.yaml
+allocation_version: v1
+rounding: Monetary source and allocations in integer cents; USD output has 2 decimals; ratios round to 12 decimals.
+null_behavior: Zero denominators are null, never zero or infinity. Insufficient window history is labeled.
+  Empty families emit no_observations.
+units: Money fields ending _cents are rendered as _usd. Token unit prices are USD per million tokens; ratios
+  are fractions, not percent; capacity is MW.
+definition_change: Create a new version path and a restatement/disclosure bridge; do not edit released v1.

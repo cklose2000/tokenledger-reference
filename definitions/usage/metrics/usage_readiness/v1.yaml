@@ -1,0 +1,15 @@
+name: usage_readiness
+version: v1
+grain: application / activity
+formula:
+  prose: Count visible activity observations; never sum token counters or infer consumption.
+  sql: tl/usage/sql/usage_readiness.sql
+dimensions: [activity]
+default_cuts: []
+allowed_cuts: []
+value_units:
+  observations: count
+inclusions: [All visible application activities, including the binding event]
+exclusions: [Activities beyond the economic or knowledge cutoff or frozen watermark]
+known_gaming_vectors: [Observation counts are not usage amounts or account completeness]
+disclosure_note: Private structural readiness only. U1 token and charge reporting is not implemented by this definition.

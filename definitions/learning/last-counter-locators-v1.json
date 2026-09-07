@@ -1,0 +1,11 @@
+{
+  "version": "last-counter-locators/v1",
+  "status": "candidate",
+  "authority": "diagnostic_only",
+  "condition": "complete last total differs from last input plus last output",
+  "scope": "frozen admitted personally owned laptop source evidence",
+  "promotion": "unavailable_pending_explicit_human_approval",
+  "acceptance": {"false_positives": 0, "missed_findings": 0, "incorrect_residuals": 0, "unlocated_findings": 0},
+  "next_run": "actual comparable source refresh after approval; otherwise inconclusive",
+  "forbidden_changes": ["counter repair", "metric policy", "source admission", "privacy scope", "acceptance thresholds"]
+}

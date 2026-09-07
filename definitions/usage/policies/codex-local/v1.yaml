@@ -1,0 +1,13 @@
+name: codex-local-token-count
+version: v1
+client_versions: ['0.153.4']
+quantity: nonnegative signed-64-bit integer or explicit null
+identity: account, source, session identity, original source line, counter kind, token kind
+authority: cumulative counters; last counters retained but never added to them
+measurement: growth between consecutive known cumulative readings wholly within the requested interval
+opening_balance: excluded; a first reading does not establish consumption since zero
+reset_policy: quarantine conflicting observations; negative or missing adjacent counters yield explicit unknown report amounts
+overlap: reuse first admitted evidence for the same observation; never key deduplication only by file hash
+categories: total is input plus output; cache and reasoning are separate nonadditive categories
+scope: one local session; no cross-session or full-account total without resolved lineage
+cost: unavailable; no billed charges or API-equivalent pricing inferred

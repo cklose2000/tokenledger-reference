@@ -1,0 +1,12 @@
+name: usage_coverage
+version: v1
+customer_required: true
+features:
+  source: {type: string}
+  scope_id: {type: string}
+  interval_start: {type: timestamp}
+  interval_end: {type: timestamp}
+  coverage: {type: string, enum: [confirmed, partial, stale, unavailable]}
+  reason: {type: string}
+  next_action: {type: string}
+  evidence_sha256: {type: sha256}

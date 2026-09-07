@@ -1,0 +1,23 @@
+name: comparison_recognition
+version: v1
+currency: USD
+scope: Synthetic monthly arrears subscriptions and prepaid usage commitments, not an ASC 606 opinion.
+inputs: Upstream economic activities only; revenue_recognized is excluded from both implementations.
+rounding: Positive half-up integer cents. Allocate service revenue by cumulative days, rounding cumulative entitlement, then difference adjacent boundaries.
+usage: Net invoice amount less marketplace fee, earned over the half-open service interval. Commit funding is independently assigned by invoice service end and activity_id within source and contract, capped at the contract amount. Remaining usage is an account receivable.
+commit: Contract execution bills the commitment into deferred revenue. Usage releases the funded amount; explicit expiry releases the remaining balance. Invoice cash_due and commit_applied are source assertions, not recognition inputs.
+subscription: Monthly price per seat accrues daily using calendar-month days. Ordered state changes determine exposure; same-day plan then seat changes apply. Monthly arrears billing equals earned revenue. Service expiry terminates accrual unless renewed.
+credit: A linked credit reverses revenue in its explicit period and reduces accounts receivable. It does not refill a commitment. Missing original invoices fail.
+fees: Fees are a contra-revenue account. Net recognized revenue includes that debit. Before-fee presentation adds the same fee back once.
+accounts:
+  receivable: '1100'
+  deferred: '2100'
+  usage_revenue: '4000'
+  subscription_revenue: '4010'
+  expiry_revenue: '4020'
+  credits: '4090'
+  fees: '4095'
+limits:
+  - No tax, foreign currency, collections, standalone selling-price allocation, or variable-consideration estimation.
+  - One paid subscription per account; monthly price basis only. Cross-month service uses each calendar month's denominator.
+  - Credits require an original invoice. Contracts and invoice identities are unique within a source.

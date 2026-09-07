@@ -1,0 +1,11 @@
+name: application_inventory
+version: v1
+customer_required: true
+features:
+  provider: {type: string, enum: [anthropic, openai, grok]}
+  surface: {type: string}
+  scope: {type: string, enum: [laptop, web, mobile]}
+  ownership: {type: string, enum: [personally_owned]}
+  plan: {type: string, nullable: true}
+  confirmation_ref: {type: string}
+  collection_status: {type: string, enum: [uncollected, candidate]}

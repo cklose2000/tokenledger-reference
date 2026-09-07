@@ -1,0 +1,15 @@
+name: usage_gaps
+version: v2
+grain: confirmed account / surface or missing quantity
+formula:
+  prose: Show every knowledge-visible confirmed surface and missing account/charge scopes, based only on the selected report interval and admitted local evidence. Stale means no import in seven days at the knowledge cutoff.
+  sql: tl/usage/sql/usage_gaps/v2.sql
+dimensions: [account, provider, surface, scope, gap, verified_at, latest_observed_at, next_action]
+default_cuts: []
+allowed_cuts: []
+value_units: {}
+inclusions: [Confirmed inventory, Local evidence in the requested interval, Reconciliation exceptions in nonauthoritative last counters]
+exclusions: [Invented completeness percentages, Unconfirmed account bindings]
+known_gaming_vectors: [Counting connected surfaces as complete token coverage, Omitting unavailable providers]
+disclosure_note: Coverage is partial, stale or unavailable; this source never establishes full account coverage. Unknown usage and charges are not zero. Inventory is administrative knowledge, not a claim it existed during the historical usage interval.
+change_note: Adds explicit last-counter reconciliation exceptions; these counters never contributed to usage totals. No earlier real U1 report was published.

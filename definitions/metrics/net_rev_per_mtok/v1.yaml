@@ -1,0 +1,42 @@
+name: net_rev_per_mtok
+version: v1
+grain: month and selected token dimensions
+dimensions:
+- month
+allowed_cuts:
+- model
+- generation
+- token_type
+- channel
+- workload
+- segment
+default_cuts:
+- model
+- token_type
+inclusions:
+- cash-funded and commit-funded recognized usage
+- all four token types with unit token weight
+exclusions:
+- subscriptions
+- one-time credits
+- unused-commit expiry
+known_gaming_vectors:
+- cache denominator inclusion
+- marketplace fee presentation
+- late recognition cutoff
+- model and channel mix
+disclosure_note: Each actual token has weight one. Allocations preserve cents by rated-charge weight with token-count
+  fallback for zero rated charge. Fee add-back is proportional to recognized invoice net. Uninvoiced tokens
+  remain in the denominator.
+formula:
+  prose: Recognized usage revenue divided by processed tokens in millions; publish net of discounts, and net
+    of discounts plus fees.
+  sql: tl/metrics/sql/net_rev_per_mtok.sql
+recognition_policy: definitions/policies/recognition/v1.yaml
+allocation_version: v1
+rounding: Monetary source and allocations in integer cents; USD output has 2 decimals; ratios round to 12 decimals.
+null_behavior: Zero denominators are null, never zero or infinity. Insufficient window history is labeled.
+  Empty families emit no_observations.
+units: Money fields ending _cents are rendered as _usd. Token unit prices are USD per million tokens; ratios
+  are fractions, not percent; capacity is MW.
+definition_change: Create a new version path and a restatement/disclosure bridge; do not edit released v1.
