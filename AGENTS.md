@@ -31,13 +31,18 @@ unknown rather than estimating it.
 Use `data/challenge/rc5/TASKS.md` and its visible `expected.json`.
 Fixture `058168fe58cab620a36e54f2d03ea6b5086fcba385d2b54e3b4d19da34cd164f`; proof `mr-ae36c1d83735aba3abe252915eb9135b`.
 
+Make a working copy first. Grading appends its elapsed-time observation to the
+working fixture's receipt ledger. Keep the retained release fixture unchanged;
+use a new working directory for each separate attempt.
+
 ```sh
-tl challenge verify data/challenge/rc5 --json
-tl challenge task data/challenge/rc5 july_yield --json
-tl challenge task data/challenge/rc5 late_invoice --json
-tl challenge task data/challenge/rc5 nrr_definition --json
-tl challenge task data/challenge/rc5 failed_close --json
-tl challenge grade data/challenge/rc5 --answer data/challenge/rc5/expected.json --output data/score/your-attempt --json
+python -c "import shutil; shutil.copytree('data/challenge/rc5', 'data/challenge/your-attempt')"
+tl challenge verify data/challenge/your-attempt --json
+tl challenge task data/challenge/your-attempt july_yield --json
+tl challenge task data/challenge/your-attempt late_invoice --json
+tl challenge task data/challenge/your-attempt nrr_definition --json
+tl challenge task data/challenge/your-attempt failed_close --json
+tl challenge grade data/challenge/your-attempt --answer data/challenge/your-attempt/expected.json --output data/score/your-attempt --json
 ```
 
 The last command is the visible reference answer. Copy and edit the answer

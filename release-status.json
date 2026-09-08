@@ -16,7 +16,7 @@
     "python": "3.11.5",
     "pip_cache": "not_cleared",
     "seconds": 59.623483999981545,
-    "hosted_codespaces": "not_run_missing_cli_codespace_scope"
+    "hosted_codespaces": "passed_actual_two_core_codespace_cli"
   },
   "recording": {
     "status": "passed",
@@ -42,7 +42,8 @@
     "proof_receipt_id": "mr-ae36c1d83735aba3abe252915eb9135b",
     "reference_score_receipt": "mr-d9a685e6e5d3699ad49c678b984f29f8",
     "actual_agent_usage": "unobserved",
-    "relocated_grade": "passed_same_deterministic_score_receipt"
+    "relocated_grade": "passed_same_deterministic_score_receipt",
+    "working_copy_recipe": "passed_same_score_original_fixture_ledger_unchanged"
   },
   "architecture": {
     "artifact": "passed_9_of_9_zero_errors_warnings",
@@ -52,7 +53,16 @@
   "matched_agent_benchmark": "not_run",
   "learning": "completed_inconclusive_no_promotion",
   "first_time_evaluators": "not_run",
-  "publication_approval": "not_requested_candidate_still_under_preparation",
+  "publication_approval": "not_requested_pending_first_time_evaluation",
   "introductions": "none_authorized_or_sent",
-  "private_engine_integration": "completed_with_green_main_ci; preserved_eight_phase_merge_commits"
+  "private_engine_integration": "completed_with_green_main_ci; preserved_eight_phase_merge_commits",
+  "codespaces": {
+    "status": "passed",
+    "evidence": "docs/verification/codespaces.json",
+    "execution_git_sha": "e41438dae69ca15e8d05de6f75f80e804e89d685",
+    "workflow_seconds": 6.941722100999868,
+    "resource_state": "Shutdown",
+    "web_editor_interaction": "not_run",
+    "first_time_evaluator_session": false
+  }
 }

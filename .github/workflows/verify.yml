@@ -29,8 +29,12 @@ jobs:
         run: tl challenge verify data/challenge/first --json
       - name: Verify the refreshed challenge
         run: tl challenge verify data/challenge/rc5 --json
+      - name: Copy the fixture for the evaluator's working attempt
+        run: python -c "import shutil; shutil.copytree('data/challenge/rc5', 'data/challenge/ci-attempt')"
       - name: Grade the visible reference answer
-        run: tl challenge grade data/challenge/rc5 --answer data/challenge/rc5/expected.json --output data/score/ci-reference --json
+        run: tl challenge grade data/challenge/ci-attempt --answer data/challenge/ci-attempt/expected.json --output data/score/ci-reference --json
+      - name: Preserve the retained release fixture
+        run: git diff --exit-code -- data/challenge/rc5
       - name: Reproduce the recording's original number
         run: tl --db data/demo/recorded/world.duckdb --artifact-root data/demo/recorded receipt mr-a57e47711e3b91ca3ef32885f5737e63 --json
       - name: Verify the saved cloud observation seal without the large download

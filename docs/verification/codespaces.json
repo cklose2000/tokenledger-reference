@@ -1,0 +1,134 @@
+{
+  "actor": "GPT-6",
+  "git_sha": "e41438dae69ca15e8d05de6f75f80e804e89d685",
+  "python": "3.11.5 (main, Sep 20 2023, 10:46:56) [GCC 12.2.0]",
+  "machine": {
+    "cpus_requested": 2,
+    "memory_gib_requested": 8
+  },
+  "packages": {
+    "duckdb": "1.5.5",
+    "pyarrow": "18.1.0",
+    "numpy": "1.26.4",
+    "click": "8.1.8",
+    "PyYAML": "6.0.2"
+  },
+  "provider_credentials_passed_to_tests": false,
+  "cloud_jobs_submitted": false,
+  "commands": [
+    {
+      "name": "demo",
+      "command": [
+        "tl",
+        "demo",
+        "--directory",
+        "data/demo/hosted-check",
+        "--json"
+      ],
+      "native_exit_code": 0,
+      "seconds": 7.613453834999746,
+      "stdout_sha256": "dd8a86f07216346cbaef5c629028a67a44756ae9e696628173ac929ce40edb5d",
+      "stderr_sha256": "8a9aab64900326cd328354f95e2f52af7f4a1748bc947e7160bdad1ee36a2b95"
+    },
+    {
+      "name": "historical-challenge",
+      "command": [
+        "tl",
+        "challenge",
+        "verify",
+        "data/challenge/first",
+        "--json"
+      ],
+      "native_exit_code": 0,
+      "seconds": 3.9795478480000384,
+      "stdout_sha256": "6b2b0d71ff6fc80d9cbb8eb95885eb59ec717749e460b81a818b9c7db2fb0624",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "current-challenge",
+      "command": [
+        "tl",
+        "challenge",
+        "verify",
+        "data/challenge/rc5",
+        "--json"
+      ],
+      "native_exit_code": 0,
+      "seconds": 3.214769193000393,
+      "stdout_sha256": "bbc8c31ea4f75a91ff8e39039894852439ed0c61c692e5d1d3c25cbe8d8083a2",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "grade",
+      "command": [
+        "tl",
+        "challenge",
+        "grade",
+        "data/challenge/rc5",
+        "--answer",
+        "data/challenge/rc5/expected.json",
+        "--output",
+        "data/score/hosted-check",
+        "--json"
+      ],
+      "native_exit_code": 0,
+      "seconds": 3.1124218450004264,
+      "stdout_sha256": "ab8f1fb67ab4540872ecc794c72fcb6e7b43425493992a09e727d1f0d5727722",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "original-receipt",
+      "command": [
+        "tl",
+        "--db",
+        "data/demo/recorded/world.duckdb",
+        "--artifact-root",
+        "data/demo/recorded",
+        "receipt",
+        "mr-a57e47711e3b91ca3ef32885f5737e63",
+        "--json"
+      ],
+      "native_exit_code": 0,
+      "seconds": 0.8526792920001753,
+      "stdout_sha256": "41f1960beef43a82a1bdb92d502829680b17a9cb749396d33de2e12c4a7d8a07",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "cloud-observation-seal",
+      "command": [
+        "tl",
+        "--artifact-root",
+        "evidence/bigquery/verification",
+        "receipt",
+        "mr-3d66e52715aa14f49be17975a4c4c26a",
+        "--json"
+      ],
+      "native_exit_code": 0,
+      "seconds": 0.40396275999955833,
+      "stdout_sha256": "e6b00b8f068fd09757072d0540c0b7783d1f799f66b717ef234bef78ccee03fd",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "status": "passed",
+  "git_status_after": " M data/challenge/rc5/metrics.jsonl\n",
+  "reviewed_at": "2026-09-08T18:17:51.737388+00:00",
+  "scope": "Builder hosted execution check via GitHub CLI; not first-time evaluation or independent QA",
+  "region": "US East",
+  "codespace_after": "Shutdown",
+  "idle_timeout_minutes": 10,
+  "retention_period_minutes": 60,
+  "provisioning_seconds": null,
+  "creation_status_helper": "Failed SSH authentication with automatic identity; dedicated-key connection passed",
+  "working_copy_recipe": {
+    "exit_code": 0,
+    "seconds": 11.522491699899547,
+    "status": "pass",
+    "receipt_id": "mr-d9a685e6e5d3699ad49c678b984f29f8",
+    "original_fixture_ledger_unchanged": true
+  },
+  "public_reference_score_receipt": "mr-d9a685e6e5d3699ad49c678b984f29f8",
+  "demo_workflow_seconds": 6.941722100999868,
+  "cloud_observation_recomputed": false,
+  "original_population_recomputed": true,
+  "retained_fixture_side_effect": "Direct grading appended its elapsed-time observation; updated instructions grade a working copy"
+}

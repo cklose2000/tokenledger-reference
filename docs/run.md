@@ -42,6 +42,30 @@ Confirm Python **3.11.5** for the frozen historical receipts. `python` and
 patch version. The checked-in devcontainer pins the reference interpreter and
 base image. Hosted provisioning is a separately recorded acceptance check.
 
+## Use GitHub Codespaces
+
+On the repository's `main` branch, choose **Code > Codespaces > Create codespace**.
+The two-core machine is sufficient for this example. Wait for the post-creation
+package installation to finish, then use the terminal:
+
+```sh
+python --version
+tl demo
+```
+
+The checked-in container supplies Python 3.11.5 and installs the package.
+[Actual hosted verification](verification/codespaces.md) passed the demo,
+challenge and retained receipt replay on a two-core, 8 GB Codespace in US East.
+GitHub login and access to this repository are required; the review candidate
+remains private. GitHub displays who pays for the environment during creation.
+[GitHub's creation instructions](https://docs.github.com/en/codespaces/developing-in-a-codespace/creating-a-codespace-for-a-repository).
+
+When finished, stop the environment from [Your codespaces](https://github.com/codespaces).
+Closing a browser tab leaves it running until its idle timeout.
+[GitHub's stop instructions](https://docs.github.com/en/codespaces/developing-in-a-codespace/stopping-and-starting-a-codespace).
+
+## What the command does
+
 The command creates a new isolated synthetic database under `data/demo/`. It
 prints July's recognized revenue per million tokens on both marketplace-fee
 bases, admits designated late evidence, explains the signed accounting bridge

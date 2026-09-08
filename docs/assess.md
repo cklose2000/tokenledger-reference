@@ -17,6 +17,11 @@ Use a copy of the answer template for your submission. Run the application
 grader; an agent's own PASS statement is not evidence. Keep failed or incomplete
 tasks in the resulting scorecard.
 
+Follow the working-copy command in `AGENTS.md` before grading. The grader
+retains a new timing observation in that copy's receipt ledger, so your attempt
+does not modify the retained release fixture. A repeated identical answer has
+the same correctness receipt; its elapsed-time observation is separate.
+
 This is an open-book reproduction and usability exercise with visible expected
 answers. Copying those answers can demonstrate that the grader runs; it cannot
 establish unseen-task reasoning accuracy. No comparative agent-efficiency result
