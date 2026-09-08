@@ -255,3 +255,6 @@ def register(cli, options, output):
     @options
     def command(ctx,destination,repository,tag,revision,json_output):
         output(prepare(destination,repository=repository,tag=tag,revision=revision),json_output)
+
+    from tl.public_evidence import register as register_evidence
+    register_evidence(release, options, output)
