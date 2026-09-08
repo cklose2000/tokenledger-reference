@@ -22,6 +22,8 @@ tl challenge verify data/challenge/my-attempt --json
 Verification freshly re-performs the prepared evidence. It does not grade your
 answer. The [blank submission](challenge/answer.blank.json) names every required
 field; the [JSON schema](challenge/answer.schema.json) describes their types.
+The [submission vocabulary](challenge/vocabulary.md) defines the exact status,
+unit and policy strings and the evidence that supports each one.
 Replace every `__REPLACE__` marker with an observed value. Integers stay JSON
 integers, ratios stay decimal strings, and observed nulls stay `null`. An
 unanswered field is never represented by a valid null.
@@ -106,8 +108,19 @@ tl --db data/challenge/my-attempt/business/world.duckdb --artifact-root data/wor
 tl --db data/challenge/my-attempt/business/world.duckdb --artifact-root data/workflow/my-nrr-v3 profile --asof 2026-07-31 --known-at 2026-10-01T00:00:00Z --watermark 2763 --population consumption_nrr --definition v3 --json
 ```
 
-Inspect each `consumption_nrr.parquet` using the previous population-reading
-recipe. Match rows by `lens`. Keep every measure, including explicit nulls;
+NRR rows use the **reporting date, `2026-07-31`**, in `month`. The yield
+population above uses the month's first day, `2026-07-01`. Reusing that yield
+filter here would silently select no NRR rows.
+
+Use this NRR reader with the v2 command's returned `RUN_ID`:
+
+```sh
+python -c "import json; import pyarrow.parquet as pq; rows=pq.read_table('data/workflow/my-nrr-v2/runs/RUN_ID/consumption_nrr.parquet').to_pylist(); nrr=[r for r in rows if str(r['month'])=='2026-07-31']; expected={'base_t12m','floor_100k','subscription_inclusive','t3m_annualized'}; assert len(nrr)==4 and {r['lens'] for r in nrr}==expected, 'Expected exactly four NRR lenses at the reporting date; check the path and cutoff'; print(json.dumps(nrr,default=str,indent=2))"
+```
+
+Repeat with `my-nrr-v3` and that command's own `RUN_ID`. The reader prints
+all four rows and fails if a lens is missing, duplicated or unexpected.
+Match rows by `lens`. Keep every measure, including explicit nulls;
 remove only the `receipt_id` and use `lens` as the answer's dictionary key.
 List changed and unchanged lenses. Explain which population moved and why.
 Replay the fixture's `keys.nrr_old` and `keys.nrr_new` receipts. Your new run
@@ -138,12 +151,15 @@ The prepared fixture already retains the recovery. This command exercises its
 idempotent retry; it is not a newly collected source. Keep the held report and
 its cause. Verify `close/publication.json` stays byte-identical on another retry.
 For the answer's before/after totals, sum each count/cent field across the
-corresponding `reconciliation.periods`. Copy exact units and contract status
-strings from the evidence and [task contract](../tl/challenge/engine.py).
+corresponding `reconciliation.periods`. Use the
+[submission vocabulary](challenge/vocabulary.md#close-status-and-retry) to map
+the observed gate and retry results to the answer's exact status and unit strings.
 
 ## 5. Submit observations and retain rejection evidence
 
 Fill `answer.json` using the observed populations, receipts and close result.
+Use the [submission vocabulary](challenge/vocabulary.md) for exact spellings;
+each status still needs the evidence described there.
 Keep a separate short note explaining your cutoff and policy choices, commands,
 failures, any solution exposure and unknown measurements. The strict answer
 file contains only its schema fields; do not put narrative in it.

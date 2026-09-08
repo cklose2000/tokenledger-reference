@@ -1,0 +1,118 @@
+{
+  "status": "passed",
+  "scope": "builder recipe and contract verification; visible proof inspected",
+  "source_revision": "8678fbd1ee54a7fdeedba7ec1d1b16bac74a2cc9",
+  "doc_hashes": {
+    "docs/workflow.md": "9146e6744a9ee68a2b03cd7a8059246e01c02dedc518cb05bf9b9638470db40e",
+    "docs/assess.md": "d623413be4b17705cd7e0bd3dd0e76b1cb69c4ed8ecc14c467c79fa16f260923",
+    "docs/challenge/vocabulary.md": "0a1e3dec1f09becba2bdf7310b0af5751ce4450413493ac10921aaedd173a4e2"
+  },
+  "profiles": [
+    {
+      "version": "v2",
+      "rows": 4,
+      "lenses": [
+        "base_t12m",
+        "floor_100k",
+        "subscription_inclusive",
+        "t3m_annualized"
+      ],
+      "months": [
+        "2026-07-31"
+      ],
+      "matches_retained": true
+    },
+    {
+      "version": "v3",
+      "rows": 4,
+      "lenses": [
+        "base_t12m",
+        "floor_100k",
+        "subscription_inclusive",
+        "t3m_annualized"
+      ],
+      "months": [
+        "2026-07-31"
+      ],
+      "matches_retained": true
+    }
+  ],
+  "documented_reader_executed": true,
+  "rejection_cases": 4,
+  "vocabulary_fields_checked": [
+    "july_yield.revenue_basis",
+    "july_yield.denominator",
+    "july_yield.replay_status",
+    "late_invoice.attribution_status",
+    "nrr_definition.old_replay_status",
+    "nrr_definition.source_and_cutoffs",
+    "nrr_definition.units",
+    "failed_close.before_status",
+    "failed_close.after_status",
+    "failed_close.retry_publication",
+    "failed_close.retry_basis",
+    "failed_close.units",
+    "july_yield.units.channel_fee_cents",
+    "july_yield.units.net_of_discounts_and_fees_per_mtok",
+    "july_yield.units.net_of_discounts_per_mtok",
+    "july_yield.units.net_revenue_cents",
+    "july_yield.units.revenue_before_channel_fees_cents",
+    "july_yield.units.tokens",
+    "late_invoice.units.channel_fee_cents",
+    "late_invoice.units.net_of_discounts_and_fees_per_mtok",
+    "late_invoice.units.net_of_discounts_per_mtok",
+    "late_invoice.units.net_revenue_cents",
+    "late_invoice.units.revenue_before_channel_fees_cents",
+    "late_invoice.units.tokens"
+  ],
+  "blank_preserved": true,
+  "links_resolve": true,
+  "cloud_jobs_submitted": false,
+  "commands": [
+    {
+      "label": "verify-source",
+      "exit_code": 0,
+      "seconds": 17.46401509991847
+    },
+    {
+      "label": "profile-v2",
+      "exit_code": 0,
+      "seconds": 2.383869700017385
+    },
+    {
+      "label": "documented-reader-v2",
+      "exit_code": 0,
+      "seconds": 0.6823961000191048
+    },
+    {
+      "label": "wrong-month-rejected",
+      "exit_code": 1,
+      "seconds": 1.0387851000996307
+    },
+    {
+      "label": "missing-lens-rejected",
+      "exit_code": 1,
+      "seconds": 1.496325199957937
+    },
+    {
+      "label": "duplicate-lens-rejected",
+      "exit_code": 1,
+      "seconds": 0.9866953000891954
+    },
+    {
+      "label": "unexpected-lens-rejected",
+      "exit_code": 1,
+      "seconds": 1.1551074999151751
+    },
+    {
+      "label": "profile-v3",
+      "exit_code": 0,
+      "seconds": 2.5421681000152603
+    },
+    {
+      "label": "documented-reader-v3",
+      "exit_code": 0,
+      "seconds": 0.6337692000670359
+    }
+  ]
+}

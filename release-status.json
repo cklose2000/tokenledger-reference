@@ -59,7 +59,7 @@
     "human_review_count": 0,
     "reviewed_candidate": "65b717f0d94f1b3fb13a6f49904262551fddb751",
     "outcome": "Runnable example reproduced; category, workflow and visual friction identified",
-    "followup": "Presentation and workflow revision; next independent review pending",
+    "followup": "Returning review accepted presentation; NRR guide repaired and submission vocabulary documented; fresh review pending",
     "reference_answer_exposure": true
   },
   "publication_approval": "not_requested_pending_revised_candidate_review",
@@ -88,10 +88,23 @@
     "final_local_tests": {
       "passed": 72,
       "failed": 0,
-      "seconds": 150.98,
+      "seconds": 193.16,
       "warnings": 79
     },
     "desktop_summary": "persistent_beside_original_recording",
-    "clean_table_inspection": "passed_with_shipped_dependencies_and_explicit_July_filter"
+    "clean_table_inspection": "passed_with_shipped_dependencies_and_explicit_July_filter",
+    "nrr_workflow_check": "docs/verification/evaluator-followups/nrr-workflow-check.json",
+    "submission_vocabulary": "docs/challenge/vocabulary.md"
+  },
+  "returning_evaluator": {
+    "reviewed_candidate": "8678fbd1ee54a7fdeedba7ec1d1b16bac74a2cc9",
+    "reviewer_kind": "returning_AI_agent",
+    "fresh_first_impression": false,
+    "prior_solution_exposure": true,
+    "this_attempt": "constructed_four_task_PASS_through_ordinary_interfaces",
+    "presentation": "reported_concerns_resolved_in_checked_cases",
+    "remaining_instruction": "NRR_date_filter_repaired_and_literal_recipe_verified",
+    "contract_vocabulary": "documented_and_checked_against_verified_proof",
+    "independent_recognition_policy_review": false
   }
 }

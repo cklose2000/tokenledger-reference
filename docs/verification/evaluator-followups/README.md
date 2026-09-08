@@ -72,11 +72,34 @@ was repeated in a new isolated attempt. Initial diagram checks exposed additiona
 desktop overflow; spacing was corrected and the final artifact rechecked. These
 intermediate runs are not presented as successful release evidence.
 
+## Returning review and final workflow repair
+
+The same evaluator rechecked `8678fbd` in a fresh clone. It confirmed the
+presentation repairs and constructed a passing answer through ordinary reporting
+and replay, without using the task-answer commands in that attempt. Its earlier
+solution exposure remains applicable: this is a returning agent review, not a
+second first-time evaluation or unseen-task benchmark.
+
+It found one instruction trap: applying the yield reader's first-of-month filter
+to NRR returned no rows. The guide now supplies a separate NRR reader using the
+reporting date and checking for exactly four distinct expected lenses. A
+[submission vocabulary](../../challenge/vocabulary.md) documents exact policy,
+unit and status strings, with the evidence needed to support each status.
+
+[Builder verification](nrr-workflow-check.json) executed that literal reader
+against fresh v2 and v3 populations. Both matched retained rows. Four probes
+rejected the wrong date, a missing lens, a duplicate lens and an unexpected lens.
+Twenty-four vocabulary fields matched the freshly verified visible proof. This
+was a builder contract check, not an independently constructed submission.
+The blank answer, executable, grader, fixtures and accepted visuals are unchanged.
+The full suite passed again: 72 tests, 79 existing warnings, 193.16 seconds.
+Presentation regeneration passed without changing the accepted HTML or recording.
+
 ## Next review
 
-A returning evaluator can recheck its reported defects. A fresh evaluator can
-supply a new opening impression and attempt the workflow without coaching.
-Neither outcome is presumed. Ask what they understood and where they struggled;
+A fresh evaluator can now supply a new opening impression and attempt the
+revised workflow without coaching. Its outcome is not presumed. Ask what they
+understood and where they struggled;
 record solution exposure and unsuccessful tasks. Publication remains pending
 Chandler's approval of the exact release.
 

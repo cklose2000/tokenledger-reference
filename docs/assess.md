@@ -17,8 +17,9 @@ grading against this release's executable.
 
 Follow the [ordinary reporting and replay interfaces](workflow.md) to construct
 a submission from source bindings, cutoffs and observed populations. Start with
-the [blank answer](challenge/answer.blank.json) and its
-[field schema](challenge/answer.schema.json). This route supplies commands and
+the [blank answer](challenge/answer.blank.json), its
+[field schema](challenge/answer.schema.json) and
+[submission vocabulary](challenge/vocabulary.md). This route supplies commands and
 field locations without filling the business values for you.
 
 Use a copy of the blank answer for your submission. Run the application
