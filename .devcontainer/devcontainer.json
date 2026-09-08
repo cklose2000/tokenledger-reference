@@ -3,8 +3,18 @@
   "build": {
     "dockerfile": "Dockerfile"
   },
+  "features": {
+    "ghcr.io/devcontainers/features/sshd:1": {
+      "version": "latest"
+    }
+  },
+  "hostRequirements": {
+    "cpus": 2,
+    "memory": "4gb"
+  },
   "postCreateCommand": "python -m pip install -e \".[dev]\"",
   "remoteEnv": {
-    "PYTHONUTF8": "1"
+    "PYTHONUTF8": "1",
+    "PYTHONDONTWRITEBYTECODE": "1"
   }
 }

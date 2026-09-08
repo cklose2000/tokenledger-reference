@@ -1,0 +1,20 @@
+Generate an isolated synthetic business through the validated writer.
+Report July with native views and receipts. All generated late arrivals are already known.
+Append the missing July invoice, then report the same July with later knowledge.
+Reperform both close populations and derive a balanced, receipt-backed account bridge.
+Reperform recognized usage revenue per million tokens and explain its change with the same invoice.
+Reproduce every original KPI population after the append; render the original pack from those saved rows.
+July recognized usage revenue per million tokens (USD/Mtok):
+Recognized usage revenue, net of discounts and marketplace fees; alternative before marketplace fees also shown.
+Raw processed tokens: input, output, cache_read and cache_write, each counted once with unit weight.
+Net of discounts and fees: 1.589980807074 -> 1.746148402176 (delta 0.156167595102 USD/Mtok)
+Net of discounts: 1.591858462126 -> 1.748026057228 (delta 0.156167595102 USD/Mtok)
+Tokens unchanged: 19210131257; recognized revenue change: 300000 USD cents
+Yield bridge receipt: mr-6d034188f55d99445ea47b08127c5a74
+July account bridge (integer cents; debit positive, credit negative):
+2026-07-01 1100: 2336949 -> 2636949 (+300000)
+2026-07-01 4000: -3057981 -> -3357981 (-300000)
+Bridge receipt: mr-9df23dbedb0794a5e5c35d9b816f654e
+Original yield receipt reproduced: mr-a57e47711e3b91ca3ef32885f5737e63
+Workflow: 23.224s; observation mr-e152a368dd26fe7ef6459e10db26be6e
+Open: C:\tokenledger-demo\rc5-825696c\data\demo\recording\README.md

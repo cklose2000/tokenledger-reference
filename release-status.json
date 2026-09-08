@@ -1,12 +1,58 @@
 {
-  "bigquery": "not_run",
-  "challenge": "passed",
-  "clean_install": "passed_linux_container",
-  "codespaces": "not_run",
-  "matched_agent_benchmark": "not_run",
   "status": "prepared_not_published",
-  "tag": "v0.2.0-rc.4",
-  "hosted_codespaces": "not_run",
+  "tag": "v0.2.0-rc.5",
+  "tag_created": false,
+  "public_destination": "cklose2000/tokenledger-reference",
   "source_scope": "synthetic only",
-  "public_receipt_history": "reconstructed_local_history_only"
+  "public_receipt_history": "public-only history retained; no original private Git objects",
+  "execution_git_sha": "825696cf31d4c2892078512e612840d791fba2ba",
+  "local_tests": {
+    "passed": 72,
+    "failed": 0,
+    "seconds": 248.41
+  },
+  "clean_install": {
+    "windows": "passed_fresh_venv_in_separate_clone",
+    "python": "3.11.5",
+    "pip_cache": "not_cleared",
+    "seconds": 59.623483999981545,
+    "hosted_codespaces": "not_run_missing_cli_codespace_scope"
+  },
+  "recording": {
+    "status": "passed",
+    "workflow_seconds": 23.223964900011197,
+    "process_seconds": 27.498276900034398,
+    "capture": "actual merged pipe output, not PTY",
+    "original_receipt_relocated_replay": "passed",
+    "browser_play_pause_seek": "passed"
+  },
+  "bigquery": {
+    "original_retained_evidence": "Grok independent agent-assisted restoration passed 52 comparisons and 104 fingerprints",
+    "public_projection": "passed_52_comparisons_104_fingerprints",
+    "public_projection_receipt": "mr-3d66e52715aa14f49be17975a4c4c26a",
+    "cloud_sql_reexecuted_for_packaging": false,
+    "general_production_admission": "not_established",
+    "incremental_performance": "not_run"
+  },
+  "challenge": {
+    "historical_fixture_replay": "passed",
+    "historical_fixture_grade_in_updated_runtime": "correctly_refused",
+    "current_runtime_fixture": "passed_four_tasks_reference_answer",
+    "fixture_id": "058168fe58cab620a36e54f2d03ea6b5086fcba385d2b54e3b4d19da34cd164f",
+    "proof_receipt_id": "mr-ae36c1d83735aba3abe252915eb9135b",
+    "reference_score_receipt": "mr-d9a685e6e5d3699ad49c678b984f29f8",
+    "actual_agent_usage": "unobserved",
+    "relocated_grade": "passed_same_deterministic_score_receipt"
+  },
+  "architecture": {
+    "artifact": "passed_9_of_9_zero_errors_warnings",
+    "browser": "passed_four_desktop_sizes_light_and_dark",
+    "visual_review": "passed_builder_image_inspection"
+  },
+  "matched_agent_benchmark": "not_run",
+  "learning": "completed_inconclusive_no_promotion",
+  "first_time_evaluators": "not_run",
+  "publication_approval": "not_requested_candidate_still_under_preparation",
+  "introductions": "none_authorized_or_sent",
+  "private_engine_integration": "completed_with_green_main_ci; preserved_eight_phase_merge_commits"
 }

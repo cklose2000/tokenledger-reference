@@ -1,0 +1,26 @@
+{
+  "status": "passed",
+  "player_sha256": "694d81ac8ba2ec8074bee835e69616fc393322c3a0bb86490d2576af243513e5",
+  "checks": [
+    "Actual browser play, pause and seek",
+    "Original event chronology at 10 seconds",
+    "Complete final output equals captured transcript",
+    "Desktop and mobile horizontal containment"
+  ],
+  "viewports": [
+    {
+      "width": 1440,
+      "scrollWidth": 1425,
+      "height": 1080,
+      "scrollHeight": 1134
+    },
+    {
+      "width": 390,
+      "scrollWidth": 375,
+      "height": 844,
+      "scrollHeight": 1814
+    }
+  ],
+  "no_user_profile_used": true,
+  "scope": "Builder browser checks; no first-time evaluator observations"
+}

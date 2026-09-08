@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>tokenledger | July change and original replay</title>
+<style>
+:root{color-scheme:light;font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#152b38;background:#f5f7f9}*{box-sizing:border-box}body{margin:0}main{max-width:1160px;margin:0 auto;padding:34px 28px}a{color:#126743;text-underline-offset:3px}nav{font-size:14px;display:flex;gap:22px;margin-bottom:28px}.eyebrow{color:#477062;font-size:12px;font-weight:750;letter-spacing:.08em;text-transform:uppercase}h1{font-size:clamp(26px,3.5vw,42px);letter-spacing:-.035em;line-height:1.1;margin:10px 0 16px}p{line-height:1.6;max-width:82ch}.intro{font-size:17px;margin-bottom:24px}.controls{display:flex;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:14px}button{font:inherit;font-weight:600;padding:10px 17px;border:1px solid #bdccd5;border-radius:7px;background:white;color:#183240;cursor:pointer}button.primary{background:#176d4c;color:white;border-color:#176d4c}button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #c1751d;outline-offset:3px}input[type=range]{min-width:130px;flex:1;accent-color:#176d4c}output{font-variant-numeric:tabular-nums;font-size:13px;color:#526875}.terminal{background:#09111b;color:#e6eef5;border:1px solid #304558;border-radius:12px;padding:20px 23px}.terminal h2{font:600 13px ui-monospace,Consolas,monospace;color:#9eb7c8;margin:0 0 18px}.prompt{color:#7ee6b3;font:14px ui-monospace,Consolas,monospace;overflow-wrap:anywhere}pre{font:13px/1.55 ui-monospace,Consolas,monospace;min-height:430px;margin:18px 0 0;white-space:pre-wrap;overflow-wrap:anywhere}.status{border-top:1px solid #304558;color:#a4bbcd;padding-top:12px;font-size:12px;font-variant-numeric:tabular-nums}.facts{display:flex;flex-wrap:wrap;gap:28px;font-size:13px;color:#526875;margin:18px 0}.notes{font-size:13px;color:#526875}code{font-size:.94em;overflow-wrap:anywhere}@media(max-width:600px){main{padding:24px 16px}.terminal{padding:16px 12px}nav{gap:16px}pre{font-size:12px;min-height:480px}.facts{gap:10px}.controls output{width:100%}}
+</style>
+<main>
+<nav aria-label="Related documents"><a href="demo.md">Recording and replay instructions</a><a href="architecture/index.html">Architecture</a><a href="evidence.md">Evidence</a></nav>
+<div class="eyebrow">tokenledger · synthetic reference implementation</div>
+<h1>July revenue, late evidence, original replay.</h1>
+<p class="intro">One invoice adds USD 3,000 of recognized revenue. The token denominator stays fixed. The bridge explains the change, then the original receipt reproduces the earlier number.</p>
+<div class="controls">
+<button class="primary" id="play">Play recording</button>
+<button id="show-final">Show final output</button>
+<label for="seek" class="notes">Position</label><input id="seek" type="range" min="0" max="27.498276900034398" step="0.01" value="0" aria-label="Recording position in seconds">
+<output id="clock" for="seek">0.0 / 27.5 seconds</output>
+</div>
+<section class="terminal" aria-label="Actual captured console output">
+<h2>Windows · Python 3.11.5 · DuckDB 1.5.5 · 1× playback</h2>
+<div class="prompt">$ tl demo --directory data/demo/recording</div>
+<pre id="console" tabindex="0" aria-label="Recorded output"></pre>
+<div class="status" id="status">Ready. Playback preserves original output arrival times, including startup.</div>
+</section>
+<div class="facts"><span>Workflow: <strong>23.224 seconds</strong></span><span>Process including startup: <strong>27.498 seconds</strong></span><span>Fresh-venv installation: <strong>59.623 seconds</strong></span></div>
+<p class="notes">Actual merged stdout/stderr captured from the process, without a PTY. Seeking changes the playback position; it does not alter the saved capture. Installation used the existing pip cache. A retained-population verifier was active on the same laptop. These are local observations, not a hosted-runtime or architecture-speed guarantee.</p>
+<p class="notes"><a href="assets/recording/demo.txt">Complete transcript</a> · <a href="assets/recording/demo.cast" download>Raw timestamped capture</a> · <a href="assets/recording/recording.json">Capture record</a>. Public execution <code>825696cf31d4c2892078512e612840d791fba2ba</code>. Use the retained fixture and receipt command in the <a href="demo.md">replay instructions</a> to verify the number yourself.</p>
+</main>
+<script type="application/json" id="captured-output">[[4.085231, "o", "Generate an isolated synthetic business through the validated writer.\r\n"], [5.995361, "o", "Report July with native views and receipts. All generated late arrivals are already known.\r\n"], [11.21635, "o", "Append the missing July invoice, then report the same July with later knowledge.\r\n"], [14.723647, "o", "Reperform both close populations and derive a balanced, receipt-backed account bridge.\r\n"], [17.834147, "o", "Reperform recognized usage revenue per million tokens and explain its change with the same invoice.\r\n"], [23.431006, "o", "Reproduce every original KPI population after the append; render the original pack from those saved rows.\r\n"], [27.366763, "o", "July recognized usage revenue per million tokens (USD/Mtok):\r\n"], [27.366817, "o", "Recognized usage revenue, net of discounts and marketplace fees; alternative before marketplace fees also shown.\r\nRaw processed tokens: input, output, cache_read and cache_write, each counted once with unit weight.\r\nNet of discounts and fees: 1.589980807074 -> 1.746148402176 (delta 0.156167595102 USD/Mtok)\r\n"], [27.366835, "o", "Net of discounts: 1.591858462126 -> 1.748026057228 (delta 0.156167595102 USD/Mtok)\r\n"], [27.366851, "o", "Tokens unchanged: 19210131257; recognized revenue change: 300000 USD cents\r\n"], [27.366872, "o", "Yield bridge receipt: mr-6d034188f55d99445ea47b08127c5a74\r\n"], [27.366929, "o", "July account bridge (integer cents; debit positive, credit negative):\r\n"], [27.366948, "o", "2026-07-01 1100: 2336949 -> 2636949 (+300000)\r\n"], [27.366961, "o", "2026-07-01 4000: -3057981 -> -3357981 (-300000)\r\n"], [27.367051, "o", "Bridge receipt: mr-9df23dbedb0794a5e5c35d9b816f654e\r\n"], [27.367089, "o", "Original yield receipt reproduced: mr-a57e47711e3b91ca3ef32885f5737e63\r\nWorkflow: 23.224s; observation mr-e152a368dd26fe7ef6459e10db26be6e\r\n"], [27.367164, "o", "Open: C:\\tokenledger-demo\\rc5-825696c\\data\\demo\\recording\\README.md\r\n"]]</script>
+<script>
+'use strict';
+const events=JSON.parse(document.getElementById('captured-output').textContent);
+const duration=27.498276900034398,button=document.getElementById('play'),slider=document.getElementById('seek'),terminal=document.getElementById('console');
+let current=0,playing=false,start=0;
+function paint(t){current=Math.max(0,Math.min(duration,t));terminal.textContent=events.filter(e=>e[0]<=current).map(e=>e[2]).join('').replace(/\r\n/g,'\n');slider.value=current;document.getElementById('clock').textContent=current.toFixed(1)+' / '+duration.toFixed(1)+' seconds';document.getElementById('status').textContent=current>=duration?'Exit 0. The original July result reproduced after the late invoice.':'Captured output at '+current.toFixed(1)+' seconds. Playback is unaccelerated.';}
+function stop(){playing=false;button.textContent=current>=duration?'Replay recording':'Play recording';}
+function tick(now){if(!playing)return;paint((now-start)/1000);if(current>=duration)stop();else requestAnimationFrame(tick);}
+button.addEventListener('click',()=>{if(playing){stop();return;}if(current>=duration)paint(0);playing=true;button.textContent='Pause';start=performance.now()-current*1000;requestAnimationFrame(tick);});
+document.getElementById('show-final').addEventListener('click',()=>{paint(duration);stop();});
+slider.addEventListener('input',()=>{stop();paint(Number(slider.value));});
+if(location.hash==='#final')paint(duration);else paint(0);
+</script>
+</html>

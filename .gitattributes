@@ -3,5 +3,10 @@
 *.duckdb binary
 *.png binary
 *.pdf binary
+*.gif binary
+*.zip binary
 # Frozen source and receipt artifacts retain exact bytes on every platform.
 data/challenge/** -text
+data/demo/recorded/** -text
+docs/assets/recording/** -text
+evidence/bigquery/verification/** -text

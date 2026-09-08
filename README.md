@@ -1,55 +1,53 @@
 # tokenledger: one activity stream, every reported number reproducible.
 
-The data model agents actually work on.
+**The data model agents actually work on.**
 
-Built from the SOX-controlled subscriber-metrics work I ran at SiriusXM for 19 years.
-For AI businesses that meter tokens and seats.
+Built from the SOX-controlled subscriber-metrics work I ran at SiriusXM for
+19 years. For AI businesses that meter tokens and seats.
 
-This is a locally prepared release candidate. Publication, a matched-agent
-accuracy benchmark and native BigQuery acceptance have separate gates.
+[Watch the July number change, then reproduce the original →](docs/demo.md)
+
+**[Run it](docs/run.md)** · **[Understand it](docs/understand.md)** · **[Assess it](docs/assess.md)**
+
+![One physical activity stream, query-time projections, versioned definitions, a reported result and its receipt](docs/assets/one-number.svg)
+
+A late invoice changes July's recognized revenue per million tokens. The token
+count stays fixed. The accounting bridge explains the change, and the original
+receipt still reproduces the earlier number. Run that whole example:
 
 ```sh
 python -m pip install -e ".[dev]"
 tl demo
 ```
 
-The demo generates an isolated synthetic business, reports July recognized
-usage revenue per million tokens, admits a late invoice, prints the change and
-reproduces the original result. It states both fee bases and the raw token
-denominator. Exact amounts and receipt IDs come from your run.
+Use Python 3.11.5 from this checkout. The fixture is synthetic, the local engine
+is DuckDB, and the demo requires no model, billing or cloud credentials.
+[Installation and environment options](docs/run.md).
 
-Give this repo to your agent. Reproduce a number, explain a late-event bridge,
-change a definition, and print the scorecard. Start with [AGENTS.md](AGENTS.md).
+## What the comparison found
 
-[Open in GitHub Codespaces](https://codespaces.new/cklose2000/tokenledger?ref=v0.2.0-rc.4)
+Thirteen output populations matched an independently implemented baseline in
+four native BigQuery pairs: one warmup and three measured pairs. Native used
+**51.47% fewer billed bytes** and **14.96× median slot time**. It was slower in
+the first measured pair. These results belong together.
 
-The launch link requires a published repository/tag and GitHub access. The
-prepared environment pins its image and engine dependencies. Installation and
-hosted provisioning are separate from the credential-free demo runtime.
+[Read the measurement methods, individual pairs and limitations](docs/evidence.md).
+The [earlier local tenfold hypothesis failed](docs/evidence.md#the-hypothesis-that-failed):
+82 versus 20 relations, with faster baseline builds. That report is preserved.
+The large retained populations are an optional, checksum-pinned download;
+they are separate from the small demo. Their verification recalculates retained
+comparisons and fingerprints without submitting cloud jobs.
 
-## Limits and evidence
+## Give it to your agent
 
-One canonical source table does not mean one unit of logical work. Native
-reporting uses typed projections, joins, windows and query-local buffers;
-it stores no derived reporting tables. The independently implemented dbt
-baseline is included so equivalent outputs and actual work can be measured.
+Start with [AGENTS.md](AGENTS.md). Reproduce July's token yield, explain the late
+invoice, change the NRR definition while retaining the old result, and diagnose
+the incomplete-source close. Submit the specified evidence to the deterministic
+grader and keep failures visible.
 
-Run the challenge to generate a receipt-backed scorecard. This is an open-book
-reproduction exercise with visible expected outputs, not an unseen-task agent
-accuracy benchmark. Model efficiency is unmeasured until paired trials with
-actual token accounting are published. Synthetic results do not establish
-any named company's reporting quality. Native cloud results require real jobs.
+This is an **open-book reproduction exercise**. Comparative agent accuracy and
+token efficiency remain unmeasured. A reproducible result alone does not prove
+source completeness, accounting-policy approval or SOX operating effectiveness.
 
-Retained receipts establish reproducibility, not source completeness, accounting
-policy approval, authenticated role separation or an audit opinion. The failed
-close exercise shows why a source check can hold publication.
-
-No personal usage data, credentials, private receipt ledgers or original private
-Git history are included. Generic source adapters in the implementation are
-inactive without an explicitly bound application; they are not public feature
-claims. See [RELEASE.md](RELEASE.md) for preparation provenance and verification.
-
-The [frozen challenge assignment](data/challenge/first/TASKS.md) includes the
-actual receipt IDs and expected outputs for this candidate. The
-[reference scorecard](data/challenge/first/reference-score/scorecard.md) was
-produced by actual source and receipt re-performance.
+Built by [Chandler Klose](https://github.com/cklose2000).
+[Apache-2.0](LICENSE) · [Cite this work](CITATION.cff) · [Release scope](RELEASE.md)

@@ -16,6 +16,7 @@ profiles.yml
 .tools/
 .tmp/
 __pycache__/
+*.oslock
 *.py[cod]
 .pytest_cache/
 .ruff_cache/

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 270" role="img" aria-labelledby="title desc">
+  <title id="title">Follow one reported number</title>
+  <desc id="desc">One physical activity stream feeds query-time projections. Versioned definitions govern the calculation. A reported result links to its receipt, which pins the inputs and method for replay.</desc>
+  <defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#42596b"/></marker></defs>
+  <rect width="1120" height="270" rx="16" fill="#f6f8fa"/>
+  <g font-family="system-ui,Segoe UI,sans-serif" fill="#182b3a">
+    <text x="28" y="34" font-size="14" font-weight="700" letter-spacing="1">ONE NUMBER, FROM EVENT TO EXPLANATION</text>
+    <rect x="288" y="52" width="222" height="65" rx="8" fill="#fff" stroke="#7b63a6" stroke-width="1.5"/>
+    <text x="308" y="79" font-size="18" font-weight="650">Versioned definitions</text><text x="308" y="101" font-size="13">Scope · formula · exclusions</text>
+    <g stroke="#42596b" stroke-width="2" marker-end="url(#arrow)"><path d="M250 173H288"/><path d="M510 173H548"/><path d="M770 173H808"/><path d="M399 117V136"/></g>
+    <rect x="28" y="136" width="222" height="82" rx="8" fill="#e5f2ec" stroke="#247c55" stroke-width="1.5"/>
+    <text x="48" y="165" font-size="19" font-weight="650">Activity stream</text><text x="48" y="190" font-size="14">Append-only events</text><text x="48" y="207" font-size="12">14 fields · event and recorded time</text>
+    <rect x="288" y="136" width="222" height="82" rx="8" fill="#fff" stroke="#6b8395" stroke-width="1.5" stroke-dasharray="5 3"/>
+    <text x="308" y="165" font-size="19" font-weight="650">Logical projections</text><text x="308" y="190" font-size="14">Typed values · temporal joins</text><text x="308" y="207" font-size="12">Calculated at query time</text>
+    <rect x="548" y="136" width="222" height="82" rx="8" fill="#fff" stroke="#6b8395" stroke-width="1.5"/>
+    <text x="568" y="165" font-size="19" font-weight="650">Reported result</text><text x="568" y="190" font-size="14">Recognized USD / Mtok</text><text x="568" y="207" font-size="12">Explicit period, units and fee basis</text>
+    <rect x="808" y="136" width="284" height="82" rx="8" fill="#e8effa" stroke="#386baf" stroke-width="1.5"/>
+    <text x="828" y="165" font-size="19" font-weight="650">Receipt</text><text x="828" y="190" font-size="14">Inputs · definition · query · execution</text><text x="828" y="207" font-size="12">Reproduce the original after late evidence</text>
+    <text x="28" y="248" font-size="13" fill="#42596b">Physical source: green. Calculation logic: dashed. Results and receipts are retained artifacts. Synthetic reference implementation.</text>
+  </g>
+</svg>

@@ -1,0 +1,3 @@
+month,purpose,status,t12m_net_revenue_cents,cost_cents,average_contracted_mw,average_energized_mw,utilized_mw,energized_utilization,revenue_per_contracted_mw,revenue_per_utilized_mw,receipt_id
+2026-07-31,inference,defined,39810360,19560027,2.895094706,2.895094706,0.334513839396347,0.11554504199917079,137509.6984478407,1190096.0531809537,mr-670b2f24e352411172dd2b35fba817e6
+2026-07-31,training,defined,,19206010,1.9061402900000002,1.9061402900000002,0.3225592958437215,0.1692211730353391,,,mr-670b2f24e352411172dd2b35fba817e6

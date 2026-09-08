@@ -1,0 +1,14 @@
+{
+  "schema_version": "tokenledger-public-projection-check/v1",
+  "execution_git_sha": "825696cf31d4c2892078512e612840d791fba2ba",
+  "status": "passed",
+  "comparisons": 52,
+  "population_fingerprints": 104,
+  "seconds": 1924.2133512999862,
+  "receipt_id": "mr-3d66e52715aa14f49be17975a4c4c26a",
+  "cloud_sql_recomputed": false,
+  "source_stream_recomputed": false,
+  "no_cloud_jobs_submitted": true,
+  "scope": "Builder re-performance of the new public projection; distinct from Grok original-package review. Test suite and demo overlapped parts of this run.",
+  "command": "tl release evidence verify --archive bigquery-populations-v0.2.0-rc.5.zip --manifest evidence/bigquery/manifest.json --output data/cloud-review/first --json"
+}

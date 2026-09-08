@@ -1,0 +1,123 @@
+# Architecture comparison: local observations
+
+Synthetic data. Independent Python recognition and dbt SQL recognition consume the same knowledge-filtered stream. Generated recognition events are excluded from both calculations. This is a scoped accounting experiment, not an audit opinion.
+
+BigQuery correctness, timing, bytes, slot-ms and cost: **not_run**. Local seconds do not establish cloud performance.
+
+Workload: 50000 synthetic customers, 30 months, seed 42. Scale gate: True. Suite evidence: `mr-f60ab4c790793ac362404e9af24012b5`.
+
+| Workload | Period | Knowledge cutoff | Status | Output differences | Observation receipt |
+|---|---|---|---|---:|---|
+| full_july / warmup | 2026-07-31 | 2026-08-01T00:00:00.000000Z | equivalent | 0 | `mr-78205bcf26c7ddad29cbbc7d2db38081` |
+| original_2026-05-31 / 1 | 2026-05-31 | 2026-06-01T00:00:00.000000Z | equivalent | 0 | `mr-8cbb5bd2266dda51d24d86e371f84db0` |
+| original_2026-06-30 / 1 | 2026-06-30 | 2026-07-01T00:00:00.000000Z | equivalent | 0 | `mr-01abab4ba506ffb364834e0a5fefef8b` |
+| full_july / 1 | 2026-07-31 | 2026-08-01T00:00:00.000000Z | equivalent | 0 | `mr-dc5ad0e28c6bb3fd19870012f60e9600` |
+| full_july / 2 | 2026-07-31 | 2026-08-01T00:00:00.000000Z | equivalent | 0 | `mr-d27e701cdf1eed5a5bba8271d8ceb5d0` |
+| full_july / 3 | 2026-07-31 | 2026-08-01T00:00:00.000000Z | equivalent | 0 | `mr-17cef3f0139e7596a1cea36816b7f931` |
+| late_june / warmup | 2026-06-30 | 2026-07-15T00:00:00.000000Z | equivalent | 0 | `mr-8a382f95f907d7e5e873d06fae95040e` |
+| late_june / 1 | 2026-06-30 | 2026-07-15T00:00:00.000000Z | equivalent | 0 | `mr-3861ac9063122a22c45a48121ce093a0` |
+| late_june / 2 | 2026-06-30 | 2026-07-15T00:00:00.000000Z | equivalent | 0 | `mr-3f65942b79e20b68e8242083d3927df9` |
+| late_june / 3 | 2026-06-30 | 2026-07-15T00:00:00.000000Z | equivalent | 0 | `mr-6a6390fcfc3f072ed982f7340682aa35` |
+| one_day / warmup | 2026-07-31 | 2026-08-01T00:00:00.000000Z | equivalent | 0 | `mr-ff0ed5c2381614849b42865f920f0173` |
+| one_day / 1 | 2026-07-31 | 2026-08-01T00:00:00.000000Z | equivalent | 0 | `mr-28daebabdbb646a90b14e9c232d40bcd` |
+| one_day / 2 | 2026-07-31 | 2026-08-01T00:00:00.000000Z | equivalent | 0 | `mr-c380199363a3abc2fd22b367d6c66e26` |
+| one_day / 3 | 2026-07-31 | 2026-08-01T00:00:00.000000Z | equivalent | 0 | `mr-8bc1355503ed784165f88cebd0578518` |
+| nrr_floor / warmup | 2026-07-31 | 2026-08-01T00:00:00.000000Z | equivalent | 0 | `mr-5f48bed2c2d729b12592d9d852d6fcd6` |
+| nrr_floor / 1 | 2026-07-31 | 2026-08-01T00:00:00.000000Z | equivalent | 0 | `mr-0e070163030838855f7d267f333eabcc` |
+| nrr_floor / 2 | 2026-07-31 | 2026-08-01T00:00:00.000000Z | equivalent | 0 | `mr-50e2b4af7efe82f41ebd489267e26d44` |
+| nrr_floor / 3 | 2026-07-31 | 2026-08-01T00:00:00.000000Z | equivalent | 0 | `mr-6c111a7032ad3ac363e95de88354129d` |
+
+The output registry includes journal lines, recognized lines, account close and rollforwards, all seven KPI families with every allowed commercial cut, and NRR/customer cohort membership. Missing, extra, duplicate and NULL states are checked before aggregation.
+
+| Inventory | Baseline | Spine |
+|---|---:|---:|
+| dbt models / scaffold views | 57 | 6 |
+| Raw baseline projections / canonical source | 25 | 1 |
+| Scaffold caches | n/a | 6 |
+| Recognition and journal populations | included in models | 2 |
+| Longest source-to-KPI path | 16 | 11 |
+
+Inventory receipt: `mr-78205bcf26c7ddad29cbbc7d2db38081`. Helper relations, authored/compiled SQL, Python support and dependency lists are retained in the manifest. Views, caches, raw projections and logical queries have separate categories; the view count alone is not a total-object reduction claim.
+
+Relations beyond the common stream/snapshot: baseline 82, spine 20; observed relation ratio 4.100. This includes ephemeral SQL bindings to Python/Arrow inputs on the spine. It excludes retained report files and counts those source populations separately. This result does not establish an order-of-magnitude reduction.
+
+| Authored footprint | Nonblank/non-line-comment lines | UTF-8 bytes after that filter |
+|---|---:|---:|
+| Baseline model SQL | 376 | 29452 |
+| Baseline macros | 16 | 1188 |
+| Spine scaffold and metric SQL (including retained versions) | 502 | 36073 |
+| Spine accounting and session Python | 259 | 16717 |
+| Other Python support, shared writer/receipts and comparison tooling | 4098 | 264158 |
+| Baseline YAML and shared output registry | 459 | 10790 |
+| Domain definition YAML (including retained versions) | 1079 | 32834 |
+
+Compiled baseline model SQL: 409 nonblank/non-line-comment lines. Formatting affects line counts; bytes and the full file inventory are retained. Shared or retained support code is not described as exclusively executed by either implementation. Footprint receipt: `mr-78205bcf26c7ddad29cbbc7d2db38081`.
+
+The baseline manifest references 23 of its 25 source projections in model dependencies. The inventory counts every created projection, including projections not consumed by the registered reports. Lineage measures relation/query dependency nodes; it does not expand Python function internals into fictitious warehouse objects. These details are bound by the same inventory receipt.
+
+First retained run: 11 dbt tests executed, with statuses ['pass']. Evidence: `mr-78205bcf26c7ddad29cbbc7d2db38081`. Named spine invariant results are retained in that run manifest. Builder regression is recorded separately in the phase status and verification artifacts. Instrumented line/branch coverage: **not_run**; test counts are not coverage percentages.
+
+| Workload | Measured repetitions | Spine build median seconds (range) | Baseline projection/build/tests median seconds (range) |
+|---|---:|---|---|
+| full_july | 3 | 261.524 (256.020 to 265.813) | 162.997 (162.407 to 166.920) |
+| late_june | 3 | 262.354 (255.743 to 313.615) | 117.423 (116.199 to 118.649) |
+| nrr_floor | 3 | 291.851 (286.563 to 305.569) | 10.419 (9.336 to 11.346) |
+| one_day | 3 | 289.296 (288.178 to 301.628) | 134.081 (119.150 to 143.595) |
+| original_2026-05-31 | 1 | 198.712 (198.712 to 198.712) | 137.779 (137.779 to 137.779) |
+| original_2026-06-30 | 1 | 269.169 (269.169 to 269.169) | 144.881 (144.881 to 144.881) |
+
+| Per-run timing scope | Measured repetitions | Recorded elapsed seconds (median and range) | Common snapshot seconds | Output-query seconds, both sides | Residual harness seconds |
+|---|---:|---|---|---|---|
+| full_july | 3 | 1083.864 (1070.878 to 1091.978) | 34.780 (27.675 to 37.624) | 14.807 (14.654 to 19.432) | 603.213 (597.649 to 621.207) |
+| late_june | 3 | 1036.262 (1027.527 to 1082.683) | 41.699 (33.475 to 42.575) | 17.205 (14.767 to 17.420) | 595.629 (591.865 to 607.853) |
+| nrr_floor | 3 | 1006.763 (980.829 to 1011.548) | 53.929 (52.222 to 63.822) | 28.116 (25.385 to 28.327) | 601.567 (599.094 to 631.594) |
+| one_day | 3 | 1061.206 (1037.105 to 1111.526) | 38.642 (36.961 to 38.790) | 15.986 (14.578 to 18.598) | 583.389 (573.882 to 613.083) |
+| original_2026-05-31 | 1 | 905.547 (905.547 to 905.547) | 14.621 (14.621 to 14.621) | 8.591 (8.591 to 8.591) | 545.844 (545.844 to 545.844) |
+| original_2026-06-30 | 1 | 1009.160 (1009.160 to 1009.160) | 19.616 (19.616 to 19.616) | 13.324 (13.324 to 13.324) | 562.171 (562.171 to 562.171) |
+
+Timing cells derive from the observation receipts listed for each run above. Recorded elapsed spans run start through the final output comparison; it excludes baseline cloning between runs, suite-level replay, migration rehearsal and final report writing. Residual harness time is elapsed minus the separately timed snapshot, both builds/projection/tests and output queries. It includes input/output hashing, receipt preparation, file serialization, comparison and uninstrumented setup; those components were not individually timed. Each residual is calculated per run; column medians need not sum to the elapsed median. This residual is not an architecture build time.
+
+The retained source/configuration pins specify four DuckDB threads on both paths and four concurrent dbt models. The baseline dbt build caps DuckDB memory at 4 GB; baseline source projection and the spine use DuckDB defaults. OS page caching and other laptop activity are uncontrolled. These are observations of the implemented local profiles, not a normalized hardware comparison. Inventory and footprint describe the frozen measured source revision, not later report-rendering edits.
+
+| Change work, final measured repetition | Baseline model nodes executed | Baseline tests executed | Spine caches rebuilt | Definition files edited during run |
+|---|---:|---:|---:|---|
+| late_june | 31 | 9 | 6 | 0 on both sides; runtime selection is retained |
+| one_day | 31 | 9 | 6 | 0 on both sides; runtime selection is retained |
+| nrr_floor | 3 | 1 | 6 | 0 on both sides; runtime selection is retained |
+
+late_june evidence: `mr-6a6390fcfc3f072ed982f7340682aa35`. Source projection changes: `{'credit_issued': 319, 'usage_invoiced': 703}`. Affected baseline table models rebuild in full; local DuckDB models have no partition rewrite claim. The canonical source is appended, never updated.
+
+one_day evidence: `mr-8bc1355503ed784165f88cebd0578518`. Source projection changes: `{'tokens_processed': 1, 'usage_invoiced': 1}`. Affected baseline table models rebuild in full; local DuckDB models have no partition rewrite claim. The canonical source is appended, never updated.
+
+nrr_floor evidence: `mr-6c111a7032ad3ac363e95de88354129d`. Source projection changes: `{}`. Affected baseline table models rebuild in full; local DuckDB models have no partition rewrite claim. No source rows are appended for this definition selection.
+
+| Before/after bridge | Newly visible upstream activities | Changed registered populations | Changed registered rows |
+|---|---:|---:|---:|
+| day | 2 | 9 | 84 |
+| floor | 0 | 2 | 2833 |
+| late | 1022 | 12 | 6568 |
+
+Bridge counts are retained under suite receipt `mr-f60ab4c790793ac362404e9af24012b5` and the hashed bridge artifact. These are changes between two knowledge/definition states, not differences between architectures. Registered row counts span distinct report populations and are not unique customer or event counts. Full changes and conservative upstream candidates are retained; the candidates do not establish minimal causal attribution.
+
+NRR delta in percentage points is 100 * (after ratio - before ratio).
+
+| Headline NRR change | Before ratio | After ratio | Delta percentage points | Before cohort customers | After cohort customers | Before / after population receipts |
+|---|---:|---:|---:|---:|---:|---|
+| floor | 1.365642953 | 1.316866933 | -4.877602068 | 3374 | 542 | `mr-537e396f101d49af16a9cbf93f385553` / `mr-c31c9378ccc61c12812b44ac9e5dafb7` |
+| late | 1.419690783 | 1.422717341 | 0.302655845 | 3186 | 3186 | `mr-4f01f8c086714a3181ce7e4efa92dddc` / `mr-f597c7a59715fa6ed4f2577a0bd7c62d` |
+
+KPI replay scope: 6083 eligible rows across the seven metric families. Exhaustive population verification complete: True. Journals, close rows and membership are counted separately from these KPI rows in the total below. Scope is bound by the population receipts in run `c9f26fb465ba41c780c4a9b2648d3b49` and suite receipt `mr-f60ab4c790793ac362404e9af24012b5`.
+
+Exhaustive spine replay: 13/13 registered populations, 2222740 rows reproduced. This includes journals, close outputs, KPIs and membership. Evidence: `mr-f60ab4c790793ac362404e9af24012b5`. Baseline retained-byte verification is separate from recomputation; no unsupported baseline replay percentage is assigned.
+
+Local switch and rollback: 2 original/restated token-yield rehearsals. The endpoint hashes and comparison receipts are retained under suite observation `mr-f60ab4c790793ac362404e9af24012b5`. No production retirement occurred.
+
+These are local observations, including an explicit warmup where recorded. Common snapshot selection is recorded separately and excluded from both build spans. Baseline projection and dbt tests are included; spine accounting invariants and cache builds are included. Output queries are separately timed; remaining harness work is reported only as an elapsed-time residual. OS page caching remains uncontrolled.
+
+Restatement appends source evidence and executes dependency work. The baseline uses source-aware selection; the spine currently rebuilds all six caches. Neither path is described as zero work. The baseline NRR floor is a shared parameter; the spine selects immutable v3 instead of v2. Both execute affected queries.
+
+Row receipts bind a complete registered output population. `tl receipt` recomputes the spine population and verifies the retained baseline bytes; it does not call that a fresh baseline rebuild. Separate comparison runs execute dbt and its tests. Timing receipts verify original observations and do not pretend to reproduce elapsed seconds.
+
+Independent QA remains with Grok. Personal G0/U1/L1 follows the accepted local comparison. The matched-agent benchmark, `tl demo`, agent challenge, Codespaces, terminal recording and native BigQuery acceptance remain separate subsequent gates.
+
+Source evidence bundle: `docs/benchmarks/phase-3b/comparison.json`. Bundle SHA-256: `394a65859725ccd9e5809d38b20da105999a558e0f4dda2a9046dd656f80b067`.

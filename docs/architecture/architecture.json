@@ -1,0 +1,234 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "tokenledger / Follow one number",
+    "locale": "en",
+    "quality_profile": "showcase",
+    "viewBox": [
+      920,
+      520
+    ],
+    "views": [
+      {
+        "id": "number",
+        "label": "1. Follow the number",
+        "focus": [
+          "event_stream",
+          "query_logic",
+          "reported_number",
+          "result_receipt"
+        ],
+        "note": "One physical stream supplies query-time calculation. Results retain units, cutoffs and receipts."
+      },
+      {
+        "id": "policy",
+        "label": "2. Policy + knowledge",
+        "focus": [
+          "event_stream",
+          "versioned_policy",
+          "query_logic"
+        ],
+        "note": "Late evidence changes current knowledge. The original definition and snapshot remain reproducible."
+      },
+      {
+        "id": "assessment",
+        "label": "3. Compare",
+        "focus": [
+          "event_stream",
+          "conventional_baseline",
+          "reported_number"
+        ],
+        "note": "The baseline calculates recognition independently from the same economic events. Thirteen outputs are reconciled."
+      },
+      {
+        "id": "whole",
+        "label": "4. Complete path",
+        "focus": [
+          "event_stream",
+          "versioned_policy",
+          "query_logic",
+          "reported_number",
+          "result_receipt",
+          "conventional_baseline"
+        ],
+        "note": "Synthetic reference implementation. Agent-assisted replay passed; general production admission remains separate."
+      }
+    ],
+    "legend": {
+      "entries": {
+        "database": {
+          "label": "Physical source"
+        },
+        "backend": {
+          "label": "Calculation"
+        },
+        "frontend": {
+          "label": "Result"
+        },
+        "security": {
+          "label": "Policy / evidence"
+        }
+      }
+    }
+  },
+  "components": [
+    {
+      "id": "event_stream",
+      "type": "database",
+      "label": "Activity stream",
+      "sublabel": "14 fields · append-only",
+      "tag": "One physical source",
+      "pos": [
+        20,
+        205
+      ],
+      "size": [
+        170,
+        70
+      ]
+    },
+    {
+      "id": "query_logic",
+      "type": "backend",
+      "label": "Logical projections",
+      "sublabel": "Typed values · temporal joins",
+      "tag": "Query-time calculation",
+      "pos": [
+        250,
+        205
+      ],
+      "size": [
+        170,
+        70
+      ]
+    },
+    {
+      "id": "versioned_policy",
+      "type": "security",
+      "label": "Versioned definitions",
+      "sublabel": "Scope · formula · exclusions",
+      "tag": "Explicit policy",
+      "pos": [
+        250,
+        25
+      ],
+      "size": [
+        170,
+        70
+      ]
+    },
+    {
+      "id": "reported_number",
+      "type": "frontend",
+      "label": "Reported result",
+      "sublabel": "Recognized USD / Mtok",
+      "tag": "Period + units + fee basis",
+      "pos": [
+        480,
+        205
+      ],
+      "size": [
+        170,
+        70
+      ]
+    },
+    {
+      "id": "result_receipt",
+      "type": "security",
+      "label": "Receipt",
+      "sublabel": "Inputs · method · execution",
+      "tag": "Original-result replay",
+      "pos": [
+        710,
+        205
+      ],
+      "size": [
+        170,
+        70
+      ]
+    },
+    {
+      "id": "conventional_baseline",
+      "type": "backend",
+      "label": "Conventional baseline",
+      "sublabel": "Independent recognition",
+      "tag": "dbt comparison path",
+      "pos": [
+        480,
+        385
+      ],
+      "size": [
+        170,
+        70
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "snapshot_to_logic",
+      "from": "event_stream",
+      "to": "query_logic",
+      "label": "as-of",
+      "variant": "emphasis"
+    },
+    {
+      "id": "logic_to_result",
+      "from": "query_logic",
+      "to": "reported_number",
+      "label": "calculate",
+      "variant": "emphasis"
+    },
+    {
+      "id": "result_to_receipt",
+      "from": "reported_number",
+      "to": "result_receipt",
+      "label": "pin inputs",
+      "variant": "emphasis"
+    },
+    {
+      "id": "policy_to_logic",
+      "from": "versioned_policy",
+      "to": "query_logic",
+      "label": "apply version",
+      "variant": "security",
+      "labelDy": 24
+    },
+    {
+      "id": "source_to_baseline",
+      "from": "event_stream",
+      "to": "conventional_baseline",
+      "label": "same events",
+      "fromSide": "bottom",
+      "toSide": "left"
+    },
+    {
+      "id": "baseline_to_result",
+      "from": "conventional_baseline",
+      "to": "reported_number",
+      "label": "reconcile",
+      "fromSide": "top",
+      "toSide": "bottom"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "emerald",
+      "title": "Reproduce the number",
+      "items": [
+        "Late invoice changes recognized revenue; tokens stay fixed.",
+        "The accounting bridge explains the movement.",
+        "The original receipt still reproduces the earlier result."
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "Keep the trade-off visible",
+      "items": [
+        "BigQuery: 51.47% fewer billed bytes; 14.96× median slot time.",
+        "13 outputs matched across one warmup and three measured pairs.",
+        "Bounded synthetic evidence; no general speed or agent-efficiency claim."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "schema_version": "tokenledger-recording-render/v1",
+  "source_cast_sha256": "92dd4a88bcbfa978c84d19a9b015d7501594157ac9689c1236568519aed2dc7c",
+  "method": "Pillow 11.1.0 renders captured text and event arrival times. GIF timing quantized to centiseconds; six-second final-result hold. No output omitted.",
+  "capture_scope": "Actual process stdout and stderr, merged; timestamped pipe capture, not a PTY",
+  "gif_seconds": 33.61,
+  "process_seconds": 27.498276900034398,
+  "frame_count": 19,
+  "dimensions": [
+    1120,
+    740
+  ],
+  "files": {
+    "demo.cast": {
+      "bytes": 2425,
+      "sha256": "92dd4a88bcbfa978c84d19a9b015d7501594157ac9689c1236568519aed2dc7c"
+    },
+    "demo.txt": {
+      "bytes": 1560,
+      "sha256": "70dccd7b57654ab0f01549f8e543933647cab2e127da604c471e7483933e9042"
+    },
+    "recording.json": {
+      "bytes": 1183,
+      "sha256": "529a21322e48eb11fddc7924675fc51300e8217dd9f11722d1e235943b2063f2"
+    },
+    "demo.gif": {
+      "bytes": 743575,
+      "sha256": "1199d70c1f60e495c689f622fae62a88a8dc70d937f5efbee51c994f2755672f"
+    },
+    "poster.png": {
+      "bytes": 97433,
+      "sha256": "18b66d52c64c67c44088450606b09317015b38e808a8d0a2506b8d2746320341"
+    }
+  }
+}

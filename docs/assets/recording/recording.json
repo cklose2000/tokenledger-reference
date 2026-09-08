@@ -1,0 +1,33 @@
+{
+  "schema_version": "tokenledger-console-recording/v1",
+  "execution_git_sha": "825696cf31d4c2892078512e612840d791fba2ba",
+  "command": [
+    "tl",
+    "demo",
+    "--directory",
+    "data/demo/recording"
+  ],
+  "capture": "Actual process stdout and stderr, merged; timestamped pipe capture, not a PTY",
+  "started_at": "2026-09-08T16:08:17+00:00",
+  "process_seconds": 27.498276900034398,
+  "workflow_seconds": 23.223964900011197,
+  "process_exit": 0,
+  "installation_seconds": 59.623483999981545,
+  "installation_exit": 0,
+  "platform": "Windows-10-10.0.26200-SP0",
+  "python": "3.11.5",
+  "credentials_disabled": true,
+  "installation_scope": "Fresh venv and editable install in a separate local Git clone; pip cache was not cleared",
+  "concurrent_work": "A retained cloud-population verification was active on the same laptop",
+  "observation_receipt_id": "mr-e152a368dd26fe7ef6459e10db26be6e",
+  "artifacts": {
+    "demo.cast": {
+      "bytes": 2425,
+      "sha256": "92dd4a88bcbfa978c84d19a9b015d7501594157ac9689c1236568519aed2dc7c"
+    },
+    "demo.txt": {
+      "bytes": 1560,
+      "sha256": "70dccd7b57654ab0f01549f8e543933647cab2e127da604c471e7483933e9042"
+    }
+  }
+}
