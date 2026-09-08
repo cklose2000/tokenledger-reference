@@ -88,9 +88,10 @@
     "final_local_tests": {
       "passed": 72,
       "failed": 0,
-      "seconds": 257.91,
+      "seconds": 150.98,
       "warnings": 79
     },
-    "desktop_summary": "persistent_beside_original_recording"
+    "desktop_summary": "persistent_beside_original_recording",
+    "clean_table_inspection": "passed_with_shipped_dependencies_and_explicit_July_filter"
   }
 }

@@ -68,12 +68,14 @@ tl --db data/challenge/my-attempt/business/world.duckdb --artifact-root data/wor
 Use the returned `run_id` to inspect that population:
 
 ```sh
-python -c "import pyarrow.parquet as pq; print(pq.read_table('data/workflow/my-original/runs/RUN_ID/net_rev_per_mtok.parquet').slice(0,8).to_pandas().to_string(index=False))"
+python -c "import json; import pyarrow.parquet as pq; rows=pq.read_table('data/workflow/my-original/runs/RUN_ID/net_rev_per_mtok.parquet').to_pylist(); july=[r for r in rows if str(r['month'])=='2026-07-01']; print(json.dumps(july[:8],default=str,indent=2))"
 ```
 
 Replace `RUN_ID` with your run, not an example from another machine. Inspect
-column names and the definition before summing. Sum disjoint revenue cents and
-raw tokens, then divide; averaging per-cut yields gives a different question.
+column names and the definition before summing. The population retains multiple
+months: filter to `month = 2026-07-01` first. The example displays eight rows;
+aggregate **all** selected July rows, not just that preview. Sum disjoint revenue
+cents and raw tokens, then divide; averaging per-cut yields gives a different question.
 Include all four token types at unit weight and distinguish revenue net of
 discounts from revenue net of discounts **and** marketplace fees.
 
