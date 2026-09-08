@@ -1,0 +1,297 @@
+{
+  "status": "passed",
+  "scope": "Builder recipe verification, not first-time evaluation or independent recognition",
+  "profiles": {
+    "yield_old": {
+      "rows": 996,
+      "identical_population": true
+    },
+    "yield_new": {
+      "rows": 996,
+      "identical_population": true
+    },
+    "nrr_old": {
+      "rows": 4,
+      "identical_population": true
+    },
+    "nrr_new": {
+      "rows": 4,
+      "identical_population": true
+    }
+  },
+  "commands": [
+    {
+      "label": "workflow-verify",
+      "command": [
+        "challenge",
+        "verify",
+        "data\\challenge\\builder-workflow-v2",
+        "--json"
+      ],
+      "exit": 0,
+      "seconds": 6.139635100029409
+    },
+    {
+      "label": "profile-yield_old",
+      "command": [
+        "--db",
+        "data\\challenge\\builder-workflow-v2\\business\\world.duckdb",
+        "--artifact-root",
+        "data\\workflow\\builder-v2-yield_old",
+        "profile",
+        "--asof",
+        "2026-07-31",
+        "--known-at",
+        "2026-10-01T00:00:00.000000Z",
+        "--watermark",
+        "2763",
+        "--population",
+        "net_rev_per_mtok",
+        "--definition",
+        "v2",
+        "--json"
+      ],
+      "exit": 0,
+      "seconds": 1.8457964999834076
+    },
+    {
+      "label": "profile-yield_new",
+      "command": [
+        "--db",
+        "data\\challenge\\builder-workflow-v2\\business\\world.duckdb",
+        "--artifact-root",
+        "data\\workflow\\builder-v2-yield_new",
+        "profile",
+        "--asof",
+        "2026-07-31",
+        "--known-at",
+        "2026-10-03T00:00:00.000000Z",
+        "--watermark",
+        "2764",
+        "--population",
+        "net_rev_per_mtok",
+        "--definition",
+        "v2",
+        "--json"
+      ],
+      "exit": 0,
+      "seconds": 2.213530500070192
+    },
+    {
+      "label": "profile-nrr_old",
+      "command": [
+        "--db",
+        "data\\challenge\\builder-workflow-v2\\business\\world.duckdb",
+        "--artifact-root",
+        "data\\workflow\\builder-v2-nrr_old",
+        "profile",
+        "--asof",
+        "2026-07-31",
+        "--known-at",
+        "2026-10-01T00:00:00.000000Z",
+        "--watermark",
+        "2763",
+        "--population",
+        "consumption_nrr",
+        "--definition",
+        "v2",
+        "--json"
+      ],
+      "exit": 0,
+      "seconds": 1.9211973999626935
+    },
+    {
+      "label": "profile-nrr_new",
+      "command": [
+        "--db",
+        "data\\challenge\\builder-workflow-v2\\business\\world.duckdb",
+        "--artifact-root",
+        "data\\workflow\\builder-v2-nrr_new",
+        "profile",
+        "--asof",
+        "2026-07-31",
+        "--known-at",
+        "2026-10-01T00:00:00.000000Z",
+        "--watermark",
+        "2763",
+        "--population",
+        "consumption_nrr",
+        "--definition",
+        "v3",
+        "--json"
+      ],
+      "exit": 0,
+      "seconds": 1.8982252998976037
+    },
+    {
+      "label": "replay-yield_old",
+      "command": [
+        "--db",
+        "data\\challenge\\builder-workflow-v2\\business\\world.duckdb",
+        "--artifact-root",
+        "data\\challenge\\builder-workflow-v2\\business",
+        "receipt",
+        "mr-002588b5125d5f0817519246fef0e818",
+        "--json"
+      ],
+      "exit": 0,
+      "seconds": 1.5462602999759838
+    },
+    {
+      "label": "replay-yield_new",
+      "command": [
+        "--db",
+        "data\\challenge\\builder-workflow-v2\\business\\world.duckdb",
+        "--artifact-root",
+        "data\\challenge\\builder-workflow-v2\\business",
+        "receipt",
+        "mr-6c2481373e931ab3015bfb7d440ee991",
+        "--json"
+      ],
+      "exit": 0,
+      "seconds": 1.4590316000394523
+    },
+    {
+      "label": "replay-yield_bridge",
+      "command": [
+        "--db",
+        "data\\challenge\\builder-workflow-v2\\business\\world.duckdb",
+        "--artifact-root",
+        "data\\challenge\\builder-workflow-v2\\business",
+        "receipt",
+        "mr-02d2a7a2231d6a46e0291a046704763e",
+        "--json"
+      ],
+      "exit": 0,
+      "seconds": 3.786499800044112
+    },
+    {
+      "label": "replay-account_bridge",
+      "command": [
+        "--db",
+        "data\\challenge\\builder-workflow-v2\\business\\world.duckdb",
+        "--artifact-root",
+        "data\\challenge\\builder-workflow-v2\\business",
+        "receipt",
+        "mr-d83e9f8e5685b082c84ba7480625c9ca",
+        "--json"
+      ],
+      "exit": 0,
+      "seconds": 2.363499099970795
+    },
+    {
+      "label": "replay-nrr_old",
+      "command": [
+        "--db",
+        "data\\challenge\\builder-workflow-v2\\business\\world.duckdb",
+        "--artifact-root",
+        "data\\challenge\\builder-workflow-v2\\business",
+        "receipt",
+        "mr-94a71d77d4d7595659adcde26ea3283e",
+        "--json"
+      ],
+      "exit": 0,
+      "seconds": 1.5197519001085311
+    },
+    {
+      "label": "replay-nrr_new",
+      "command": [
+        "--db",
+        "data\\challenge\\builder-workflow-v2\\business\\world.duckdb",
+        "--artifact-root",
+        "data\\challenge\\builder-workflow-v2\\business",
+        "receipt",
+        "mr-18dde617ad43dfc43470ffbbc4367def",
+        "--json"
+      ],
+      "exit": 0,
+      "seconds": 1.2444963000016287
+    },
+    {
+      "label": "close-held",
+      "command": [
+        "challenge",
+        "close",
+        "data\\challenge\\builder-workflow-v2",
+        "--watermark",
+        "4",
+        "--json"
+      ],
+      "exit": 2,
+      "seconds": 5.226804699981585
+    },
+    {
+      "label": "close-recovery",
+      "command": [
+        "challenge",
+        "close",
+        "data\\challenge\\builder-workflow-v2",
+        "--recover",
+        "--json"
+      ],
+      "exit": 0,
+      "seconds": 5.637427099980414
+    },
+    {
+      "label": "grade-blank",
+      "command": [
+        "challenge",
+        "grade",
+        "data\\challenge\\builder-workflow-v2",
+        "--answer",
+        "data\\challenge\\builder-workflow-v2\\answer.json",
+        "--output",
+        "data/score/builder-v2-blank",
+        "--json"
+      ],
+      "exit": 1,
+      "seconds": 5.980408199946396
+    },
+    {
+      "label": "grade-reference",
+      "command": [
+        "challenge",
+        "grade",
+        "data\\challenge\\builder-workflow-v2",
+        "--answer",
+        "data\\challenge\\builder-workflow-v2\\expected.json",
+        "--output",
+        "data/score/builder-v2-reference",
+        "--json"
+      ],
+      "exit": 0,
+      "seconds": 12.491035899962299
+    },
+    {
+      "label": "grade-wrong-cent",
+      "command": [
+        "challenge",
+        "grade",
+        "data\\challenge\\builder-workflow-v2",
+        "--answer",
+        "data\\challenge\\builder-workflow-v2\\wrong.json",
+        "--output",
+        "data/score/builder-v2-wrong",
+        "--json"
+      ],
+      "exit": 1,
+      "seconds": 12.15313029999379
+    },
+    {
+      "label": "grade-missing",
+      "command": [
+        "challenge",
+        "grade",
+        "data\\challenge\\builder-workflow-v2",
+        "--answer",
+        "data\\challenge\\builder-workflow-v2\\missing.json",
+        "--output",
+        "data/score/builder-v2-missing",
+        "--json"
+      ],
+      "exit": 1,
+      "seconds": 7.417042199987918
+    }
+  ],
+  "source_cloud_jobs": false
+}

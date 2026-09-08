@@ -48,12 +48,21 @@
   "architecture": {
     "artifact": "passed_9_of_9_zero_errors_warnings",
     "browser": "passed_four_desktop_sizes_light_and_dark",
-    "visual_review": "passed_builder_image_inspection"
+    "visual_review": "passed_builder_image_inspection",
+    "current_reader_transform": "docs/architecture/reader-receipt.json",
+    "current_reader_browser_checks": "docs/architecture/reader-check.json"
   },
   "matched_agent_benchmark": "not_run",
   "learning": "completed_inconclusive_no_promotion",
-  "first_time_evaluators": "not_run",
-  "publication_approval": "not_requested_pending_first_time_evaluation",
+  "first_time_evaluators": {
+    "agent_review_count": 1,
+    "human_review_count": 0,
+    "reviewed_candidate": "65b717f0d94f1b3fb13a6f49904262551fddb751",
+    "outcome": "Runnable example reproduced; category, workflow and visual friction identified",
+    "followup": "Presentation and workflow revision; next independent review pending",
+    "reference_answer_exposure": true
+  },
+  "publication_approval": "not_requested_pending_revised_candidate_review",
   "introductions": "none_authorized_or_sent",
   "private_engine_integration": "completed_with_green_main_ci; preserved_eight_phase_merge_commits",
   "codespaces": {
@@ -64,5 +73,17 @@
     "resource_state": "Shutdown",
     "web_editor_interaction": "not_run",
     "first_time_evaluator_session": false
+  },
+  "presentation_followup": {
+    "scope": "documentation and viewer only; execution unchanged",
+    "verification": "docs/verification/evaluator-followups/README.md",
+    "local_tests": {
+      "passed": 72,
+      "failed": 0,
+      "seconds": 137.58,
+      "warnings": 79
+    },
+    "source_fixture_and_capture_bytes": "unchanged",
+    "next_evaluator": "pending"
   }
 }

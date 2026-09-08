@@ -25,6 +25,8 @@ jobs:
           python-version: '3.11.5'
       - run: python -m pip install -e ".[dev]"
       - run: python -m pytest -q
+      - name: Verify receipt-derived presentation and blank contract
+        run: python docs/presentation/build.py --check
       - name: Reproduce retained challenge from public history
         run: tl challenge verify data/challenge/first --json
       - name: Verify the refreshed challenge

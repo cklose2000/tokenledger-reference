@@ -1,6 +1,7 @@
 # tokenledger: one activity stream, every reported number reproducible.
 
-**The data model agents actually work on.**
+**A runnable reference implementation for data and finance engineering teams.**
+Report a business metric, explain a change and reproduce the original result.
 
 Built from the SOX-controlled subscriber-metrics work I ran at SiriusXM for
 19 years. For AI businesses that meter tokens and seats.
@@ -24,6 +25,12 @@ Use Python 3.11.5 from this checkout. The fixture is synthetic, the local engine
 is DuckDB, and the demo requires no model, billing or cloud credentials.
 [Installation and environment options](docs/run.md).
 
+Reuse the activity envelope, validated writer, snapshots and receipts. Applying
+them to another business requires its source contracts, customer identities,
+accounting policy and accountable reporting owners. The
+[adoption map](docs/adoption.md) shows the integration work and a one-output
+migration with reconciliation and rollback.
+
 ## What the comparison found
 
 Thirteen output populations matched an independently implemented baseline in
@@ -40,7 +47,9 @@ comparisons and fingerprints without submitting cloud jobs.
 
 ## Give it to your agent
 
-Start with [AGENTS.md](AGENTS.md). Reproduce July's token yield, explain the late
+Start with [AGENTS.md](AGENTS.md). [Learn the workflow](docs/workflow.md) with a
+blank submission, or [verify the visible reference](docs/assess.md#verify-the-reference).
+Reproduce July's token yield, explain the late
 invoice, change the NRR definition while retaining the old result, and diagnose
 the incomplete-source close. Submit the specified evidence to the deterministic
 grader and keep failures visible.

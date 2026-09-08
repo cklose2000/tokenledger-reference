@@ -60,6 +60,16 @@ earlier cache-based relation inventory remains historical evidence.
 This export uses [Archify](https://github.com/tt-a1i/archify), with its
 [upstream MIT license](ARCHIFY-LICENSE.txt). The fresh public specification
 omits private infrastructure and operator metadata. Its
-[artifact receipt](artifact-receipt.json) distinguishes deterministic validation,
-automated browser checks and image-based visual review. Those checks establish
+[original artifact receipt](artifact-receipt.json) distinguishes deterministic validation,
+automated browser checks and image-based visual review of the upstream export.
+The current reader applies a [repeatable presentation transform](reader-receipt.json)
+to those preserved bytes. Its [browser checks](reader-check.json) bind the
+transformed artifact separately. The default hides advanced tools, shows full
+chapter notes and keeps the finder in the viewport when the page is scrolled.
+Use **Advanced tools** for the additional mapping controls.
+
+Rebuild both presentation assets with `python docs/presentation/build.py`;
+`--check` detects stale generated output. Sources and provenance are described
+in the [presentation maintainer guide](../presentation/README.md).
+These checks establish
 the diagram's artifact and presentation quality, not accounting correctness.

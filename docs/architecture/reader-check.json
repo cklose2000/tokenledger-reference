@@ -1,0 +1,132 @@
+{
+  "checks": [
+    {
+      "width": 1280,
+      "height": 720,
+      "scrollWidth": 1265,
+      "scrollHeight": 899,
+      "reader": true,
+      "note": "Step through curated paths without changing the source diagram."
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "scrollWidth": 1440,
+      "scrollHeight": 900,
+      "reader": true,
+      "note": "Step through curated paths without changing the source diagram."
+    },
+    {
+      "width": 1600,
+      "height": 1000,
+      "scrollWidth": 1600,
+      "scrollHeight": 1000,
+      "reader": true,
+      "note": "Step through curated paths without changing the source diagram."
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "scrollWidth": 1920,
+      "scrollHeight": 1080,
+      "reader": true,
+      "note": "Step through curated paths without changing the source diagram."
+    },
+    {
+      "width": 2048,
+      "height": 1320,
+      "scrollWidth": 2048,
+      "scrollHeight": 1320,
+      "reader": true,
+      "note": "Step through curated paths without changing the source diagram."
+    },
+    {
+      "hidden": false,
+      "headingY": 37.1875,
+      "closeY": 28.1875,
+      "bottom": 64.1875,
+      "zoom": "125%",
+      "text": "FIND A NODE\n\u00d7\n\u2315\n/\nActivity stream\nOne physical source\n14 fields \u00b7 append-only \u00b7 event_stream\nLogical projections\nQuery-time calculation\nTyped values \u00b7 temporal joins \u00b7 query_logic\nVersioned definitions\nExplicit policy\nScope \u00b7 formula \u00b7 exclusions \u00b7 versioned_policy\nReported result\nPeriod + units + fee basis\nRecognized USD / Mtok \u00b7 reported_number\nReceipt\nOriginal-result replay\nInputs \u00b7 method \u00b7 execution \u00b7 result_receipt\nConventional baseline\ndbt comparison path\nIndependent recognition \u00b7 conventional_baseline\n\n6 nodes"
+    },
+    {
+      "chapter_notes": [
+        {
+          "text": "One physical stream supplies query-time calculation. Results retain units, cutoffs and receipts.",
+          "hidden": false,
+          "scroll": 35,
+          "client": 35
+        },
+        {
+          "text": "Late evidence changes current knowledge. The original definition and snapshot remain reproducible.",
+          "hidden": false,
+          "scroll": 35,
+          "client": 35
+        },
+        {
+          "text": "The baseline calculates recognition independently from the same economic events. Thirteen outputs are reconciled.",
+          "hidden": false,
+          "scroll": 35,
+          "client": 35
+        },
+        {
+          "text": "Synthetic reference implementation. Agent-assisted replay passed; general production admission remains separate.",
+          "hidden": false,
+          "scroll": 35,
+          "client": 35
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "scrollWidth": 375,
+      "headingY": 37.1875
+    }
+  ],
+  "player_sha256": "4c3eedd705da82893b294978d204e78f8847212aafe6a5bd8a2c36daa7509015",
+  "architecture_sha256": "f813e3bb31bfacf6e6bdeee934b85a38c082b5d965f20027140b7d9f4d35f1c2",
+  "schema_version": "tokenledger-reader-browser-check/v1",
+  "status": "passed",
+  "scope": "Builder Chrome DevTools browser checks and image inspection, not a new evaluator or accounting review",
+  "browser_method": "Fresh headless Chrome profile; standalone local files; no private user browser profile",
+  "functional_checks": [
+    "Player seek back from final labels Play recording",
+    "Final text equals original capture transcript",
+    "Summary visible before playback",
+    "Scrolled 1280x720 finder at 125% zoom remains in viewport",
+    "Escape closes finder and restores trigger focus",
+    "All four chapter explanations fully available",
+    "Advanced controls can be exposed and hidden",
+    "Narrow-window horizontal containment"
+  ],
+  "visual_review": "passed_builder_image_inspection",
+  "visual_scope": [
+    "1440x900 light diagram",
+    "2048x1320 light diagram",
+    "1280x720 light and dark scrolled finder",
+    "1280x720 recorded summary",
+    "390x844 finder"
+  ],
+  "limits": [
+    "1280x720 and narrow windows may scroll vertically",
+    "Not an exhaustive accessibility or mobile audit",
+    "Canonical export machinery preserved but export formats not rerun"
+  ],
+  "screenshots": {
+    "chapter-selected.png": {
+      "sha256": "bef9a6f7a1815c49eca086b6e6515b8c0ae1b6745b4e517fb0686b312a936d2d",
+      "bytes": 134645
+    },
+    "finder-scrolled-dark.png": {
+      "sha256": "27f393a5f702f24a03c78434c1f4d29a2af7597af43d7fac2e6fec5816677c1b",
+      "bytes": 122504
+    },
+    "finder-scrolled-light.png": {
+      "sha256": "53ac42fdecab0b9b748236672c159e0732c76186ff157ecabc3d5c1dc1d9eb3e",
+      "bytes": 120551
+    },
+    "player-opening.png": {
+      "sha256": "c4a7b0cbc6df88347a6cf6107a24748f50275ad5e2f1882797f6e5c58e9197ef",
+      "bytes": 61975
+    }
+  }
+}

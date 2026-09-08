@@ -4847,54 +4847,7 @@
       svg [data-node-id], svg [data-edge-from], svg [data-detail], svg [data-detail-anchor], svg [data-legend-hit], svg { transition: none !important; }
     }
   </style>
-<style id="tokenledger-reader-style">
-/* Reader chrome only. Authored SVG geometry and canonical exports stay intact. */
-html:not([data-reader-advanced="true"]) .preset-wrap,
-html:not([data-reader-advanced="true"]) #btn-route-probe,
-html:not([data-reader-advanced="true"]) #btn-overview-map,
-html:not([data-reader-advanced="true"]) #btn-semantic-lens,
-html:not([data-reader-advanced="true"]) #btn-diagram-guide,
-html:not([data-reader-advanced="true"]) .guided-view-chapter-delta,
-html:not([data-reader-advanced="true"]) .guided-view-handoff,
-html:not([data-reader-advanced="true"]) #focus-kind,
-html:not([data-reader-advanced="true"]) #focus-context { display: none !important; }
-.guided-view-copy strong, .guided-view-copy small,
-.guided-view-chapter strong, .guided-view-chapter small,
-.semantic-passport-detail, .relationship-lens-title,
-.node-finder-result strong, .node-finder-result small {
-  white-space: normal; overflow: visible; text-overflow: clip;
-}
-.guided-view-copy small { font-size: .75rem; line-height: 1.45; }
-.guided-views { align-items: center; }
-.node-finder {
-  position: fixed; inset: 16px auto auto 16px; z-index: 10000;
-  width: min(25rem, calc(100vw - 32px));
-  max-height: calc(100dvh - 32px);
-}
-.node-finder-head, .node-finder-search, .node-finder-status { flex-shrink: 0; }
-.node-finder-head strong, .node-finder-input { font-size: .875rem; }
-.node-finder-close { min-width: 36px; min-height: 36px; }
-.node-finder-results { max-height: min(26rem, calc(100dvh - 190px)); }
-.node-finder-result strong { font-size: .875rem; }
-.node-finder-result small { font-size: .75rem; }
-#btn-node-finder { gap: .35rem; }
-#reader-intro { font-size: .8125rem; color: var(--text-muted); margin: 0 0 .8rem; }
-#reader-intro a { color: var(--text); text-underline-offset: 3px; }
-.header { margin-bottom: .6rem; }
-.cards { margin-top: .8rem; }
-.card { padding: .75rem; }
-.card li { margin-bottom: .2rem; }
-.card-header { margin-bottom: .35rem; }
-.guided-view-chapter span { white-space: normal; overflow: visible; text-overflow: clip; }
-.guided-view-chapter { grid-template-columns: 1.55rem minmax(0, 1fr); }
-#guided-view-note { display: block !important; }
-#guided-view-note[hidden] { display: none !important; }
-#reader-intro { margin-bottom: 0; }
-.guided-view-copy { min-width: 0; }
-@media(min-width:768px) { body { padding-block: .75rem; } }
-@media print { #reader-intro { display: none; } }
-
-</style></head>
+</head>
 <body>
   <!-- Toolbar: theme, live visual style, trace motion, presentation stage, and export.
        Motion appears only for trace-enabled artifacts and has no shortcut;
@@ -14830,66 +14783,5 @@ html:not([data-reader-advanced="true"]) #focus-context { display: none !importan
       }
     });
   </script>
-<script type="application/json" id="tokenledger-reader-spec">{"schema_version": 1, "diagram_type": "architecture", "meta": {"title": "tokenledger / Follow one number", "locale": "en", "quality_profile": "showcase", "viewBox": [920, 520], "views": [{"id": "number", "label": "1. Follow the number", "focus": ["event_stream", "query_logic", "reported_number", "result_receipt"], "note": "One physical stream supplies query-time calculation. Results retain units, cutoffs and receipts."}, {"id": "policy", "label": "2. Policy + knowledge", "focus": ["event_stream", "versioned_policy", "query_logic"], "note": "Late evidence changes current knowledge. The original definition and snapshot remain reproducible."}, {"id": "assessment", "label": "3. Compare", "focus": ["event_stream", "conventional_baseline", "reported_number"], "note": "The baseline calculates recognition independently from the same economic events. Thirteen outputs are reconciled."}, {"id": "whole", "label": "4. Complete path", "focus": ["event_stream", "versioned_policy", "query_logic", "reported_number", "result_receipt", "conventional_baseline"], "note": "Synthetic reference implementation. Agent-assisted replay passed; general production admission remains separate."}], "legend": {"entries": {"database": {"label": "Physical source"}, "backend": {"label": "Calculation"}, "frontend": {"label": "Result"}, "security": {"label": "Policy / evidence"}}}}, "components": [{"id": "event_stream", "type": "database", "label": "Activity stream", "sublabel": "14 fields \u00b7 append-only", "tag": "One physical source", "pos": [20, 205], "size": [170, 70]}, {"id": "query_logic", "type": "backend", "label": "Logical projections", "sublabel": "Typed values \u00b7 temporal joins", "tag": "Query-time calculation", "pos": [250, 205], "size": [170, 70]}, {"id": "versioned_policy", "type": "security", "label": "Versioned definitions", "sublabel": "Scope \u00b7 formula \u00b7 exclusions", "tag": "Explicit policy", "pos": [250, 25], "size": [170, 70]}, {"id": "reported_number", "type": "frontend", "label": "Reported result", "sublabel": "Recognized USD / Mtok", "tag": "Period + units + fee basis", "pos": [480, 205], "size": [170, 70]}, {"id": "result_receipt", "type": "security", "label": "Receipt", "sublabel": "Inputs \u00b7 method \u00b7 execution", "tag": "Original-result replay", "pos": [710, 205], "size": [170, 70]}, {"id": "conventional_baseline", "type": "backend", "label": "Conventional baseline", "sublabel": "Independent recognition", "tag": "dbt comparison path", "pos": [480, 385], "size": [170, 70]}], "connections": [{"id": "snapshot_to_logic", "from": "event_stream", "to": "query_logic", "label": "as-of", "variant": "emphasis"}, {"id": "logic_to_result", "from": "query_logic", "to": "reported_number", "label": "calculate", "variant": "emphasis"}, {"id": "result_to_receipt", "from": "reported_number", "to": "result_receipt", "label": "pin inputs", "variant": "emphasis"}, {"id": "policy_to_logic", "from": "versioned_policy", "to": "query_logic", "label": "apply version", "variant": "security", "labelDy": 24}, {"id": "source_to_baseline", "from": "event_stream", "to": "conventional_baseline", "label": "same events", "fromSide": "bottom", "toSide": "left"}, {"id": "baseline_to_result", "from": "conventional_baseline", "to": "reported_number", "label": "reconcile", "fromSide": "top", "toSide": "bottom"}], "cards": [{"dot": "emerald", "title": "Reproduce the number", "items": ["Late invoice changes recognized revenue; tokens stay fixed.", "The accounting bridge explains the movement.", "The original receipt still reproduces the earlier result."]}, {"dot": "amber", "title": "Keep the trade-off visible", "items": ["BigQuery: 51.47% fewer billed bytes; 14.96\u00d7 median slot time.", "13 outputs matched across one warmup and three measured pairs.", "Bounded synthetic evidence; no general speed or agent-efficiency claim."]}]}</script>
-<script>
-/* Repeatable, standalone reader adaptation of the retained Archify export. */
-(() => {
-  'use strict';
-  const spec = JSON.parse(document.getElementById('tokenledger-reader-spec').textContent);
-  const toolbar = document.querySelector('.toolbar');
-  const toggle = document.createElement('button');
-  toggle.id = 'reader-advanced'; toggle.type = 'button';
-  toggle.textContent = 'Advanced tools'; toggle.setAttribute('aria-pressed', 'false');
-  toggle.addEventListener('click', () => {
-    const active = toggle.getAttribute('aria-pressed') !== 'true';
-    document.documentElement.dataset.readerAdvanced = String(active);
-    toggle.setAttribute('aria-pressed', String(active));
-    toggle.textContent = active ? 'Simple view' : 'Advanced tools';
-  });
-  toolbar.append(toggle);
-  const container = document.querySelector('.container');
-  const intro = document.createElement('p'); intro.id = 'reader-intro';
-  intro.innerHTML = '<a href="../assets/one-number.svg">Compact overview</a> · <a href="../demo.html">Watch the example</a> · <a href="../adoption.md">Adoption map</a>';
-  const views = document.getElementById('guided-views');
-  container.querySelector('.header').append(intro);
-  const note = document.getElementById('guided-view-note');
-  const noteVisibility = () => { note.hidden = note.textContent.startsWith('Step through curated'); };
-  new MutationObserver(noteVisibility).observe(note, {childList: true, subtree: true});
-  noteVisibility();
-  const finder = document.getElementById('node-finder');
-  // A fixed panel inside a transformed/contained diagram inherits its coordinate
-  // system. Move this viewer-only panel to the document viewport, retaining the
-  // original node and its event listeners. Never move authored graph elements.
-  document.body.append(finder);
-  const trigger = document.getElementById('btn-node-finder');
-  const label = document.createElement('span'); label.textContent = 'Find'; trigger.append(label);
-  const close = document.getElementById('node-finder-close');
-  let returnFocus = trigger;
-  trigger.addEventListener('click', () => { returnFocus = trigger; });
-  finder.addEventListener('keydown', event => {
-    if (event.key === 'Escape') {
-      event.stopPropagation(); close.click(); returnFocus.focus();
-    }
-  });
-  close.addEventListener('click', () => { returnFocus.focus(); });
-  // Display authored business tags in finder badges; graph semantic types remain
-  // unchanged for routing, validation, filtering and export.
-  const nodes = Object.fromEntries(spec.components.map(n => [n.label, n]));
-  const results = document.getElementById('node-finder-results');
-  function domainBadges() {
-    results.querySelectorAll('.node-finder-result').forEach(button => {
-      const name = button.querySelector('strong')?.textContent;
-      const badge = button.querySelector('em');
-      const node = nodes[name];
-      if (badge && node && badge.textContent !== node.tag) badge.textContent = node.tag;
-      const detail = button.querySelector('small');
-      const description = node && node.sublabel + ' · ' + node.id;
-      if (detail && description && detail.textContent !== description) detail.textContent = description;
-    });
-  }
-  new MutationObserver(domainBadges).observe(results, {childList: true, subtree: true});
-  domainBadges();
-})();
-
-</script></body>
+</body>
 </html>

@@ -1,0 +1,247 @@
+{
+  "fixture_id": "__REPLACE__",
+  "schema_version": "tokenledger-challenge-answer/v1",
+  "tasks": {
+    "failed_close": {
+      "after": {
+        "actual_cents": "__REPLACE__",
+        "actual_count": "__REPLACE__",
+        "expected_cents": "__REPLACE__",
+        "expected_count": "__REPLACE__"
+      },
+      "after_status": "__REPLACE__",
+      "before": {
+        "actual_cents": "__REPLACE__",
+        "actual_count": "__REPLACE__",
+        "expected_cents": "__REPLACE__",
+        "expected_count": "__REPLACE__"
+      },
+      "before_status": "__REPLACE__",
+      "missing_activity_ids": [
+        "__REPLACE_WITH_OBSERVED_LIST_ITEMS__"
+      ],
+      "publication_receipt_id": "__REPLACE__",
+      "retry_basis": "__REPLACE__",
+      "retry_inserted": "__REPLACE__",
+      "retry_publication": "__REPLACE__",
+      "source_manifest_sha256": "__REPLACE__",
+      "units": "__REPLACE__"
+    },
+    "july_yield": {
+      "denominator": "__REPLACE__",
+      "original_receipt_id": "__REPLACE__",
+      "replay_status": "__REPLACE__",
+      "revenue_basis": "__REPLACE__",
+      "units": {
+        "channel_fee_cents": "__REPLACE__",
+        "net_of_discounts_and_fees_per_mtok": "__REPLACE__",
+        "net_of_discounts_per_mtok": "__REPLACE__",
+        "net_revenue_cents": "__REPLACE__",
+        "revenue_before_channel_fees_cents": "__REPLACE__",
+        "tokens": "__REPLACE__"
+      },
+      "values": {
+        "channel_fee_cents": "__REPLACE__",
+        "net_of_discounts_and_fees_per_mtok": "__REPLACE__",
+        "net_of_discounts_per_mtok": "__REPLACE__",
+        "net_revenue_cents": "__REPLACE__",
+        "revenue_before_channel_fees_cents": "__REPLACE__",
+        "tokens": "__REPLACE__"
+      }
+    },
+    "late_invoice": {
+      "account_bridge_receipt_id": "__REPLACE__",
+      "attribution_status": "__REPLACE__",
+      "current": {
+        "channel_fee_cents": "__REPLACE__",
+        "net_of_discounts_and_fees_per_mtok": "__REPLACE__",
+        "net_of_discounts_per_mtok": "__REPLACE__",
+        "net_revenue_cents": "__REPLACE__",
+        "revenue_before_channel_fees_cents": "__REPLACE__",
+        "tokens": "__REPLACE__"
+      },
+      "current_known_at": "__REPLACE__",
+      "delta": {
+        "channel_fee_cents": "__REPLACE__",
+        "net_of_discounts_and_fees_per_mtok": "__REPLACE__",
+        "net_of_discounts_per_mtok": "__REPLACE__",
+        "net_revenue_cents": "__REPLACE__",
+        "revenue_before_channel_fees_cents": "__REPLACE__",
+        "tokens": "__REPLACE__"
+      },
+      "original": {
+        "channel_fee_cents": "__REPLACE__",
+        "net_of_discounts_and_fees_per_mtok": "__REPLACE__",
+        "net_of_discounts_per_mtok": "__REPLACE__",
+        "net_revenue_cents": "__REPLACE__",
+        "revenue_before_channel_fees_cents": "__REPLACE__",
+        "tokens": "__REPLACE__"
+      },
+      "original_known_at": "__REPLACE__",
+      "responsible_activity_ids": [
+        "__REPLACE_WITH_OBSERVED_LIST_ITEMS__"
+      ],
+      "unchanged": [
+        "__REPLACE_WITH_OBSERVED_LIST_ITEMS__"
+      ],
+      "units": {
+        "channel_fee_cents": "__REPLACE__",
+        "net_of_discounts_and_fees_per_mtok": "__REPLACE__",
+        "net_of_discounts_per_mtok": "__REPLACE__",
+        "net_revenue_cents": "__REPLACE__",
+        "revenue_before_channel_fees_cents": "__REPLACE__",
+        "tokens": "__REPLACE__"
+      },
+      "yield_bridge_receipt_id": "__REPLACE__"
+    },
+    "nrr_definition": {
+      "changed_lenses": [
+        "__REPLACE_WITH_OBSERVED_LIST_ITEMS__"
+      ],
+      "current": {
+        "base_t12m": {
+          "all_base_cents": "__REPLACE__",
+          "base_revenue_cents": "__REPLACE__",
+          "churn_cents": "__REPLACE__",
+          "churn_share": "__REPLACE__",
+          "cohort_customers": "__REPLACE__",
+          "cohort_revenue_coverage": "__REPLACE__",
+          "contraction_cents": "__REPLACE__",
+          "contraction_share": "__REPLACE__",
+          "current_revenue_cents": "__REPLACE__",
+          "expansion_cents": "__REPLACE__",
+          "expansion_share": "__REPLACE__",
+          "month": "__REPLACE__",
+          "nrr": "__REPLACE__",
+          "status": "__REPLACE__"
+        },
+        "floor_100k": {
+          "all_base_cents": "__REPLACE__",
+          "base_revenue_cents": "__REPLACE__",
+          "churn_cents": "__REPLACE__",
+          "churn_share": "__REPLACE__",
+          "cohort_customers": "__REPLACE__",
+          "cohort_revenue_coverage": "__REPLACE__",
+          "contraction_cents": "__REPLACE__",
+          "contraction_share": "__REPLACE__",
+          "current_revenue_cents": "__REPLACE__",
+          "expansion_cents": "__REPLACE__",
+          "expansion_share": "__REPLACE__",
+          "month": "__REPLACE__",
+          "nrr": "__REPLACE__",
+          "status": "__REPLACE__"
+        },
+        "subscription_inclusive": {
+          "all_base_cents": "__REPLACE__",
+          "base_revenue_cents": "__REPLACE__",
+          "churn_cents": "__REPLACE__",
+          "churn_share": "__REPLACE__",
+          "cohort_customers": "__REPLACE__",
+          "cohort_revenue_coverage": "__REPLACE__",
+          "contraction_cents": "__REPLACE__",
+          "contraction_share": "__REPLACE__",
+          "current_revenue_cents": "__REPLACE__",
+          "expansion_cents": "__REPLACE__",
+          "expansion_share": "__REPLACE__",
+          "month": "__REPLACE__",
+          "nrr": "__REPLACE__",
+          "status": "__REPLACE__"
+        },
+        "t3m_annualized": {
+          "all_base_cents": "__REPLACE__",
+          "base_revenue_cents": "__REPLACE__",
+          "churn_cents": "__REPLACE__",
+          "churn_share": "__REPLACE__",
+          "cohort_customers": "__REPLACE__",
+          "cohort_revenue_coverage": "__REPLACE__",
+          "contraction_cents": "__REPLACE__",
+          "contraction_share": "__REPLACE__",
+          "current_revenue_cents": "__REPLACE__",
+          "expansion_cents": "__REPLACE__",
+          "expansion_share": "__REPLACE__",
+          "month": "__REPLACE__",
+          "nrr": "__REPLACE__",
+          "status": "__REPLACE__"
+        }
+      },
+      "current_definition": "__REPLACE__",
+      "current_floor_usd": "__REPLACE__",
+      "current_receipt_id": "__REPLACE__",
+      "old_replay_status": "__REPLACE__",
+      "original": {
+        "base_t12m": {
+          "all_base_cents": "__REPLACE__",
+          "base_revenue_cents": "__REPLACE__",
+          "churn_cents": "__REPLACE__",
+          "churn_share": "__REPLACE__",
+          "cohort_customers": "__REPLACE__",
+          "cohort_revenue_coverage": "__REPLACE__",
+          "contraction_cents": "__REPLACE__",
+          "contraction_share": "__REPLACE__",
+          "current_revenue_cents": "__REPLACE__",
+          "expansion_cents": "__REPLACE__",
+          "expansion_share": "__REPLACE__",
+          "month": "__REPLACE__",
+          "nrr": "__REPLACE__",
+          "status": "__REPLACE__"
+        },
+        "floor_100k": {
+          "all_base_cents": "__REPLACE__",
+          "base_revenue_cents": "__REPLACE__",
+          "churn_cents": "__REPLACE__",
+          "churn_share": "__REPLACE__",
+          "cohort_customers": "__REPLACE__",
+          "cohort_revenue_coverage": "__REPLACE__",
+          "contraction_cents": "__REPLACE__",
+          "contraction_share": "__REPLACE__",
+          "current_revenue_cents": "__REPLACE__",
+          "expansion_cents": "__REPLACE__",
+          "expansion_share": "__REPLACE__",
+          "month": "__REPLACE__",
+          "nrr": "__REPLACE__",
+          "status": "__REPLACE__"
+        },
+        "subscription_inclusive": {
+          "all_base_cents": "__REPLACE__",
+          "base_revenue_cents": "__REPLACE__",
+          "churn_cents": "__REPLACE__",
+          "churn_share": "__REPLACE__",
+          "cohort_customers": "__REPLACE__",
+          "cohort_revenue_coverage": "__REPLACE__",
+          "contraction_cents": "__REPLACE__",
+          "contraction_share": "__REPLACE__",
+          "current_revenue_cents": "__REPLACE__",
+          "expansion_cents": "__REPLACE__",
+          "expansion_share": "__REPLACE__",
+          "month": "__REPLACE__",
+          "nrr": "__REPLACE__",
+          "status": "__REPLACE__"
+        },
+        "t3m_annualized": {
+          "all_base_cents": "__REPLACE__",
+          "base_revenue_cents": "__REPLACE__",
+          "churn_cents": "__REPLACE__",
+          "churn_share": "__REPLACE__",
+          "cohort_customers": "__REPLACE__",
+          "cohort_revenue_coverage": "__REPLACE__",
+          "contraction_cents": "__REPLACE__",
+          "contraction_share": "__REPLACE__",
+          "current_revenue_cents": "__REPLACE__",
+          "expansion_cents": "__REPLACE__",
+          "expansion_share": "__REPLACE__",
+          "month": "__REPLACE__",
+          "nrr": "__REPLACE__",
+          "status": "__REPLACE__"
+        }
+      },
+      "original_definition": "__REPLACE__",
+      "original_floor_usd": "__REPLACE__",
+      "original_receipt_id": "__REPLACE__",
+      "source_and_cutoffs": "__REPLACE__",
+      "unchanged_lenses": [
+        "__REPLACE_WITH_OBSERVED_LIST_ITEMS__"
+      ],
+      "units": "__REPLACE__"
+    }
+  }
+}
