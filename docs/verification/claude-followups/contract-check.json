@@ -1,0 +1,71 @@
+{
+  "status": "passed",
+  "scope": "builder verification of observed interface contracts; no independent recognition claim",
+  "profile_stdout_objects": 1,
+  "progress_stream": "stderr",
+  "merged_streams_rejected_by_json_parser": true,
+  "replays": {
+    "yield_old": {
+      "receipt_id": "mr-002588b5125d5f0817519246fef0e818",
+      "verified": true,
+      "recomputed": "spine_population"
+    },
+    "nrr_old": {
+      "receipt_id": "mr-94a71d77d4d7595659adcde26ea3283e",
+      "verified": true,
+      "recomputed": "spine_population"
+    },
+    "yield_bridge": {
+      "receipt_id": "mr-02d2a7a2231d6a46e0291a046704763e",
+      "verified": true,
+      "recomputed": true
+    }
+  },
+  "publication_receipt_differs_from_command_proof": true,
+  "publication_unchanged": true,
+  "null_mutation_is_noop": true,
+  "actual_tamper_rejected_before_scorecard": true,
+  "commands": [
+    {
+      "label": "profile-streams",
+      "exit_code": 0,
+      "seconds": 2.7872514000628144
+    },
+    {
+      "label": "replay-yield_old",
+      "exit_code": 0,
+      "seconds": 2.187951699947007
+    },
+    {
+      "label": "replay-nrr_old",
+      "exit_code": 0,
+      "seconds": 1.6367526999674737
+    },
+    {
+      "label": "replay-yield_bridge",
+      "exit_code": 0,
+      "seconds": 4.388576400000602
+    },
+    {
+      "label": "close-held",
+      "exit_code": 2,
+      "seconds": 5.970452400040813
+    },
+    {
+      "label": "close-recovery",
+      "exit_code": 0,
+      "seconds": 6.340403500013053
+    },
+    {
+      "label": "noop-source-still-verifies",
+      "exit_code": 0,
+      "seconds": 6.805761400028132
+    },
+    {
+      "label": "actual-tamper-rejected",
+      "exit_code": 1,
+      "seconds": 2.7669183000689372
+    }
+  ],
+  "cloud_jobs_submitted": false
+}

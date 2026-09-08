@@ -5,7 +5,8 @@ Keep the checkout: definitions, SQL and retained execution history are part of
 the runnable reference implementation.
 
 Use a Git clone, rather than a source ZIP, so the retained receipt history is
-available. For the published release:
+available. On Windows, follow the short-path clone below. On macOS or Linux,
+for the published release:
 
 ```sh
 git clone https://github.com/cklose2000/tokenledger-reference.git
@@ -17,7 +18,25 @@ During candidate review, use the exact supplied candidate commit instead of
 the release tag. Publication and hosted setup status are in
 [release status](../release-status.json).
 
-On Windows PowerShell:
+On Windows PowerShell, choose a new, short destination such as `C:\tl-reference`
+and enable long paths for this clone before checkout. The retained receipt
+history contains nested paths; a deeply nested workspace can otherwise fail
+with `Filename too long`.
+
+```powershell
+git clone --config core.longpaths=true https://github.com/cklose2000/tokenledger-reference.git C:\tl-reference
+Set-Location C:\tl-reference
+git checkout v0.2.0-rc.5
+```
+
+During private review, replace the tag with the supplied exact commit. The clone
+option stores the setting in this repository before files are checked out; it
+does not change global Git or Windows policy. Keep the path short for Python and
+other tools too. See [Git for Windows' long-path guidance](https://gitforwindows.org/git-cannot-create-a-file-or-directory-with-a-long-path.html)
+and [Git's clone configuration option](https://git-scm.com/docs/git-clone).
+If a previous clone failed, preserve it and use a new destination for this retry.
+
+Then install and run from Windows PowerShell:
 
 ```powershell
 python --version

@@ -55,4 +55,28 @@
   }
   new MutationObserver(domainBadges).observe(results, {childList: true, subtree: true});
   domainBadges();
+
+  // The native camera reveals a node within the SVG, but does not reveal the
+  // SVG within a scrolled page. Bring an offscreen single selection into the
+  // document viewport after the native camera settles. Preserve graph geometry
+  // and leave an already visible selection, or a multi-node chapter, in place.
+  const diagram = document.querySelector('.diagram-container > svg');
+  let revealFrame = 0;
+  new MutationObserver(() => {
+    cancelAnimationFrame(revealFrame);
+    const id = diagram.getAttribute('data-focus-active');
+    if (!id || id.includes(' ')) return;
+    revealFrame = requestAnimationFrame(() => {
+      revealFrame = requestAnimationFrame(() => {
+        if (diagram.getAttribute('data-focus-active') !== id) return;
+        const selected = diagram.querySelector('[data-focus-selected]');
+        if (!selected || selected.dataset.nodeId !== id) return;
+        const box = selected.getBoundingClientRect();
+        if (box.top < 16 || box.bottom > innerHeight - 16 ||
+            box.left < 16 || box.right > innerWidth - 16) {
+          selected.scrollIntoView({block: 'center', inline: 'nearest', behavior: 'instant'});
+        }
+      });
+    });
+  }).observe(diagram, {attributes: true, attributeFilter: ['data-focus-active']});
 })();

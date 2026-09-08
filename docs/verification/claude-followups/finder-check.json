@@ -1,0 +1,264 @@
+{
+  "status": "passed",
+  "scope": "Headless Chrome trusted input over loopback; offscreen selection repair; Enter, pointer, themes and scrolling",
+  "artifact_sha256": "2f04ed3d17d866b66b07b13b442d0dfaac7a4b809f18347b410e3922a37a3295",
+  "checks": [
+    {
+      "theme": "light",
+      "method": "trusted_pointer",
+      "ids": [
+        "event_stream"
+      ],
+      "passport": "Activity stream",
+      "box": {
+        "top": 324.16119384765625,
+        "bottom": 394.9205322265625,
+        "left": 187.72715759277344,
+        "right": 359.57122802734375,
+        "height": 720,
+        "width": 1280
+      }
+    },
+    {
+      "theme": "light",
+      "method": "trusted_pointer",
+      "ids": [
+        "query_logic"
+      ],
+      "passport": "Logical projections",
+      "box": {
+        "top": 324.16119384765625,
+        "bottom": 394.9205322265625,
+        "left": 420.2220458984375,
+        "right": 592.0661010742188,
+        "height": 720,
+        "width": 1280
+      }
+    },
+    {
+      "theme": "light",
+      "method": "trusted_pointer",
+      "ids": [
+        "versioned_policy"
+      ],
+      "passport": "Versioned definitions",
+      "box": {
+        "top": 175.82705688476562,
+        "bottom": 276.31781005859375,
+        "left": 526.4100341796875,
+        "right": 770.458984375,
+        "height": 720,
+        "width": 1280
+      }
+    },
+    {
+      "theme": "light",
+      "method": "trusted_pointer",
+      "ids": [
+        "reported_number"
+      ],
+      "passport": "Reported result",
+      "box": {
+        "top": 271.92852783203125,
+        "bottom": 343.6274108886719,
+        "left": 659.15966796875,
+        "right": 833.2854614257812,
+        "height": 720,
+        "width": 1280
+      }
+    },
+    {
+      "theme": "light",
+      "method": "trusted_pointer",
+      "ids": [
+        "result_receipt"
+      ],
+      "passport": "Receipt",
+      "box": {
+        "top": 332.56494140625,
+        "bottom": 409.3326110839844,
+        "left": 867.1859130859375,
+        "right": 1053.6217041015625,
+        "height": 720,
+        "width": 1280
+      }
+    },
+    {
+      "theme": "light",
+      "method": "trusted_pointer",
+      "ids": [
+        "conventional_baseline"
+      ],
+      "passport": "Conventional baseline",
+      "box": {
+        "top": 349.53863525390625,
+        "bottom": 420.5953674316406,
+        "left": 654.7564697265625,
+        "right": 827.3228149414062,
+        "height": 720,
+        "width": 1280
+      }
+    },
+    {
+      "theme": "light",
+      "method": "filtered_enter_after_chapter_zoom_scroll",
+      "ids": [
+        "versioned_policy"
+      ],
+      "passport": "Versioned definitions",
+      "box": {
+        "top": 172.2584991455078,
+        "bottom": 262.7572937011719,
+        "left": 490.7230529785156,
+        "right": 710.505859375,
+        "height": 720,
+        "width": 1280
+      }
+    },
+    {
+      "theme": "light",
+      "method": "finder_result_trusted_pointer",
+      "ids": [
+        "result_receipt"
+      ],
+      "passport": "Receipt",
+      "box": {
+        "top": 185.5731658935547,
+        "bottom": 262.2780456542969,
+        "left": 867.3743896484375,
+        "right": 1053.65771484375,
+        "height": 720,
+        "width": 1280
+      }
+    },
+    {
+      "theme": "dark",
+      "method": "trusted_pointer",
+      "ids": [
+        "event_stream"
+      ],
+      "passport": "Activity stream",
+      "box": {
+        "top": 323.0426330566406,
+        "bottom": 393.8282775878906,
+        "left": 187.73468017578125,
+        "right": 359.6426696777344,
+        "height": 720,
+        "width": 1280
+      }
+    },
+    {
+      "theme": "dark",
+      "method": "trusted_pointer",
+      "ids": [
+        "query_logic"
+      ],
+      "passport": "Logical projections",
+      "box": {
+        "top": 325.1639404296875,
+        "bottom": 395.9241638183594,
+        "left": 420.2253723144531,
+        "right": 592.0716552734375,
+        "height": 720,
+        "width": 1280
+      }
+    },
+    {
+      "theme": "dark",
+      "method": "trusted_pointer",
+      "ids": [
+        "versioned_policy"
+      ],
+      "passport": "Versioned definitions",
+      "box": {
+        "top": 176.0266571044922,
+        "bottom": 277.0762939453125,
+        "left": 528.4061279296875,
+        "right": 773.8124389648438,
+        "height": 720,
+        "width": 1280
+      }
+    },
+    {
+      "theme": "dark",
+      "method": "trusted_pointer",
+      "ids": [
+        "reported_number"
+      ],
+      "passport": "Reported result",
+      "box": {
+        "top": 269.52545166015625,
+        "bottom": 341.75775146484375,
+        "left": 662.8173828125,
+        "right": 838.2385864257812,
+        "height": 720,
+        "width": 1280
+      }
+    },
+    {
+      "theme": "dark",
+      "method": "trusted_pointer",
+      "ids": [
+        "result_receipt"
+      ],
+      "passport": "Receipt",
+      "box": {
+        "top": 334.63885498046875,
+        "bottom": 411.5224304199219,
+        "left": 866.8380737304688,
+        "right": 1053.555419921875,
+        "height": 720,
+        "width": 1280
+      }
+    },
+    {
+      "theme": "dark",
+      "method": "trusted_pointer",
+      "ids": [
+        "conventional_baseline"
+      ],
+      "passport": "Conventional baseline",
+      "box": {
+        "top": 349.688232421875,
+        "bottom": 420.6676025390625,
+        "left": 654.225830078125,
+        "right": 826.604248046875,
+        "height": 720,
+        "width": 1280
+      }
+    },
+    {
+      "theme": "dark",
+      "method": "filtered_enter_after_chapter_zoom_scroll",
+      "ids": [
+        "versioned_policy"
+      ],
+      "passport": "Versioned definitions",
+      "box": {
+        "top": 172.24765014648438,
+        "bottom": 262.7160949707031,
+        "left": 490.6146240234375,
+        "right": 710.3236694335938,
+        "height": 720,
+        "width": 1280
+      }
+    },
+    {
+      "theme": "dark",
+      "method": "finder_result_trusted_pointer",
+      "ids": [
+        "result_receipt"
+      ],
+      "passport": "Receipt",
+      "box": {
+        "top": 185.90267944335938,
+        "bottom": 262.7200622558594,
+        "left": 867.0368041992188,
+        "right": 1053.59326171875,
+        "height": 720,
+        "width": 1280
+      }
+    }
+  ],
+  "errors": []
+}

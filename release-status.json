@@ -55,12 +55,14 @@
   "matched_agent_benchmark": "not_run",
   "learning": "completed_inconclusive_no_promotion",
   "first_time_evaluators": {
-    "agent_review_count": 1,
+    "agent_review_count": 2,
     "human_review_count": 0,
     "reviewed_candidate": "65b717f0d94f1b3fb13a6f49904262551fddb751",
     "outcome": "Runnable example reproduced; category, workflow and visual friction identified",
-    "followup": "Returning review accepted presentation; NRR guide repaired and submission vocabulary documented; fresh review pending",
-    "reference_answer_exposure": true
+    "followup": "Interface docs corrected; offscreen node selection repaired; exact reported browser failure requires focused recheck",
+    "reference_answer_exposure": true,
+    "latest_reviewed_candidate": "0fd140082d3a34d97524b6b8a2a2aae56c7810da",
+    "latest_outcome": "Second agent reported four-task PASS through ordinary interfaces without consulting answer sources during construction; interface and finder findings retained"
   },
   "publication_approval": "not_requested_pending_revised_candidate_review",
   "introductions": "none_authorized_or_sent",
@@ -106,5 +108,21 @@
     "remaining_instruction": "NRR_date_filter_repaired_and_literal_recipe_verified",
     "contract_vocabulary": "documented_and_checked_against_verified_proof",
     "independent_recognition_policy_review": false
+  },
+  "claude_followup": {
+    "verification": "docs/verification/claude-followups/README.md",
+    "local_tests": {
+      "passed": 72,
+      "failed": 0,
+      "seconds": 162.47,
+      "warnings": 79
+    },
+    "native_replay_method": "spine_population",
+    "profile_stdout": "one_result_object_progress_on_stderr",
+    "publication_receipt": "distinct_from_challenge_proof",
+    "windows_short_path_clone_install_demo": "passed_same_executable_at_0fd1400",
+    "finder_offscreen_selection": "repaired_and_checked",
+    "finder_reported_enter_failure": "not_reproduced_in_headless_Chrome_reviewer_recheck_pending",
+    "new_cloud_jobs": false
   }
 }

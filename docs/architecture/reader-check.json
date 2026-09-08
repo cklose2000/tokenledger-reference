@@ -83,60 +83,8 @@
     }
   ],
   "player_sha256": "7113b5ff9e10248473cd40a705e0a25aeacf1a36d048e2532fb4afa2c91849e6",
-  "architecture_sha256": "f813e3bb31bfacf6e6bdeee934b85a38c082b5d965f20027140b7d9f4d35f1c2",
-  "schema_version": "tokenledger-reader-browser-check/v1",
-  "status": "passed",
-  "scope": "Builder Chrome DevTools browser checks and image inspection, not a new evaluator or accounting review",
-  "browser_method": "Fresh headless Chrome profile; standalone local files; no private user browser profile",
-  "functional_checks": [
-    "Player seek back from final labels Play recording",
-    "Final text equals original capture transcript",
-    "Summary visible before playback",
-    "Scrolled 1280x720 finder at 125% zoom remains in viewport",
-    "Escape closes finder and restores trigger focus",
-    "All four chapter explanations fully available",
-    "Advanced controls can be exposed and hidden",
-    "Narrow-window horizontal containment",
-    "Desktop summary stays visible beside playback after scrolling"
-  ],
-  "visual_review": "passed_builder_image_inspection",
-  "visual_scope": [
-    "1440x900 light diagram",
-    "2048x1320 light diagram",
-    "1280x720 light and dark scrolled finder",
-    "1280x720 recorded summary",
-    "390x844 finder",
-    "1440x900 side-by-side final output and scrolled summary"
-  ],
-  "limits": [
-    "1280x720 and narrow windows may scroll vertically",
-    "Not an exhaustive accessibility or mobile audit",
-    "Canonical export machinery preserved but export formats not rerun"
-  ],
-  "screenshots": {
-    "chapter-selected.png": {
-      "sha256": "bef9a6f7a1815c49eca086b6e6515b8c0ae1b6745b4e517fb0686b312a936d2d",
-      "bytes": 134645
-    },
-    "finder-scrolled-dark.png": {
-      "sha256": "27f393a5f702f24a03c78434c1f4d29a2af7597af43d7fac2e6fec5816677c1b",
-      "bytes": 122504
-    },
-    "finder-scrolled-light.png": {
-      "sha256": "53ac42fdecab0b9b748236672c159e0732c76186ff157ecabc3d5c1dc1d9eb3e",
-      "bytes": 120551
-    },
-    "player-opening.png": {
-      "sha256": "fb8f03c6a23a6834b3e31f21c68d19b6fc22aa331c29d207e7666c107eefd160",
-      "bytes": 70263
-    },
-    "player-desktop-final.png": {
-      "sha256": "26b0176b59c62252454385934ced4ab47da2dc853de42e57b22b69054a0c56d9",
-      "bytes": 127805
-    },
-    "player-desktop-scrolled.png": {
-      "sha256": "2e3a09a6369f6d459e036bf63bd6e6d8059094b54d4bb35b0d8819efe4e5241a",
-      "bytes": 124638
-    }
-  }
+  "architecture_sha256": "2f04ed3d17d866b66b07b13b442d0dfaac7a4b809f18347b410e3922a37a3295",
+  "selection_checks": "../verification/claude-followups/finder-check.json",
+  "selection_cases": 16,
+  "visual_review": "builder inspected both selection screenshots; exact reviewer failure not reproduced in Chrome"
 }

@@ -59,7 +59,7 @@ do not replace that calculation or the receipt replay.
 
 | Answer field | Exact string | Evidence required |
 |---|---|---|
-| `july_yield.replay_status`, `nrr_definition.old_replay_status` | `reproduced` | The selected original receipt re-performs successfully, with `verified: true` and `recomputed: true`; reading a saved seal is insufficient. |
+| `july_yield.replay_status`, `nrr_definition.old_replay_status` | `reproduced` | The selected original receipt re-performs successfully: `verified: true` and `recomputed: "spine_population"` for native yield/NRR populations, or `recomputed: true` for a derived bridge. `recomputed: false` verifies saved evidence only. |
 | `late_invoice.attribution_status` | `isolated_source_append` | The controlled bridge and inspected source append identify the responsible activity, its signed effect and the unchanged token denominator. This is the exercise's attribution label, not a literal CLI status. |
 | `nrr_definition.source_and_cutoffs` | `identical` | The two NRR receipts have identical `inputs`, `asof`, `known_at` and `watermark`; only the selected NRR definition changes. |
 
@@ -68,6 +68,12 @@ do not replace that calculation or the receipt replay.
 ```text
 revenue amounts in USD cents; NRR and shares are ratios; cohorts are counts
 ```
+
+Check each receipt entry in the replay response. `recomputed` is a method
+marker in this release, not uniformly a boolean. A string such as
+`"spine_population"` means that the native population was recalculated and
+compared. Do not require `recomputed is True` for those entries, or treat any
+unknown nonempty string as successful re-performance.
 
 ## Close status and retry
 
@@ -96,6 +102,12 @@ Sum `expected_count`, `actual_count`, `expected_cents` and `actual_cents` across
 the corresponding gate's `reconciliation.periods` for `before` and `after`.
 Get missing IDs from its exceptions. The fixture already contains the recovered
 source; an idempotent retry does not establish a new collection.
+
+`failed_close.publication_receipt_id` comes from `close/publication.json`'s
+`receipt_id`, also bound as `keys.close` in the challenge manifest. The top-level
+`receipt_id` returned by `tl challenge close` identifies the challenge proof;
+it is not the published close population's receipt. Confirm the publication's
+inputs match the recovered gate and use its published receipt in your answer.
 
 These are the frozen `tokenledger-challenge-answer/v1` spellings, checked against
 the [task contract](../../tl/challenge/engine.py) and

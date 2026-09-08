@@ -51,6 +51,11 @@ tl --db data/challenge/my-attempt/business/world.duckdb --artifact-root data/cha
 Reading a receipt is inspection. The second command is re-performance. State
 which you did. Each population's Parquet is under
 `business/runs/<receipt.run_id>/<receipt.result.output>.parquet`.
+For native yield and NRR replay, expect `verified: true` and
+`recomputed: "spine_population"` in the verified receipt entry. Derived bridges
+use `recomputed: true`; `false` means saved-evidence verification only. The
+[vocabulary](challenge/vocabulary.md#replay-attribution-and-nrr) explains these
+method markers.
 
 ## 2. Report July and explain the invoice
 
@@ -71,6 +76,18 @@ Use the returned `run_id` to inspect that population:
 
 ```sh
 python -c "import json; import pyarrow.parquet as pq; rows=pq.read_table('data/workflow/my-original/runs/RUN_ID/net_rev_per_mtok.parquet').to_pylist(); july=[r for r in rows if str(r['month'])=='2026-07-01']; print(json.dumps(july[:8],default=str,indent=2))"
+```
+
+`tl profile --json` writes one result object to **stdout** and progress to
+**stderr**. A terminal may display both together. Keep the streams separate when
+parsing: redirect stdout with `> profile.json` and stderr with
+`2> profile-progress.log` on the profile command, or use Python's
+`subprocess.run(..., capture_output=True, text=True)` and parse only `stdout`.
+Do not merge streams with `2>&1` or `stderr=subprocess.STDOUT` before JSON parsing.
+To read a redirected result portably, including Windows PowerShell's file encoding:
+
+```sh
+python -c "import json; from pathlib import Path; result=json.loads(Path('profile.json').read_bytes()); print(result['run_id'])"
 ```
 
 Replace `RUN_ID` with your run, not an example from another machine. Inspect
@@ -154,6 +171,14 @@ For the answer's before/after totals, sum each count/cent field across the
 corresponding `reconciliation.periods`. Use the
 [submission vocabulary](challenge/vocabulary.md#close-status-and-retry) to map
 the observed gate and retry results to the answer's exact status and unit strings.
+Read the publication receipt separately; it is also the manifest's `keys.close`:
+
+```sh
+python -c "import json; from pathlib import Path; p=json.loads(Path('data/challenge/my-attempt/close/publication.json').read_bytes()); print(json.dumps(p,indent=2))"
+```
+
+Use that file's `receipt_id` as `publication_receipt_id`. The close command's
+top-level `receipt_id` is the challenge proof, not the publication receipt.
 
 ## 5. Submit observations and retain rejection evidence
 
@@ -178,3 +203,21 @@ expect a FAIL scorecard identifying that field. Omit a task and expect FAIL.
 Altering source evidence should be rejected **before** a correctness receipt or
 scorecard exists. Never change the retained fixture, lower tolerances or repair
 a failure by copying over its evidence. Report unsuccessful tasks as observed.
+
+For a source-corruption probe, confirm the copied row actually changes before
+testing detection. The late invoice's `revenue_impact` is NULL; adding one to
+NULL still produces NULL. Instead, alter its non-null `feature_json.net_usd`
+and assert a before/after difference. A no-op mutation tests nothing.
+
+The following creates a separate synthetic copy and changes one cent in its
+late invoice. Run it once from the repository root; use a new name on a repeat.
+This intentionally bypasses the writer to simulate damaged source evidence.
+
+```sh
+python -c "import shutil; shutil.copytree('data/challenge/rc5','data/challenge/tamper-attempt')"
+python -c "import json,duckdb; from decimal import Decimal; c=duckdb.connect('data/challenge/tamper-attempt/business/world.duckdb'); key='demo:late-july:invoice'; sql='SELECT feature_json FROM stream.activity WHERE activity_id=?'; before=c.execute(sql,[key]).fetchall(); assert len(before)==1, 'Expected one invoice'; f=json.loads(before[0][0]); f['net_usd']=str(Decimal(f['net_usd'])+Decimal('0.01')); c.execute('UPDATE stream.activity SET feature_json=? WHERE activity_id=?',[json.dumps(f),key]); after=c.execute(sql,[key]).fetchall(); assert after!=before, 'Mutation did not change source'; c.close(); print('Copied invoice changed by one cent')"
+tl challenge grade data/challenge/tamper-attempt --answer docs/challenge/answer.blank.json --output data/score/tamper-attempt --json
+```
+
+The blank answer lets this probe exercise source verification before answer
+grading. Expect exit 1 with a source snapshot mismatch and no scorecard.

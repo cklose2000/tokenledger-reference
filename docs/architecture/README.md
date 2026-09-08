@@ -66,6 +66,8 @@ The current reader applies a [repeatable presentation transform](reader-receipt.
 to those preserved bytes. Its [browser checks](reader-check.json) bind the
 transformed artifact separately. The default hides advanced tools, shows full
 chapter notes and keeps the finder in the viewport when the page is scrolled.
+Selecting a single node also brings it into the page viewport when necessary;
+the native diagram camera and authored geometry remain intact.
 Use **Advanced tools** for the additional mapping controls.
 
 Rebuild both presentation assets with `python docs/presentation/build.py`;
