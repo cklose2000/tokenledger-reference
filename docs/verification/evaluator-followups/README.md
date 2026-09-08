@@ -20,6 +20,7 @@ The retained large-population checks remain separately scoped evidence.
   Revenue, tokens and yield use readable display precision; full values, fee
   bases, signed cents and receipt identities remain accessible. The original
   recording and timing are unchanged. Seeking back now labels the button correctly.
+  On desktop, the summary stays beside the console during playback and scrolling.
 - A blank answer, field schema and workflow guide distinguish ordinary reporting
   and replay from verification of the visible reference answer. The grader and
   its tolerances are unchanged.
@@ -33,6 +34,11 @@ The complete shipped suite passed: **72 tests**, with **79 existing deprecation
 warnings**, in **137.58 seconds** on this run. The executable, definitions,
 baseline, frozen challenge and recorded artifacts are unchanged from the
 reviewed candidate. Presentation generation is checked in Linux/Windows CI.
+
+After the desktop layout follow-up, the full suite passed again: 72 tests and
+79 warnings in 257.91 seconds, with other builder work occurring on the laptop.
+These are test-run observations, not a performance comparison. JSON Schema
+validation accepted the reference answer and rejected the blank placeholders.
 
 [Seventeen workflow commands](workflow-check.json) passed. Fresh original and
 current yield populations, and NRR v2/v3 populations, matched their retained
@@ -55,6 +61,8 @@ exact final transcript checks passed. These are bounded Chrome checks, not an
 exhaustive accessibility audit. Export formats were not rerun.
 
 ![Recorded values visible before playback](player-opening.png)
+
+![Summary stays beside the authentic final output](player-desktop-final.png)
 
 ![Finder remains in the viewport after scrolling and zooming](finder-scrolled-light.png)
 

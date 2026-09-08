@@ -84,6 +84,13 @@
       "warnings": 79
     },
     "source_fixture_and_capture_bytes": "unchanged",
-    "next_evaluator": "pending"
+    "next_evaluator": "pending",
+    "final_local_tests": {
+      "passed": 72,
+      "failed": 0,
+      "seconds": 257.91,
+      "warnings": 79
+    },
+    "desktop_summary": "persistent_beside_original_recording"
   }
 }
