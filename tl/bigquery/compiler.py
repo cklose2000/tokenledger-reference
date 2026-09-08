@@ -7,6 +7,7 @@ import re
 
 import sqlglot
 from sqlglot import exp
+from sqlglot.transforms import eliminate_semi_and_anti_joins
 
 from tl.stream import ValidationError
 from tl.stream.events import iso
@@ -58,6 +59,43 @@ def lower(tree):
             terms.append(term)
         order.set('expressions', terms)
     def transform(node):
+        if isinstance(node, exp.Select):
+            # GoogleSQL has no SEMI/ANTI JOIN syntax. EXISTS preserves the
+            # left-side multiplicity and SQL NULL semantics of the ON clause.
+            for index, join in enumerate(node.args.get('joins') or []):
+                keys = join.args.get('using')
+                if join.kind not in ('SEMI', 'ANTI') or not keys:
+                    continue
+                # Our source checks join one named left relation. A USING key
+                # after other joins needs scope qualification; never guess it.
+                left = node.args['from_'].this.alias_or_name
+                right = join.this.alias_or_name
+                if index or not left or not right or left == right:
+                    raise ValidationError('ambiguous native existence-join keys')
+                join.set('on', exp.and_(*[
+                    exp.column(key.name, table=left).eq(exp.column(key.name, table=right))
+                    for key in keys]))
+                join.set('using', None)
+            return eliminate_semi_and_anti_joins(node)
+        if isinstance(node, exp.Filter):
+            # GoogleSQL conditional aggregates ignore NULL rather than accepting
+            # DuckDB's aggregate FILTER clause. Preserve an empty SUM as NULL,
+            # COUNT as zero, DISTINCT, and a predicate's UNKNOWN result.
+            aggregate = node.this.copy()
+            if not isinstance(aggregate, (exp.Count, exp.Sum)):
+                raise ValidationError('unsupported filtered native aggregate')
+            predicate = node.expression.this
+            value = aggregate.this
+            distinct = isinstance(value, exp.Distinct)
+            if distinct:
+                if len(value.expressions) != 1:
+                    raise ValidationError('unsupported filtered aggregate arity')
+                value = value.expressions[0]
+            if isinstance(value, exp.Star):
+                value = exp.Literal.number(1)
+            conditional = exp.If(this=predicate.copy(), true=value.copy(), false=exp.Null())
+            aggregate.set('this', exp.Distinct(expressions=[conditional]) if distinct else conditional)
+            return aggregate
         if isinstance(node,exp.Interval) and isinstance(node.this,exp.Literal) and node.this.this.isdigit():
             node.set('this',exp.Literal.number(node.this.this))
         if isinstance(node,(exp.Add,exp.Sub)):
@@ -204,5 +242,9 @@ def compile_query(session, sql, binding):
     # Reject known untranslated constructs rather than emitting plausible SQL.
     forbidden = r'\b(FROM_JSON|SORT_ARRAY|ARRAY_DISTINCT|ARRAY_APPEND|INT128|HUGEINT|GENERATE_ARRAY)\s*(\(|\b)'
     if re.search(forbidden, result, re.I): raise ValidationError('unlowered native SQL construct')
+    if any(join.kind in ('SEMI', 'ANTI') for join in tree.find_all(exp.Join)):
+        raise ValidationError('unlowered native semi/anti join')
+    if tree.find(exp.Filter):
+        raise ValidationError('unlowered native aggregate filter')
     parse(result, 'bigquery')
     return result, ordered

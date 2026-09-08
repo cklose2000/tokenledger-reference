@@ -60,6 +60,128 @@ def register(cli,options,output):
         from tl.bigquery.access import inspect
         output(inspect(Binding.read(ctx.obj['bigquery_config'])),json_output)
 
+    @group.command('iam-plan')
+    @click.option('--operator',required=True,help='Explicit user:EMAIL privileged administrator.')
+    @options
+    def iam_plan(ctx,operator,json_output):
+        """Describe an isolated boundary fixture; no cloud calls."""
+        from tl.bigquery.iam import plan
+        output(plan(Binding.read(ctx.obj['bigquery_config']),operator),json_output)
+
+    @group.command('iam-bootstrap')
+    @click.option('--operator',required=True,help='Explicit user:EMAIL privileged administrator.')
+    @click.option('--output','directory',type=click.Path(path_type=Path),required=True)
+    @options
+    def iam_bootstrap(ctx,operator,directory,json_output):
+        """Create scoped boundary identities and a pinned stream; no acceptance inferred."""
+        from tl.bigquery.iam import bootstrap
+        output(bootstrap(Binding.read(ctx.obj['bigquery_config']),operator,directory),json_output)
+
+    @group.command('gateway-serve')
+    @click.option('--gateway-config',type=click.Path(exists=True,path_type=Path),required=True)
+    @click.option('--port',type=click.IntRange(1,65535),default=8080)
+    @options
+    def gateway_serve(ctx,gateway_config,port,json_output):
+        """Serve the authenticated, immutable-pinned append boundary."""
+        from tl.bigquery.gateway import GatewayConfig,serve
+        config=GatewayConfig.read(gateway_config)
+        output(dict(status='starting',gateway_identity=config.identity),json_output)
+        serve(config,port=port)
+
+    @group.command('gateway-package')
+    @click.option('--gateway-config',type=click.Path(exists=True,path_type=Path),required=True)
+    @click.option('--output','directory',type=click.Path(path_type=Path),required=True)
+    @options
+    def gateway_package(ctx,gateway_config,directory,json_output):
+        """Create an allowlisted container build context without credentials/history."""
+        from tl.bigquery.gateway_package import package
+        result=package(gateway_config,directory)
+        output(dict(status='packaged',gateway_identity=result['gateway_identity'],
+                    directory=str(directory),deployment='not_run'),json_output)
+
+    @group.command('gateway-probe')
+    @click.option('--gateway-config',type=click.Path(exists=True,path_type=Path),required=True)
+    @click.option('--url',required=True)
+    @click.option('--deployment',type=click.Path(exists=True,path_type=Path),required=True)
+    @click.option('--producer',required=True)
+    @click.option('--proof',multiple=True,nargs=2,type=(str,click.Path(exists=True,path_type=Path)))
+    @click.option('--output','directory',type=click.Path(path_type=Path),required=True)
+    @options
+    def gateway_probe(ctx,gateway_config,url,deployment,producer,proof,directory,json_output):
+        """Measure real authenticated append cases against independent source reads."""
+        import json
+        from tl.bigquery.gateway import GatewayConfig
+        from tl.bigquery.gateway_probe import run
+        from tl.stream.events import canonical
+        if len(dict(proof))!=len(proof): raise ValidationError('duplicate proof artifact name')
+        if {'deployment.json','gateway-config.json'}.intersection(dict(proof)):
+            raise ValidationError('proof artifact uses a reserved deployment or gateway name')
+        result=run(GatewayConfig.read(gateway_config),url,directory,
+            producer_principal=producer,deployment=json.loads(deployment.read_text(encoding='utf-8-sig')),
+            artifacts={'deployment.json':deployment,'gateway-config.json':gateway_config,**dict(proof)},
+            progress=lambda event:click.echo(canonical(event),err=True))
+        output(result,json_output)
+        if result.get('observed_status')!='gateway_cases_observed' or result.get('evidence_status')!='sealed':
+            raise click.exceptions.Exit(1)
+
+    @group.command('gateway-lifecycle')
+    @click.option('--gateway-config',type=click.Path(exists=True,path_type=Path),required=True)
+    @click.option('--url',required=True)
+    @click.option('--deployment',type=click.Path(exists=True,path_type=Path),required=True)
+    @click.option('--producer',required=True)
+    @click.option('--source-sha256',required=True)
+    @click.option('--finalize-pinned-stream',is_flag=True,help='Explicitly close the disposable pinned stream; no automatic replacement.')
+    @click.option('--proof',multiple=True,nargs=2,type=(str,click.Path(exists=True,path_type=Path)))
+    @click.option('--output','directory',type=click.Path(path_type=Path),required=True)
+    @options
+    def gateway_lifecycle(ctx,gateway_config,url,deployment,producer,source_sha256,finalize_pinned_stream,proof,directory,json_output):
+        """Close one explicitly disposable stream and verify a stale revision fails closed."""
+        import json
+        from tl.bigquery.gateway import GatewayConfig
+        from tl.bigquery.gateway_lifecycle import run
+        from tl.stream.events import canonical
+        if len(dict(proof))!=len(proof): raise ValidationError('duplicate proof artifact name')
+        if {'deployment.json','gateway-config.json'}.intersection(dict(proof)):
+            raise ValidationError('proof artifact uses a reserved deployment or gateway name')
+        result=run(GatewayConfig.read(gateway_config),url,directory,
+            expected_source_sha256=source_sha256,authorize_finalize=finalize_pinned_stream,
+            producer_principal=producer,deployment=json.loads(deployment.read_text(encoding='utf-8-sig')),
+            artifacts={'deployment.json':deployment,'gateway-config.json':gateway_config,**dict(proof)},
+            progress=lambda event:click.echo(canonical(event),err=True))
+        output(result,json_output)
+        if result.get('observed_status')!='closed_stream_refusal_observed' or result.get('evidence_status')!='sealed':
+            raise click.exceptions.Exit(1)
+
+    @group.command('denials')
+    @click.option('--table-created-at',required=True)
+    @click.option('--source-sha256',required=True)
+    @click.option('--authorities',type=click.Path(exists=True,path_type=Path),required=True)
+    @click.option('--copy-created-at')
+    @click.option('--proof',multiple=True,nargs=2,type=(str,click.Path(exists=True,path_type=Path)))
+    @click.option('--output','directory',type=click.Path(path_type=Path),required=True)
+    @options
+    def denials(ctx,table_created_at,source_sha256,authorities,copy_created_at,proof,directory,json_output):
+        """Attempt native mutations only on a pinned disposable fixture; seal evidence."""
+        from tl.bigquery.boundary_evidence import run_denials
+        from tl.stream.events import canonical
+        if len(dict(proof))!=len(proof): raise ValidationError('duplicate proof artifact name')
+        result=run_denials(Binding.read(ctx.obj['bigquery_config']),directory,
+            expected_creation_time=table_created_at,expected_source_sha256=source_sha256,
+            authorities_file=authorities,copy_source_creation_time=copy_created_at,
+            artifacts=dict(proof),progress=lambda event:click.echo(canonical(event),err=True))
+        output(result,json_output)
+        if result.get('observed_status')!='refusals_observed' or result.get('evidence_status')!='sealed':
+            raise click.exceptions.Exit(1)
+
+    @group.command('boundary-verify')
+    @click.argument('directory',type=click.Path(exists=True,path_type=Path))
+    @click.argument('receipt_id')
+    @options
+    def boundary_verify(ctx,directory,receipt_id,json_output):
+        """Verify a sealed boundary observation offline; never repeat mutation probes."""
+        from tl.bigquery.boundary_evidence import verify
+        output(verify(receipt_id,directory),json_output)
+
     @group.command('append')
     @click.option('--state',type=click.Path(path_type=Path),required=True)
     @options
@@ -123,3 +245,8 @@ def register(cli,options,output):
         def progress(value): click.echo(canonical(value),err=True)
         from tl.stream.events import canonical
         output(suite(Binding.read(config),ctx.obj['db'],directory,executable=baseline_executable,progress=progress),json_output)
+
+    from tl.bigquery.baseline_cli import register as register_baseline
+    register_baseline(group, options, output)
+    from tl.bigquery.baseline_suite_cli import register as register_baseline_suite
+    register_baseline_suite(group, options, output)

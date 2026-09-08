@@ -65,15 +65,16 @@ class Client:
             self.jobs.append(details)
         return table, details
 
-    def provision(self):
+    def provision(self, *, fresh=False):
         from google.cloud import bigquery
         from tl.bigquery.schema import FIELDS
+        from tl.bigquery.contract import validate_source_table
         if self.binding.query_principal:
             raise ValidationError('provision requires an explicit operator scratch binding; a reporting identity cannot administer datasets')
         dataset=bigquery.Dataset(self.binding.project+'.'+self.binding.dataset)
         dataset.location=self.binding.location
         # Create, never update an existing dataset's policy/location/expiration.
-        dataset=self.sdk.create_dataset(dataset, exists_ok=True)
+        dataset=self.sdk.create_dataset(dataset, exists_ok=not fresh)
         if dataset.location.lower()!=self.binding.location.lower():
             raise ValidationError('existing dataset location differs from binding')
         fields=[]
@@ -85,13 +86,13 @@ class Client:
         table.time_partitioning=bigquery.TimePartitioning(field='ts', type_='DAY')
         table.clustering_fields=['customer','activity']
         table.description='Synthetic ActivitySchema v2; validated append boundary; no CDC'
-        actual=self.sdk.create_table(table, exists_ok=True)
-        if ([f.to_api_repr() for f in actual.schema]!=[f.to_api_repr() for f in fields]
-                or actual.time_partitioning.field!='ts'
-                or actual.time_partitioning.type_!='DAY'
-                or actual.clustering_fields!=['customer','activity']
-                or actual.table_constraints is not None):
-            raise ValidationError('existing stream physical contract differs; no table alteration attempted')
+        actual=self.sdk.create_table(table, exists_ok=not fresh)
+        validate_source_table(actual)
         return dict(status='provisioned',binding_identity=self.binding.identity,
             table=self.binding.table,physical_columns=14,reporting_intermediates=0,
             authority_mode=self.binding.authority_mode,iam_negative_tests='not_run',native_parity='not_run')
+
+    def validate_source(self):
+        """Fresh metadata preflight; no query, credential change or table mutation."""
+        from tl.bigquery.contract import validate_source_table
+        validate_source_table(self.sdk.get_table(self.binding.table))

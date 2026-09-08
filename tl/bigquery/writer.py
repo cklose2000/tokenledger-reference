@@ -83,6 +83,10 @@ def append(binding, db, state_path, *, client=None, storage=None):
     job_start=len(client.jobs)
     state_path=Path(state_path)
     with ledger_lock(state_path):
+        # Provisioning is not an enduring permission or retention guarantee.
+        # Recheck current source metadata on every append, before any source
+        # query, write-stream creation or append request can be submitted.
+        client.validate_source()
         existing,_=client.query(f'SELECT * FROM `{binding.table}` ORDER BY _stream_position',label='append_prefix')
         # Compare normalized JSON and exact cents, never merely the latest ID.
         if len(existing)>len(table): raise ValidationError('cloud source is ahead of the submitted local stream')

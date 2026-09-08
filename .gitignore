@@ -41,3 +41,6 @@ docs/benchmarks/phase-3b/*.pending.json*
 docs/benchmarks/duckdb-native-*/**/*.oslock
 docs/benchmarks/duckdb-native-*/**/*.lock
 docs/benchmarks/duckdb-native-*/**/*.pending.json*
+docs/benchmarks/evaluator-release/*.oslock
+docs/benchmarks/evaluator-release/*.lock
+docs/benchmarks/evaluator-release/*.pending.json*
