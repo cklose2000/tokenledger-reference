@@ -13,7 +13,16 @@ grading against this release's executable.
    definition's replay.
 4. Diagnose the incomplete-source close and demonstrate its bounded recovery.
 
-Use a copy of the answer template for your submission. Run the application
+## Learn the workflow
+
+Follow the [ordinary reporting and replay interfaces](workflow.md) to construct
+a submission from source bindings, cutoffs and observed populations. Start with
+the [blank answer](challenge/answer.blank.json), its
+[field schema](challenge/answer.schema.json) and
+[submission vocabulary](challenge/vocabulary.md). This route supplies commands and
+field locations without filling the business values for you.
+
+Use a copy of the blank answer for your submission. Run the application
 grader; an agent's own PASS statement is not evidence. Keep failed or incomplete
 tasks in the resulting scorecard.
 
@@ -21,6 +30,25 @@ Follow the working-copy command in `AGENTS.md` before grading. The grader
 retains a new timing observation in that copy's receipt ledger, so your attempt
 does not modify the retained release fixture. A repeated identical answer has
 the same correctness receipt; its elapsed-time observation is separate.
+
+## Verify the reference
+
+This second route deliberately reveals the solution. `tl challenge task`
+re-performs the evidence and prints the exact required facts for a task.
+`expected.json` is the complete visible reference answer. Grading it verifies
+the reference path; it does not show that you constructed an answer yourself.
+
+```sh
+python -c "import shutil; shutil.copytree('data/challenge/rc5', 'data/challenge/my-reference')"
+tl challenge task data/challenge/my-reference july_yield --json
+tl challenge grade data/challenge/my-reference --answer data/challenge/my-reference/expected.json --output data/score/my-reference --json
+```
+
+Other task names are `late_invoice`, `nrr_definition` and `failed_close`.
+Retain a wrong-cent and missing-task FAIL on separate attempts. Invalid source
+evidence must be rejected before a scorecard exists. The
+[workflow guide](workflow.md#5-submit-observations-and-retain-rejection-evidence)
+explains these distinct boundaries.
 
 This is an open-book reproduction and usability exercise with visible expected
 answers. Copying those answers can demonstrate that the grader runs; it cannot

@@ -9,6 +9,11 @@ Reorganizes the reader path around the demo, Run / Understand / Assess, and a
 standalone architecture export. See `release-status.json` for actual acceptance
 and publication state.
 
+Incorporates two agents' usability reviews and returning checks: clearer
+adoption boundaries, a receipt-derived summary beside the recording, an
+ordinary-interface challenge guide and repaired offscreen node selection.
+The final field clarifications preserve the executable and grading contract.
+
 ## v0.2.0-rc.4 (2026-09-07)
 
 Locally assembled release candidate with synthetic stream, native reporting,

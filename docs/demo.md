@@ -1,5 +1,20 @@
 # One invoice changes July. The original result still reproduces.
 
+The table summarizes the retained recorded run before playback. Amounts are net
+of discounts and marketplace fees; display precision is rounded only here.
+
+<!-- SUMMARY_START -->
+| Measure | Original July | With late evidence | Change |
+|---|---:|---:|---:|
+| Recognized usage revenue | $30,543.74 | $33,543.74 | +$3,000.00 |
+| Raw processed tokens | 19,210,131,257 | 19,210,131,257 | 0 |
+| Revenue per million tokens | $1.590 | $1.746 | +$0.156 |
+
+$3,000.00 debit to receivable (1100); $3,000.00 credit to usage revenue (4000).
+
+Derived from yield receipt `mr-6d034188f55d99445ea47b08127c5a74` and account receipt `mr-9df23dbedb0794a5e5c35d9b816f654e`. [Exact values and source bindings](assets/demo-summary.json).
+<!-- SUMMARY_END -->
+
 ![Actual recorded console output: generate, report, admit late evidence, explain the bridge, reproduce the original](assets/recording/demo.gif)
 
 The captured command is `tl demo --directory data/demo/recording`. The fixture

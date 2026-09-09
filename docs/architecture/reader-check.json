@@ -1,0 +1,90 @@
+{
+  "checks": [
+    {
+      "width": 1280,
+      "height": 720,
+      "scrollWidth": 1265,
+      "scrollHeight": 899,
+      "reader": true,
+      "note": "Step through curated paths without changing the source diagram."
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "scrollWidth": 1440,
+      "scrollHeight": 900,
+      "reader": true,
+      "note": "Step through curated paths without changing the source diagram."
+    },
+    {
+      "width": 1600,
+      "height": 1000,
+      "scrollWidth": 1600,
+      "scrollHeight": 1000,
+      "reader": true,
+      "note": "Step through curated paths without changing the source diagram."
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "scrollWidth": 1920,
+      "scrollHeight": 1080,
+      "reader": true,
+      "note": "Step through curated paths without changing the source diagram."
+    },
+    {
+      "width": 2048,
+      "height": 1320,
+      "scrollWidth": 2048,
+      "scrollHeight": 1320,
+      "reader": true,
+      "note": "Step through curated paths without changing the source diagram."
+    },
+    {
+      "hidden": false,
+      "headingY": 37.1875,
+      "closeY": 28.1875,
+      "bottom": 64.1875,
+      "zoom": "125%",
+      "text": "FIND A NODE\n\u00d7\n\u2315\n/\nActivity stream\nOne physical source\n14 fields \u00b7 append-only \u00b7 event_stream\nLogical projections\nQuery-time calculation\nTyped values \u00b7 temporal joins \u00b7 query_logic\nVersioned definitions\nExplicit policy\nScope \u00b7 formula \u00b7 exclusions \u00b7 versioned_policy\nReported result\nPeriod + units + fee basis\nRecognized USD / Mtok \u00b7 reported_number\nReceipt\nOriginal-result replay\nInputs \u00b7 method \u00b7 execution \u00b7 result_receipt\nConventional baseline\ndbt comparison path\nIndependent recognition \u00b7 conventional_baseline\n\n6 nodes"
+    },
+    {
+      "chapter_notes": [
+        {
+          "text": "One physical stream supplies query-time calculation. Results retain units, cutoffs and receipts.",
+          "hidden": false,
+          "scroll": 35,
+          "client": 35
+        },
+        {
+          "text": "Late evidence changes current knowledge. The original definition and snapshot remain reproducible.",
+          "hidden": false,
+          "scroll": 35,
+          "client": 35
+        },
+        {
+          "text": "The baseline calculates recognition independently from the same economic events. Thirteen outputs are reconciled.",
+          "hidden": false,
+          "scroll": 35,
+          "client": 35
+        },
+        {
+          "text": "Synthetic reference implementation. Agent-assisted replay passed; general production admission remains separate.",
+          "hidden": false,
+          "scroll": 35,
+          "client": 35
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "scrollWidth": 375,
+      "headingY": 37.1875
+    }
+  ],
+  "player_sha256": "7113b5ff9e10248473cd40a705e0a25aeacf1a36d048e2532fb4afa2c91849e6",
+  "architecture_sha256": "2f04ed3d17d866b66b07b13b442d0dfaac7a4b809f18347b410e3922a37a3295",
+  "selection_checks": "../verification/claude-followups/finder-check.json",
+  "selection_cases": 16,
+  "visual_review": "builder inspected both selection screenshots; exact reviewer failure not reproduced in Chrome"
+}

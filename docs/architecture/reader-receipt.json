@@ -1,0 +1,15 @@
+{
+  "schema_version": "tokenledger-presentation-transform/v1",
+  "scope": "Repeatable viewer-only transform; unchanged authored graph and original Archify export",
+  "upstream_sha256": "1105835279de1a29a23e436fb51d73dabf9f3b054973634aeb8a8640950c6d01",
+  "output_sha256": "2f04ed3d17d866b66b07b13b442d0dfaac7a4b809f18347b410e3922a37a3295",
+  "specification_sha256": "1cc95a8616c540e98d37c3b57e9fe5ce04c3666f2c2d442a9fd72e95d001a335",
+  "inputs": {
+    "build.py": "e8b76c243d1981390d58ccdad66b4f1fd74027cb1ee17a8488ad86beffcde36b",
+    "architecture-reader.css": "963d61ddcf6ae9e9368efd88a1cc1ccfba1c1052e29bf60bef089a31d48c9ac9",
+    "architecture-reader.js": "5f13f18010e2ce72a66a61d7c462797c680e680a9cc1cf53dfbcd1672a4f9d42"
+  },
+  "upstream_artifact_receipt": "artifact-receipt.json",
+  "current_browser_evidence": "reader-check.json",
+  "distinction": "Original Archify delivery receipt covers the upstream export. Browser checks bind this transformed artifact separately."
+}

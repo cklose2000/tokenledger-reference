@@ -1,0 +1,45 @@
+/* Reader chrome only. Authored SVG geometry and canonical exports stay intact. */
+html:not([data-reader-advanced="true"]) .preset-wrap,
+html:not([data-reader-advanced="true"]) #btn-route-probe,
+html:not([data-reader-advanced="true"]) #btn-overview-map,
+html:not([data-reader-advanced="true"]) #btn-semantic-lens,
+html:not([data-reader-advanced="true"]) #btn-diagram-guide,
+html:not([data-reader-advanced="true"]) .guided-view-chapter-delta,
+html:not([data-reader-advanced="true"]) .guided-view-handoff,
+html:not([data-reader-advanced="true"]) #focus-kind,
+html:not([data-reader-advanced="true"]) #focus-context { display: none !important; }
+.guided-view-copy strong, .guided-view-copy small,
+.guided-view-chapter strong, .guided-view-chapter small,
+.semantic-passport-detail, .relationship-lens-title,
+.node-finder-result strong, .node-finder-result small {
+  white-space: normal; overflow: visible; text-overflow: clip;
+}
+.guided-view-copy small { font-size: .75rem; line-height: 1.45; }
+.guided-views { align-items: center; }
+.node-finder {
+  position: fixed; inset: 16px auto auto 16px; z-index: 10000;
+  width: min(25rem, calc(100vw - 32px));
+  max-height: calc(100dvh - 32px);
+}
+.node-finder-head, .node-finder-search, .node-finder-status { flex-shrink: 0; }
+.node-finder-head strong, .node-finder-input { font-size: .875rem; }
+.node-finder-close { min-width: 36px; min-height: 36px; }
+.node-finder-results { max-height: min(26rem, calc(100dvh - 190px)); }
+.node-finder-result strong { font-size: .875rem; }
+.node-finder-result small { font-size: .75rem; }
+#btn-node-finder { gap: .35rem; }
+#reader-intro { font-size: .8125rem; color: var(--text-muted); margin: 0 0 .8rem; }
+#reader-intro a { color: var(--text); text-underline-offset: 3px; }
+.header { margin-bottom: .6rem; }
+.cards { margin-top: .8rem; }
+.card { padding: .75rem; }
+.card li { margin-bottom: .2rem; }
+.card-header { margin-bottom: .35rem; }
+.guided-view-chapter span { white-space: normal; overflow: visible; text-overflow: clip; }
+.guided-view-chapter { grid-template-columns: 1.55rem minmax(0, 1fr); }
+#guided-view-note { display: block !important; }
+#guided-view-note[hidden] { display: none !important; }
+#reader-intro { margin-bottom: 0; }
+.guided-view-copy { min-width: 0; }
+@media(min-width:768px) { body { padding-block: .75rem; } }
+@media print { #reader-intro { display: none; } }

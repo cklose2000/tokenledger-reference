@@ -1,0 +1,1200 @@
+{
+  "type": "object",
+  "required": [
+    "fixture_id",
+    "schema_version",
+    "tasks"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "fixture_id": {
+      "type": "string",
+      "pattern": "^(?!__REPLACE).*$",
+      "minLength": 1
+    },
+    "schema_version": {
+      "const": "tokenledger-challenge-answer/v1"
+    },
+    "tasks": {
+      "type": "object",
+      "required": [
+        "failed_close",
+        "july_yield",
+        "late_invoice",
+        "nrr_definition"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "failed_close": {
+          "type": "object",
+          "required": [
+            "after",
+            "after_status",
+            "before",
+            "before_status",
+            "missing_activity_ids",
+            "publication_receipt_id",
+            "retry_basis",
+            "retry_inserted",
+            "retry_publication",
+            "source_manifest_sha256",
+            "units"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "after": {
+              "type": "object",
+              "required": [
+                "actual_cents",
+                "actual_count",
+                "expected_cents",
+                "expected_count"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "actual_cents": {
+                  "type": "integer"
+                },
+                "actual_count": {
+                  "type": "integer"
+                },
+                "expected_cents": {
+                  "type": "integer"
+                },
+                "expected_count": {
+                  "type": "integer"
+                }
+              }
+            },
+            "after_status": {
+              "type": "string",
+              "pattern": "^(?!__REPLACE).*$",
+              "minLength": 1
+            },
+            "before": {
+              "type": "object",
+              "required": [
+                "actual_cents",
+                "actual_count",
+                "expected_cents",
+                "expected_count"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "actual_cents": {
+                  "type": "integer"
+                },
+                "actual_count": {
+                  "type": "integer"
+                },
+                "expected_cents": {
+                  "type": "integer"
+                },
+                "expected_count": {
+                  "type": "integer"
+                }
+              }
+            },
+            "before_status": {
+              "type": "string",
+              "pattern": "^(?!__REPLACE).*$",
+              "minLength": 1
+            },
+            "missing_activity_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^(?!__REPLACE).*$",
+                "minLength": 1
+              }
+            },
+            "publication_receipt_id": {
+              "type": "string",
+              "pattern": "^(?!__REPLACE).*$",
+              "minLength": 1
+            },
+            "retry_basis": {
+              "type": "string",
+              "pattern": "^(?!__REPLACE).*$",
+              "minLength": 1
+            },
+            "retry_inserted": {
+              "type": "integer"
+            },
+            "retry_publication": {
+              "type": "string",
+              "pattern": "^(?!__REPLACE).*$",
+              "minLength": 1
+            },
+            "source_manifest_sha256": {
+              "type": "string",
+              "pattern": "^(?!__REPLACE).*$",
+              "minLength": 1
+            },
+            "units": {
+              "type": "string",
+              "pattern": "^(?!__REPLACE).*$",
+              "minLength": 1
+            }
+          }
+        },
+        "july_yield": {
+          "type": "object",
+          "required": [
+            "denominator",
+            "original_receipt_id",
+            "replay_status",
+            "revenue_basis",
+            "units",
+            "values"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "denominator": {
+              "type": "string",
+              "pattern": "^(?!__REPLACE).*$",
+              "minLength": 1
+            },
+            "original_receipt_id": {
+              "type": "string",
+              "pattern": "^(?!__REPLACE).*$",
+              "minLength": 1
+            },
+            "replay_status": {
+              "type": "string",
+              "pattern": "^(?!__REPLACE).*$",
+              "minLength": 1
+            },
+            "revenue_basis": {
+              "type": "string",
+              "pattern": "^(?!__REPLACE).*$",
+              "minLength": 1
+            },
+            "units": {
+              "type": "object",
+              "required": [
+                "channel_fee_cents",
+                "net_of_discounts_and_fees_per_mtok",
+                "net_of_discounts_per_mtok",
+                "net_revenue_cents",
+                "revenue_before_channel_fees_cents",
+                "tokens"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "channel_fee_cents": {
+                  "type": "string",
+                  "pattern": "^(?!__REPLACE).*$",
+                  "minLength": 1
+                },
+                "net_of_discounts_and_fees_per_mtok": {
+                  "type": "string",
+                  "pattern": "^(?!__REPLACE).*$",
+                  "minLength": 1
+                },
+                "net_of_discounts_per_mtok": {
+                  "type": "string",
+                  "pattern": "^(?!__REPLACE).*$",
+                  "minLength": 1
+                },
+                "net_revenue_cents": {
+                  "type": "string",
+                  "pattern": "^(?!__REPLACE).*$",
+                  "minLength": 1
+                },
+                "revenue_before_channel_fees_cents": {
+                  "type": "string",
+                  "pattern": "^(?!__REPLACE).*$",
+                  "minLength": 1
+                },
+                "tokens": {
+                  "type": "string",
+                  "pattern": "^(?!__REPLACE).*$",
+                  "minLength": 1
+                }
+              }
+            },
+            "values": {
+              "type": "object",
+              "required": [
+                "channel_fee_cents",
+                "net_of_discounts_and_fees_per_mtok",
+                "net_of_discounts_per_mtok",
+                "net_revenue_cents",
+                "revenue_before_channel_fees_cents",
+                "tokens"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "channel_fee_cents": {
+                  "type": "integer"
+                },
+                "net_of_discounts_and_fees_per_mtok": {
+                  "type": "string",
+                  "pattern": "^(?!__REPLACE).*$",
+                  "minLength": 1
+                },
+                "net_of_discounts_per_mtok": {
+                  "type": "string",
+                  "pattern": "^(?!__REPLACE).*$",
+                  "minLength": 1
+                },
+                "net_revenue_cents": {
+                  "type": "integer"
+                },
+                "revenue_before_channel_fees_cents": {
+                  "type": "integer"
+                },
+                "tokens": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        },
+        "late_invoice": {
+          "type": "object",
+          "required": [
+            "account_bridge_receipt_id",
+            "attribution_status",
+            "current",
+            "current_known_at",
+            "delta",
+            "original",
+            "original_known_at",
+            "responsible_activity_ids",
+            "unchanged",
+            "units",
+            "yield_bridge_receipt_id"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "account_bridge_receipt_id": {
+              "type": "string",
+              "pattern": "^(?!__REPLACE).*$",
+              "minLength": 1
+            },
+            "attribution_status": {
+              "type": "string",
+              "pattern": "^(?!__REPLACE).*$",
+              "minLength": 1
+            },
+            "current": {
+              "type": "object",
+              "required": [
+                "channel_fee_cents",
+                "net_of_discounts_and_fees_per_mtok",
+                "net_of_discounts_per_mtok",
+                "net_revenue_cents",
+                "revenue_before_channel_fees_cents",
+                "tokens"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "channel_fee_cents": {
+                  "type": "integer"
+                },
+                "net_of_discounts_and_fees_per_mtok": {
+                  "type": "string",
+                  "pattern": "^(?!__REPLACE).*$",
+                  "minLength": 1
+                },
+                "net_of_discounts_per_mtok": {
+                  "type": "string",
+                  "pattern": "^(?!__REPLACE).*$",
+                  "minLength": 1
+                },
+                "net_revenue_cents": {
+                  "type": "integer"
+                },
+                "revenue_before_channel_fees_cents": {
+                  "type": "integer"
+                },
+                "tokens": {
+                  "type": "integer"
+                }
+              }
+            },
+            "current_known_at": {
+              "type": "string",
+              "pattern": "^(?!__REPLACE).*$",
+              "minLength": 1
+            },
+            "delta": {
+              "type": "object",
+              "required": [
+                "channel_fee_cents",
+                "net_of_discounts_and_fees_per_mtok",
+                "net_of_discounts_per_mtok",
+                "net_revenue_cents",
+                "revenue_before_channel_fees_cents",
+                "tokens"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "channel_fee_cents": {
+                  "type": "integer"
+                },
+                "net_of_discounts_and_fees_per_mtok": {
+                  "type": "string",
+                  "pattern": "^(?!__REPLACE).*$",
+                  "minLength": 1
+                },
+                "net_of_discounts_per_mtok": {
+                  "type": "string",
+                  "pattern": "^(?!__REPLACE).*$",
+                  "minLength": 1
+                },
+                "net_revenue_cents": {
+                  "type": "integer"
+                },
+                "revenue_before_channel_fees_cents": {
+                  "type": "integer"
+                },
+                "tokens": {
+                  "type": "integer"
+                }
+              }
+            },
+            "original": {
+              "type": "object",
+              "required": [
+                "channel_fee_cents",
+                "net_of_discounts_and_fees_per_mtok",
+                "net_of_discounts_per_mtok",
+                "net_revenue_cents",
+                "revenue_before_channel_fees_cents",
+                "tokens"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "channel_fee_cents": {
+                  "type": "integer"
+                },
+                "net_of_discounts_and_fees_per_mtok": {
+                  "type": "string",
+                  "pattern": "^(?!__REPLACE).*$",
+                  "minLength": 1
+                },
+                "net_of_discounts_per_mtok": {
+                  "type": "string",
+                  "pattern": "^(?!__REPLACE).*$",
+                  "minLength": 1
+                },
+                "net_revenue_cents": {
+                  "type": "integer"
+                },
+                "revenue_before_channel_fees_cents": {
+                  "type": "integer"
+                },
+                "tokens": {
+                  "type": "integer"
+                }
+              }
+            },
+            "original_known_at": {
+              "type": "string",
+              "pattern": "^(?!__REPLACE).*$",
+              "minLength": 1
+            },
+            "responsible_activity_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^(?!__REPLACE).*$",
+                "minLength": 1
+              }
+            },
+            "unchanged": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^(?!__REPLACE).*$",
+                "minLength": 1
+              }
+            },
+            "units": {
+              "type": "object",
+              "required": [
+                "channel_fee_cents",
+                "net_of_discounts_and_fees_per_mtok",
+                "net_of_discounts_per_mtok",
+                "net_revenue_cents",
+                "revenue_before_channel_fees_cents",
+                "tokens"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "channel_fee_cents": {
+                  "type": "string",
+                  "pattern": "^(?!__REPLACE).*$",
+                  "minLength": 1
+                },
+                "net_of_discounts_and_fees_per_mtok": {
+                  "type": "string",
+                  "pattern": "^(?!__REPLACE).*$",
+                  "minLength": 1
+                },
+                "net_of_discounts_per_mtok": {
+                  "type": "string",
+                  "pattern": "^(?!__REPLACE).*$",
+                  "minLength": 1
+                },
+                "net_revenue_cents": {
+                  "type": "string",
+                  "pattern": "^(?!__REPLACE).*$",
+                  "minLength": 1
+                },
+                "revenue_before_channel_fees_cents": {
+                  "type": "string",
+                  "pattern": "^(?!__REPLACE).*$",
+                  "minLength": 1
+                },
+                "tokens": {
+                  "type": "string",
+                  "pattern": "^(?!__REPLACE).*$",
+                  "minLength": 1
+                }
+              }
+            },
+            "yield_bridge_receipt_id": {
+              "type": "string",
+              "pattern": "^(?!__REPLACE).*$",
+              "minLength": 1
+            }
+          }
+        },
+        "nrr_definition": {
+          "type": "object",
+          "required": [
+            "changed_lenses",
+            "current",
+            "current_definition",
+            "current_floor_usd",
+            "current_receipt_id",
+            "old_replay_status",
+            "original",
+            "original_definition",
+            "original_floor_usd",
+            "original_receipt_id",
+            "source_and_cutoffs",
+            "unchanged_lenses",
+            "units"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "changed_lenses": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^(?!__REPLACE).*$",
+                "minLength": 1
+              }
+            },
+            "current": {
+              "type": "object",
+              "required": [
+                "base_t12m",
+                "floor_100k",
+                "subscription_inclusive",
+                "t3m_annualized"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "base_t12m": {
+                  "type": "object",
+                  "required": [
+                    "all_base_cents",
+                    "base_revenue_cents",
+                    "churn_cents",
+                    "churn_share",
+                    "cohort_customers",
+                    "cohort_revenue_coverage",
+                    "contraction_cents",
+                    "contraction_share",
+                    "current_revenue_cents",
+                    "expansion_cents",
+                    "expansion_share",
+                    "month",
+                    "nrr",
+                    "status"
+                  ],
+                  "additionalProperties": false,
+                  "properties": {
+                    "all_base_cents": {
+                      "type": "integer"
+                    },
+                    "base_revenue_cents": {
+                      "type": "integer"
+                    },
+                    "churn_cents": {
+                      "type": "integer"
+                    },
+                    "churn_share": {
+                      "type": "string",
+                      "pattern": "^(?!__REPLACE).*$",
+                      "minLength": 1
+                    },
+                    "cohort_customers": {
+                      "type": "integer"
+                    },
+                    "cohort_revenue_coverage": {
+                      "type": "string",
+                      "pattern": "^(?!__REPLACE).*$",
+                      "minLength": 1
+                    },
+                    "contraction_cents": {
+                      "type": "integer"
+                    },
+                    "contraction_share": {
+                      "type": "string",
+                      "pattern": "^(?!__REPLACE).*$",
+                      "minLength": 1
+                    },
+                    "current_revenue_cents": {
+                      "type": "integer"
+                    },
+                    "expansion_cents": {
+                      "type": "integer"
+                    },
+                    "expansion_share": {
+                      "type": "string",
+                      "pattern": "^(?!__REPLACE).*$",
+                      "minLength": 1
+                    },
+                    "month": {
+                      "type": "string",
+                      "pattern": "^(?!__REPLACE).*$",
+                      "minLength": 1
+                    },
+                    "nrr": {
+                      "type": "string",
+                      "pattern": "^(?!__REPLACE).*$",
+                      "minLength": 1
+                    },
+                    "status": {
+                      "type": "string",
+                      "pattern": "^(?!__REPLACE).*$",
+                      "minLength": 1
+                    }
+                  }
+                },
+                "floor_100k": {
+                  "type": "object",
+                  "required": [
+                    "all_base_cents",
+                    "base_revenue_cents",
+                    "churn_cents",
+                    "churn_share",
+                    "cohort_customers",
+                    "cohort_revenue_coverage",
+                    "contraction_cents",
+                    "contraction_share",
+                    "current_revenue_cents",
+                    "expansion_cents",
+                    "expansion_share",
+                    "month",
+                    "nrr",
+                    "status"
+                  ],
+                  "additionalProperties": false,
+                  "properties": {
+                    "all_base_cents": {
+                      "type": "integer"
+                    },
+                    "base_revenue_cents": {
+                      "type": "integer"
+                    },
+                    "churn_cents": {
+                      "type": "integer"
+                    },
+                    "churn_share": {
+                      "type": "string",
+                      "pattern": "^(?!__REPLACE).*$",
+                      "minLength": 1
+                    },
+                    "cohort_customers": {
+                      "type": "integer"
+                    },
+                    "cohort_revenue_coverage": {
+                      "type": "string",
+                      "pattern": "^(?!__REPLACE).*$",
+                      "minLength": 1
+                    },
+                    "contraction_cents": {
+                      "type": "integer"
+                    },
+                    "contraction_share": {
+                      "type": "string",
+                      "pattern": "^(?!__REPLACE).*$",
+                      "minLength": 1
+                    },
+                    "current_revenue_cents": {
+                      "type": "integer"
+                    },
+                    "expansion_cents": {
+                      "type": "integer"
+                    },
+                    "expansion_share": {
+                      "type": "string",
+                      "pattern": "^(?!__REPLACE).*$",
+                      "minLength": 1
+                    },
+                    "month": {
+                      "type": "string",
+                      "pattern": "^(?!__REPLACE).*$",
+                      "minLength": 1
+                    },
+                    "nrr": {
+                      "type": "string",
+                      "pattern": "^(?!__REPLACE).*$",
+                      "minLength": 1
+                    },
+                    "status": {
+                      "type": "string",
+                      "pattern": "^(?!__REPLACE).*$",
+                      "minLength": 1
+                    }
+                  }
+                },
+                "subscription_inclusive": {
+                  "type": "object",
+                  "required": [
+                    "all_base_cents",
+                    "base_revenue_cents",
+                    "churn_cents",
+                    "churn_share",
+                    "cohort_customers",
+                    "cohort_revenue_coverage",
+                    "contraction_cents",
+                    "contraction_share",
+                    "current_revenue_cents",
+                    "expansion_cents",
+                    "expansion_share",
+                    "month",
+                    "nrr",
+                    "status"
+                  ],
+                  "additionalProperties": false,
+                  "properties": {
+                    "all_base_cents": {
+                      "type": "integer"
+                    },
+                    "base_revenue_cents": {
+                      "type": "integer"
+                    },
+                    "churn_cents": {
+                      "type": "integer"
+                    },
+                    "churn_share": {
+                      "type": "string",
+                      "pattern": "^(?!__REPLACE).*$",
+                      "minLength": 1
+                    },
+                    "cohort_customers": {
+                      "type": "integer"
+                    },
+                    "cohort_revenue_coverage": {
+                      "type": "string",
+                      "pattern": "^(?!__REPLACE).*$",
+                      "minLength": 1
+                    },
+                    "contraction_cents": {
+                      "type": "integer"
+                    },
+                    "contraction_share": {
+                      "type": "string",
+                      "pattern": "^(?!__REPLACE).*$",
+                      "minLength": 1
+                    },
+                    "current_revenue_cents": {
+                      "type": "integer"
+                    },
+                    "expansion_cents": {
+                      "type": "integer"
+                    },
+                    "expansion_share": {
+                      "type": "string",
+                      "pattern": "^(?!__REPLACE).*$",
+                      "minLength": 1
+                    },
+                    "month": {
+                      "type": "string",
+                      "pattern": "^(?!__REPLACE).*$",
+                      "minLength": 1
+                    },
+                    "nrr": {
+                      "type": "string",
+                      "pattern": "^(?!__REPLACE).*$",
+                      "minLength": 1
+                    },
+                    "status": {
+                      "type": "string",
+                      "pattern": "^(?!__REPLACE).*$",
+                      "minLength": 1
+                    }
+                  }
+                },
+                "t3m_annualized": {
+                  "type": "object",
+                  "required": [
+                    "all_base_cents",
+                    "base_revenue_cents",
+                    "churn_cents",
+                    "churn_share",
+                    "cohort_customers",
+                    "cohort_revenue_coverage",
+                    "contraction_cents",
+                    "contraction_share",
+                    "current_revenue_cents",
+                    "expansion_cents",
+                    "expansion_share",
+                    "month",
+                    "nrr",
+                    "status"
+                  ],
+                  "additionalProperties": false,
+                  "properties": {
+                    "all_base_cents": {
+                      "type": "integer"
+                    },
+                    "base_revenue_cents": {
+                      "type": "integer"
+                    },
+                    "churn_cents": {
+                      "type": "integer"
+                    },
+                    "churn_share": {
+                      "type": "string",
+                      "pattern": "^(?!__REPLACE).*$",
+                      "minLength": 1
+                    },
+                    "cohort_customers": {
+                      "type": "integer"
+                    },
+                    "cohort_revenue_coverage": {
+                      "type": "string",
+                      "pattern": "^(?!__REPLACE).*$",
+                      "minLength": 1
+                    },
+                    "contraction_cents": {
+                      "type": "integer"
+                    },
+                    "contraction_share": {
+                      "type": "string",
+                      "pattern": "^(?!__REPLACE).*$",
+                      "minLength": 1
+                    },
+                    "current_revenue_cents": {
+                      "type": "integer"
+                    },
+                    "expansion_cents": {
+                      "type": "integer"
+                    },
+                    "expansion_share": {
+                      "type": "string",
+                      "pattern": "^(?!__REPLACE).*$",
+                      "minLength": 1
+                    },
+                    "month": {
+                      "type": "string",
+                      "pattern": "^(?!__REPLACE).*$",
+                      "minLength": 1
+                    },
+                    "nrr": {
+                      "type": "string",
+                      "pattern": "^(?!__REPLACE).*$",
+                      "minLength": 1
+                    },
+                    "status": {
+                      "type": "string",
+                      "pattern": "^(?!__REPLACE).*$",
+                      "minLength": 1
+                    }
+                  }
+                }
+              }
+            },
+            "current_definition": {
+              "type": "string",
+              "pattern": "^(?!__REPLACE).*$",
+              "minLength": 1
+            },
+            "current_floor_usd": {
+              "type": "integer"
+            },
+            "current_receipt_id": {
+              "type": "string",
+              "pattern": "^(?!__REPLACE).*$",
+              "minLength": 1
+            },
+            "old_replay_status": {
+              "type": "string",
+              "pattern": "^(?!__REPLACE).*$",
+              "minLength": 1
+            },
+            "original": {
+              "type": "object",
+              "required": [
+                "base_t12m",
+                "floor_100k",
+                "subscription_inclusive",
+                "t3m_annualized"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "base_t12m": {
+                  "type": "object",
+                  "required": [
+                    "all_base_cents",
+                    "base_revenue_cents",
+                    "churn_cents",
+                    "churn_share",
+                    "cohort_customers",
+                    "cohort_revenue_coverage",
+                    "contraction_cents",
+                    "contraction_share",
+                    "current_revenue_cents",
+                    "expansion_cents",
+                    "expansion_share",
+                    "month",
+                    "nrr",
+                    "status"
+                  ],
+                  "additionalProperties": false,
+                  "properties": {
+                    "all_base_cents": {
+                      "type": "integer"
+                    },
+                    "base_revenue_cents": {
+                      "type": "integer"
+                    },
+                    "churn_cents": {
+                      "type": "integer"
+                    },
+                    "churn_share": {
+                      "type": "string",
+                      "pattern": "^(?!__REPLACE).*$",
+                      "minLength": 1
+                    },
+                    "cohort_customers": {
+                      "type": "integer"
+                    },
+                    "cohort_revenue_coverage": {
+                      "type": "string",
+                      "pattern": "^(?!__REPLACE).*$",
+                      "minLength": 1
+                    },
+                    "contraction_cents": {
+                      "type": "integer"
+                    },
+                    "contraction_share": {
+                      "type": "string",
+                      "pattern": "^(?!__REPLACE).*$",
+                      "minLength": 1
+                    },
+                    "current_revenue_cents": {
+                      "type": "integer"
+                    },
+                    "expansion_cents": {
+                      "type": "integer"
+                    },
+                    "expansion_share": {
+                      "type": "string",
+                      "pattern": "^(?!__REPLACE).*$",
+                      "minLength": 1
+                    },
+                    "month": {
+                      "type": "string",
+                      "pattern": "^(?!__REPLACE).*$",
+                      "minLength": 1
+                    },
+                    "nrr": {
+                      "type": "string",
+                      "pattern": "^(?!__REPLACE).*$",
+                      "minLength": 1
+                    },
+                    "status": {
+                      "type": "string",
+                      "pattern": "^(?!__REPLACE).*$",
+                      "minLength": 1
+                    }
+                  }
+                },
+                "floor_100k": {
+                  "type": "object",
+                  "required": [
+                    "all_base_cents",
+                    "base_revenue_cents",
+                    "churn_cents",
+                    "churn_share",
+                    "cohort_customers",
+                    "cohort_revenue_coverage",
+                    "contraction_cents",
+                    "contraction_share",
+                    "current_revenue_cents",
+                    "expansion_cents",
+                    "expansion_share",
+                    "month",
+                    "nrr",
+                    "status"
+                  ],
+                  "additionalProperties": false,
+                  "properties": {
+                    "all_base_cents": {
+                      "type": "integer"
+                    },
+                    "base_revenue_cents": {
+                      "type": "integer"
+                    },
+                    "churn_cents": {
+                      "type": "integer"
+                    },
+                    "churn_share": {
+                      "type": "string",
+                      "pattern": "^(?!__REPLACE).*$",
+                      "minLength": 1
+                    },
+                    "cohort_customers": {
+                      "type": "integer"
+                    },
+                    "cohort_revenue_coverage": {
+                      "type": "string",
+                      "pattern": "^(?!__REPLACE).*$",
+                      "minLength": 1
+                    },
+                    "contraction_cents": {
+                      "type": "integer"
+                    },
+                    "contraction_share": {
+                      "type": "string",
+                      "pattern": "^(?!__REPLACE).*$",
+                      "minLength": 1
+                    },
+                    "current_revenue_cents": {
+                      "type": "integer"
+                    },
+                    "expansion_cents": {
+                      "type": "integer"
+                    },
+                    "expansion_share": {
+                      "type": "string",
+                      "pattern": "^(?!__REPLACE).*$",
+                      "minLength": 1
+                    },
+                    "month": {
+                      "type": "string",
+                      "pattern": "^(?!__REPLACE).*$",
+                      "minLength": 1
+                    },
+                    "nrr": {
+                      "type": "string",
+                      "pattern": "^(?!__REPLACE).*$",
+                      "minLength": 1
+                    },
+                    "status": {
+                      "type": "string",
+                      "pattern": "^(?!__REPLACE).*$",
+                      "minLength": 1
+                    }
+                  }
+                },
+                "subscription_inclusive": {
+                  "type": "object",
+                  "required": [
+                    "all_base_cents",
+                    "base_revenue_cents",
+                    "churn_cents",
+                    "churn_share",
+                    "cohort_customers",
+                    "cohort_revenue_coverage",
+                    "contraction_cents",
+                    "contraction_share",
+                    "current_revenue_cents",
+                    "expansion_cents",
+                    "expansion_share",
+                    "month",
+                    "nrr",
+                    "status"
+                  ],
+                  "additionalProperties": false,
+                  "properties": {
+                    "all_base_cents": {
+                      "type": "integer"
+                    },
+                    "base_revenue_cents": {
+                      "type": "integer"
+                    },
+                    "churn_cents": {
+                      "type": "integer"
+                    },
+                    "churn_share": {
+                      "type": "string",
+                      "pattern": "^(?!__REPLACE).*$",
+                      "minLength": 1
+                    },
+                    "cohort_customers": {
+                      "type": "integer"
+                    },
+                    "cohort_revenue_coverage": {
+                      "type": "string",
+                      "pattern": "^(?!__REPLACE).*$",
+                      "minLength": 1
+                    },
+                    "contraction_cents": {
+                      "type": "integer"
+                    },
+                    "contraction_share": {
+                      "type": "string",
+                      "pattern": "^(?!__REPLACE).*$",
+                      "minLength": 1
+                    },
+                    "current_revenue_cents": {
+                      "type": "integer"
+                    },
+                    "expansion_cents": {
+                      "type": "integer"
+                    },
+                    "expansion_share": {
+                      "type": "string",
+                      "pattern": "^(?!__REPLACE).*$",
+                      "minLength": 1
+                    },
+                    "month": {
+                      "type": "string",
+                      "pattern": "^(?!__REPLACE).*$",
+                      "minLength": 1
+                    },
+                    "nrr": {
+                      "type": "string",
+                      "pattern": "^(?!__REPLACE).*$",
+                      "minLength": 1
+                    },
+                    "status": {
+                      "type": "string",
+                      "pattern": "^(?!__REPLACE).*$",
+                      "minLength": 1
+                    }
+                  }
+                },
+                "t3m_annualized": {
+                  "type": "object",
+                  "required": [
+                    "all_base_cents",
+                    "base_revenue_cents",
+                    "churn_cents",
+                    "churn_share",
+                    "cohort_customers",
+                    "cohort_revenue_coverage",
+                    "contraction_cents",
+                    "contraction_share",
+                    "current_revenue_cents",
+                    "expansion_cents",
+                    "expansion_share",
+                    "month",
+                    "nrr",
+                    "status"
+                  ],
+                  "additionalProperties": false,
+                  "properties": {
+                    "all_base_cents": {
+                      "type": "integer"
+                    },
+                    "base_revenue_cents": {
+                      "type": "integer"
+                    },
+                    "churn_cents": {
+                      "type": "integer"
+                    },
+                    "churn_share": {
+                      "type": "string",
+                      "pattern": "^(?!__REPLACE).*$",
+                      "minLength": 1
+                    },
+                    "cohort_customers": {
+                      "type": "integer"
+                    },
+                    "cohort_revenue_coverage": {
+                      "type": "string",
+                      "pattern": "^(?!__REPLACE).*$",
+                      "minLength": 1
+                    },
+                    "contraction_cents": {
+                      "type": "integer"
+                    },
+                    "contraction_share": {
+                      "type": "string",
+                      "pattern": "^(?!__REPLACE).*$",
+                      "minLength": 1
+                    },
+                    "current_revenue_cents": {
+                      "type": "integer"
+                    },
+                    "expansion_cents": {
+                      "type": "integer"
+                    },
+                    "expansion_share": {
+                      "type": "string",
+                      "pattern": "^(?!__REPLACE).*$",
+                      "minLength": 1
+                    },
+                    "month": {
+                      "type": "string",
+                      "pattern": "^(?!__REPLACE).*$",
+                      "minLength": 1
+                    },
+                    "nrr": {
+                      "type": "string",
+                      "pattern": "^(?!__REPLACE).*$",
+                      "minLength": 1
+                    },
+                    "status": {
+                      "type": "string",
+                      "pattern": "^(?!__REPLACE).*$",
+                      "minLength": 1
+                    }
+                  }
+                }
+              }
+            },
+            "original_definition": {
+              "type": "string",
+              "pattern": "^(?!__REPLACE).*$",
+              "minLength": 1
+            },
+            "original_floor_usd": {
+              "type": "integer"
+            },
+            "original_receipt_id": {
+              "type": "string",
+              "pattern": "^(?!__REPLACE).*$",
+              "minLength": 1
+            },
+            "source_and_cutoffs": {
+              "type": "string",
+              "pattern": "^(?!__REPLACE).*$",
+              "minLength": 1
+            },
+            "unchanged_lenses": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^(?!__REPLACE).*$",
+                "minLength": 1
+              }
+            },
+            "units": {
+              "type": "string",
+              "pattern": "^(?!__REPLACE).*$",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Frozen rc5 reporting exercise answer structure",
+  "description": "Structure only. Correctness is decided by tl challenge grade after source re-performance. Decimal ratios use strings; integer cents and counts use JSON integers. Retain observed explicit nulls; __REPLACE__ is never a null.",
+  "x-source": "data/challenge/rc5/expected.json field structure; values omitted"
+}

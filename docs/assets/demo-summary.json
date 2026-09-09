@@ -1,0 +1,91 @@
+{
+  "schema_version": "tokenledger-recorded-summary/v1",
+  "scope": "Presentation of the retained recorded run; not live progress or a new computation",
+  "source_ledger": "data/demo/recorded/metrics.jsonl",
+  "source_ledger_sha256": "a8c133f7229764c2bae4cabaf46dbaf87d36a47d74e2f324baa84a9208d4df4b",
+  "account_mapping_sha256": "d2376cf135451d25f6092be7f22c8e3090354407f96f1a612b55bde9c8146662",
+  "receipt_id": "mr-6d034188f55d99445ea47b08127c5a74",
+  "account_bridge_receipt_id": "mr-9df23dbedb0794a5e5c35d9b816f654e",
+  "result": {
+    "account_bridge_receipt_id": "mr-9df23dbedb0794a5e5c35d9b816f654e",
+    "aggregation": "Sum recognized revenue and sum tokens across disjoint cuts; never average per-cut yields",
+    "asof": "2026-07-31",
+    "attribution_scope": "Identical policy and economic cutoff; full source-prefix equality; exactly one newly visible invoice",
+    "current": {
+      "channel_fee_cents": 3607,
+      "net_of_discounts_and_fees_per_mtok": "1.746148402176",
+      "net_of_discounts_per_mtok": "1.748026057228",
+      "net_revenue_cents": 3354374,
+      "revenue_before_channel_fees_cents": 3357981,
+      "tokens": 19210131257
+    },
+    "current_known_at": "2026-10-03T00:00:00.000000Z",
+    "current_receipt_id": "mr-3093938788ac2b4491425ae707a18e79",
+    "delta": {
+      "channel_fee_cents": 0,
+      "net_of_discounts_and_fees_per_mtok": "0.156167595102",
+      "net_of_discounts_per_mtok": "0.156167595102",
+      "net_revenue_cents": 300000,
+      "revenue_before_channel_fees_cents": 300000,
+      "tokens": 0
+    },
+    "denominator": "Raw processed tokens: input, output, cache_read and cache_write, each counted once with unit weight",
+    "metric": "recognized_usage_revenue_per_million_tokens",
+    "month": "2026-07-01",
+    "original": {
+      "channel_fee_cents": 3607,
+      "net_of_discounts_and_fees_per_mtok": "1.589980807074",
+      "net_of_discounts_per_mtok": "1.591858462126",
+      "net_revenue_cents": 3054374,
+      "revenue_before_channel_fees_cents": 3057981,
+      "tokens": 19210131257
+    },
+    "original_known_at": "2026-10-01T00:00:00.000000Z",
+    "original_receipt_id": "mr-a57e47711e3b91ca3ef32885f5737e63",
+    "responsible_activity_ids": [
+      "demo:late-july:invoice"
+    ],
+    "revenue_basis": "Recognized usage revenue, net of discounts and marketplace fees; alternative before marketplace fees also shown",
+    "rounding": "12 decimal places, half up; delta computed from exact revenue change and unchanged token denominator",
+    "unchanged": [
+      "tokens"
+    ],
+    "units": {
+      "channel_fee_cents": "USD cents",
+      "net_of_discounts_and_fees_per_mtok": "USD/Mtok",
+      "net_of_discounts_per_mtok": "USD/Mtok",
+      "net_revenue_cents": "USD cents",
+      "revenue_before_channel_fees_cents": "USD cents",
+      "tokens": "tokens"
+    }
+  },
+  "account_bridge": {
+    "asof": "2026-07-31",
+    "causal_basis": "Identical policy and economic cutoff; full source-prefix equality; exactly one newly visible invoice",
+    "current_known_at": "2026-10-03T00:00:00.000000Z",
+    "current_receipt_id": "mr-1f8c2547a394089df6805c42d51ab0a7",
+    "original_known_at": "2026-10-01T00:00:00.000000Z",
+    "original_receipt_id": "mr-7e94126f74ee8286bf3758d1c99c0aed",
+    "responsible_activity_ids": [
+      "demo:late-july:invoice"
+    ],
+    "rows": [
+      {
+        "account": "1100",
+        "after_cents": 2636949,
+        "before_cents": 2336949,
+        "delta_cents": 300000,
+        "month": "2026-07-01"
+      },
+      {
+        "account": "4000",
+        "after_cents": -3357981,
+        "before_cents": -3057981,
+        "delta_cents": -300000,
+        "month": "2026-07-01"
+      }
+    ],
+    "scope": "Changed account balances only; omitted accounts are unchanged. Debit positive, credit negative."
+  },
+  "display_rounding": "USD cents unchanged; USD/Mtok three decimal places half up; exact values retained"
+}

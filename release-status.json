@@ -48,12 +48,23 @@
   "architecture": {
     "artifact": "passed_9_of_9_zero_errors_warnings",
     "browser": "passed_four_desktop_sizes_light_and_dark",
-    "visual_review": "passed_builder_image_inspection"
+    "visual_review": "passed_builder_image_inspection",
+    "current_reader_transform": "docs/architecture/reader-receipt.json",
+    "current_reader_browser_checks": "docs/architecture/reader-check.json"
   },
   "matched_agent_benchmark": "not_run",
   "learning": "completed_inconclusive_no_promotion",
-  "first_time_evaluators": "not_run",
-  "publication_approval": "not_requested_pending_first_time_evaluation",
+  "first_time_evaluators": {
+    "agent_review_count": 2,
+    "human_review_count": 0,
+    "reviewed_candidate": "65b717f0d94f1b3fb13a6f49904262551fddb751",
+    "outcome": "Runnable example reproduced; category, workflow and visual friction identified",
+    "followup": "Both agent review followups addressed; returning rechecks accepted within reported scopes",
+    "reference_answer_exposure": true,
+    "latest_reviewed_candidate": "0fd140082d3a34d97524b6b8a2a2aae56c7810da",
+    "latest_outcome": "Second agent reported four-task PASS through ordinary interfaces without consulting answer sources during construction; interface and finder findings retained"
+  },
+  "publication_approval": "pending_exact_release_approval",
   "introductions": "none_authorized_or_sent",
   "private_engine_integration": "completed_with_green_main_ci; preserved_eight_phase_merge_commits",
   "codespaces": {
@@ -64,5 +75,81 @@
     "resource_state": "Shutdown",
     "web_editor_interaction": "not_run",
     "first_time_evaluator_session": false
+  },
+  "presentation_followup": {
+    "scope": "documentation and viewer only; execution unchanged",
+    "verification": "docs/verification/evaluator-followups/README.md",
+    "local_tests": {
+      "passed": 72,
+      "failed": 0,
+      "seconds": 137.58,
+      "warnings": 79
+    },
+    "source_fixture_and_capture_bytes": "unchanged",
+    "next_evaluator": "completed_second_first_encounter_at_0fd1400; returning_recheck_at_f21998e_passed",
+    "final_local_tests": {
+      "passed": 72,
+      "failed": 0,
+      "seconds": 193.16,
+      "warnings": 79
+    },
+    "desktop_summary": "persistent_beside_original_recording",
+    "clean_table_inspection": "passed_with_shipped_dependencies_and_explicit_July_filter",
+    "nrr_workflow_check": "docs/verification/evaluator-followups/nrr-workflow-check.json",
+    "submission_vocabulary": "docs/challenge/vocabulary.md"
+  },
+  "returning_evaluator": {
+    "reviewed_candidate": "8678fbd1ee54a7fdeedba7ec1d1b16bac74a2cc9",
+    "reviewer_kind": "returning_AI_agent",
+    "fresh_first_impression": false,
+    "prior_solution_exposure": true,
+    "this_attempt": "constructed_four_task_PASS_through_ordinary_interfaces",
+    "presentation": "reported_concerns_resolved_in_checked_cases",
+    "remaining_instruction": "NRR_date_filter_repaired_and_literal_recipe_verified",
+    "contract_vocabulary": "documented_and_checked_against_verified_proof",
+    "independent_recognition_policy_review": false
+  },
+  "claude_followup": {
+    "verification": "docs/verification/claude-followups/README.md",
+    "local_tests": {
+      "passed": 72,
+      "failed": 0,
+      "seconds": 162.47,
+      "warnings": 79
+    },
+    "native_replay_method": "spine_population",
+    "profile_stdout": "one_result_object_progress_on_stderr",
+    "publication_receipt": "distinct_from_challenge_proof",
+    "windows_short_path_clone_install_demo": "passed_same_executable_at_0fd1400",
+    "finder_offscreen_selection": "repaired_and_accepted_by_returning_reviewer",
+    "finder_reported_enter_failure": "retracted_by_reviewer_automation_key_identity_error",
+    "new_cloud_jobs": false,
+    "finder_reported_direct_click_failure": "retracted_by_reviewer_coordinate_space_error",
+    "returning_recheck": {
+      "reviewed_candidate": "f21998e5ee07f68ad166c9380991c370a6fa390e",
+      "reviewer_kind": "returning_AI_agent",
+      "contract_points_passed": 4,
+      "offscreen_selection": "passed_in_both_themes",
+      "guided_chapters": "passed",
+      "player_seek": "passed",
+      "timed_playback": "unmeasurable_in_recheck_due_to_browser_pane_not_painting",
+      "suite_rerun_by_returning_reviewer": false,
+      "original_evidence_preserved": true,
+      "verification": "docs/verification/claude-followups/review-closeout.json"
+    },
+    "remaining_field_clarifications": "source manifest hash exposed by reader; both headline floor fields explicitly use base_t12m"
+  },
+  "review_closeout": {
+    "status": "ready_for_exact_publication_approval",
+    "local_tests": {
+      "passed": 72,
+      "failed": 0,
+      "warnings": 79,
+      "seconds": 276.54
+    },
+    "verification": "docs/verification/claude-followups/review-closeout.json",
+    "cloud_archive": "retained_asset_size_and_digest_match_manifest",
+    "public_release_integration": "pending_private_PR_merge",
+    "cloud_jobs_submitted": false
   }
 }
