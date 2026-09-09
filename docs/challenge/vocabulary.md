@@ -26,8 +26,11 @@ retain its FAIL instead of claiming a successful check.
   `t3m_annualized`. Determine changed and unchanged lists by comparing the rows;
   sort those lists and responsible or missing activity IDs lexicographically.
 - Definition names are the selected YAML versions, such as `v2` and `v3`.
-  Cohort floors come from those definitions in USD, not cents. Do not change a
-  released definition to construct your answer.
+  `nrr_definition.original_floor_usd` and `current_floor_usd` refer specifically
+  to the headline `base_t12m` lens: read its `floor_usd` from the original and
+  current versions' `lenses` lists. These are USD, not cents, and are not the
+  separate `floor_100k` lens. Do not change a released definition to construct
+  your answer.
 
 ## Yield and invoice units
 
@@ -102,6 +105,12 @@ Sum `expected_count`, `actual_count`, `expected_cents` and `actual_cents` across
 the corresponding gate's `reconciliation.periods` for `before` and `after`.
 Get missing IDs from its exceptions. The fixture already contains the recovered
 source; an idempotent retry does not establish a new collection.
+
+`failed_close.source_manifest_sha256` is the top-level
+`source_manifest_sha256` in `runs/<challenge.run_id>/run.json`. It hashes the
+exact bytes of `close/capture/manifest.json`. It is not `inputs.sha256`, the
+challenge manifest's own hash, or a source Parquet hash. The workflow's manifest
+reader prints this field alongside the receipt keys and cutoffs.
 
 `failed_close.publication_receipt_id` comes from `close/publication.json`'s
 `receipt_id`, also bound as `keys.close` in the challenge manifest. The top-level

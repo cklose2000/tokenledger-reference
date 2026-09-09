@@ -1,0 +1,34 @@
+{
+  "schema_version": "tokenledger-review-closeout/v1",
+  "reviewed_git_sha": "f21998e5ee07f68ad166c9380991c370a6fa390e",
+  "reviewer_kind": "returning_AI_agent",
+  "reviewer_report_sha256": "caeb564a76ceee32b1b81919d00fc4b57de3b7e9d9f6d9ea076fe031e88795ca",
+  "original_review_preserved": true,
+  "contracts": {
+    "replay_markers": "passed",
+    "profile_stdout": "passed",
+    "publication_receipt": "passed",
+    "actual_source_mutation_rejected": "passed"
+  },
+  "browser": {
+    "offscreen_selection": "passed_in_both_themes",
+    "guided_chapters": "passed",
+    "enter_finding": "retracted_automation_key_identity",
+    "direct_click_finding": "retracted_coordinate_space_error",
+    "player_seek": "passed",
+    "timed_playback": "unmeasurable_pane_not_painting"
+  },
+  "builder_documentation_checks": {
+    "literal_manifest_reader": "passed",
+    "source_manifest_hash_matches_capture_bytes": true,
+    "headline_floor_lens": "base_t12m",
+    "floor_versions": {
+      "v2": 10000,
+      "v3": 100000
+    },
+    "schema_or_executable_changes": false
+  },
+  "scope": "Usability closeout; not human user research, an unseen-task benchmark or accounting-policy assurance",
+  "new_cloud_jobs": false,
+  "publication_approved": false
+}

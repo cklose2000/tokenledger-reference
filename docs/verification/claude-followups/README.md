@@ -37,7 +37,8 @@ direct node clicks. Those exact failures did not reproduce in headless Chrome
 using trusted keyboard and pointer input. All six nodes selected correctly in
 both themes; filtered Enter and result-button clicks also worked after chapter,
 zoom and scroll changes. This does not invalidate the reviewer's observation
-or establish that its in-app browser now passes.
+or, by itself, establish that its in-app browser passes. The returning recheck
+below resolves the discrepancy.
 
 The investigation did reproduce a related visibility defect: a selected node
 could remain partly above the document viewport after searching from a scrolled
@@ -50,11 +51,35 @@ bounds to be inside the viewport. Default desktop layouts, chapter notes,
 scrolled finder, Escape/focus return and player behavior were also rechecked;
 the [current reader evidence](../../architecture/reader-check.json) binds the
 new HTML. These are bounded builder browser checks. The original reported
-failure remains subject to a focused recheck in the reviewer's browser.
+failure was subsequently rechecked in the reviewer's browser.
 
 ![Selected definition brought into view after searching from a scrolled page](finder-selected-light.png)
 
 ![Receipt selected with a pointer in the dark theme](finder-selected-dark.png)
+
+## Returning recheck accepted
+
+The same reviewer rechecked `f21998e` in a fresh checkout. All four contract
+points passed: replay markers, separate profile stdout, publication receipt
+identity and an actual source mutation rejected before scoring. Clone-local
+Windows long-path configuration also worked on the first attempt.
+
+The reviewer confirmed that offscreen selections settle inside the viewport in
+both themes and that guided chapters work. It retracted the Enter and direct
+click findings: its automation sent an empty key identity for `Return` and
+mixed screenshot coordinates with CSS pixels. Sending `Enter` and using the
+correct coordinate space selected the intended nodes. The offscreen visibility
+repair remains a valid, separately observed fix.
+
+Player seeking worked in this recheck. Timed playback was unmeasurable because
+the browser pane stopped painting; earlier playback observations remain the
+evidence for that behavior. This returning review is not another first-time
+evaluation or a comparative agent benchmark.
+
+The final documentation closeout exposes the source manifest hash in the
+workflow reader and names `base_t12m` as the lens for both headline floor
+fields. The [closeout record](review-closeout.json) binds the reviewer report
+and the builder's literal field checks. Original review evidence is preserved.
 
 ## Preservation and scope
 

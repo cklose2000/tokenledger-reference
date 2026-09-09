@@ -31,7 +31,7 @@ unanswered field is never represented by a valid null.
 Inspect the manifest without opening `expected.json`:
 
 ```sh
-python -c "import json; from pathlib import Path; p=Path('data/challenge/my-attempt'); h=json.loads((p/'challenge.json').read_bytes()); m=json.loads((p/'runs'/h['run_id']/'run.json').read_bytes()); print(json.dumps({k:m[k] for k in ['fixture_id','fixture','keys','asof','known_at','watermark','scoring']},indent=2))"
+python -c "import json; from pathlib import Path; p=Path('data/challenge/my-attempt'); h=json.loads((p/'challenge.json').read_bytes()); m=json.loads((p/'runs'/h['run_id']/'run.json').read_bytes()); print(json.dumps({k:m[k] for k in ['fixture_id','fixture','keys','asof','known_at','watermark','scoring','source_manifest_sha256']},indent=2))"
 ```
 
 `keys` locates the yield, account bridge, NRR and close receipts. The business
@@ -39,6 +39,11 @@ source is `business/world.duckdb`; its ledger is `business/metrics.jsonl`.
 The close exercise has its own source and ledger under `close/`. Historical
 absolute paths describe the producer's machine. Use these working-copy paths
 when replaying.
+
+`source_manifest_sha256` binds the exact bytes of `close/capture/manifest.json`;
+use it for the answer's `failed_close.source_manifest_sha256`. The
+[vocabulary](challenge/vocabulary.md#close-status-and-retry) distinguishes it
+from the source and challenge hashes.
 
 For a receipt, replace `RECEIPT_ID` in the following command with the selected
 manifest key. It prints the source/cutoff binding and the retained result:
@@ -116,8 +121,11 @@ again after observing the later evidence.
 ## 3. Change a definition while fixing the source
 
 Read [v2](../definitions/metrics/consumption_nrr/v2.yaml) and
-[v3](../definitions/metrics/consumption_nrr/v3.yaml). Select the new immutable
-definition; do not edit the old file. Use identical source, reporting cutoff,
+[v3](../definitions/metrics/consumption_nrr/v3.yaml). The answer fields
+`original_floor_usd` and `current_floor_usd` use the `base_t12m` headline lens's
+`floor_usd` in those respective definitions, not the `floor_100k` lens.
+Select the new immutable definition; do not edit the old file.
+Use identical source, reporting cutoff,
 knowledge cutoff and watermark on both runs:
 
 ```sh
