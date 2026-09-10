@@ -9,17 +9,17 @@ the whole loop is rehearsed, recorded and replayed here.
 <!-- SUMMARY_START -->
 | Step | Recorded walkthrough | Receipt or record |
 |---|---|---|
-| Report | July NRR, {{REPORT_ROWS}} lenses dated {{ASOF}} | `{{REPORT_RECEIPT}}` |
-| Wrong-date inspection | requested {{WRONG_DATE}}: {{BASELINE_SELECTED}} rows selected, no explanation | baseline.json |
+| Report | July NRR, 4 lenses dated 2026-07-31 | `mr-7d9045ba2c349988855e54a1b2916737` |
+| Wrong-date inspection | requested 2026-07-01: 0 rows selected, no explanation | baseline.json |
 | Finding and verification | one confirmed finding; one refuted claim kept on the record | events.json |
-| Candidate evaluation | {{CASES}} frozen cases; DuckDB candidate equals scalar oracle | `{{EVALUATION_RECEIPT}}` |
+| Candidate evaluation | 11 frozen cases; DuckDB candidate equals scalar oracle | `mr-3a344c906fb8f0e07849e4056c8cc3c5` |
 | Approval boundary | disposable synthetic signer; expanded, altered and misrouted approvals refused | plan.json, plan.json.sig |
-| Next inspection | first inspection after authorization, requested {{NEXT_DATE}}: `{{FINDING_STATUS}}`, suggested `{{SUGGESTED}}` | `{{MEASUREMENT_RECEIPT}}` |
-| Outcome | `{{OUTCOME}}` on a builder-chosen synthetic inspection | `{{OUTCOME_RECEIPT}}` |
-| Refusals | {{REFUSALS}} refused attempts; the event stream unchanged after each | refusals.json |
-| Preservation | original report reproduced; {{LEARNING_ROWS}} learning rows in the business stream | walkthrough.json |
+| Next inspection | first inspection after authorization, requested 2026-07-01: `date_grain_mismatch`, suggested `2026-07-31` | `mr-bc68ce6af5764e4df5dd9fbf7c0d824f` |
+| Outcome | `improved` on a builder-chosen synthetic inspection | `mr-d2cbb62f1660212f7789899fee4f38d2` |
+| Refusals | 11 refused attempts; the event stream unchanged after each | refusals.json |
+| Preservation | original report reproduced; 0 learning rows in the business stream | walkthrough.json |
 
-Workflow events admitted: {{EVENTS}}. Observed workflow: **{{WORKFLOW_SECONDS}} seconds**; process **{{PROCESS_SECONDS}} seconds** including startup. [Exact values](assets/learning-recording/recording.json).
+Workflow events admitted: 11. Observed workflow: **6.799 seconds**; process **11.025 seconds** including startup. [Exact values](assets/learning-recording/recording.json).
 <!-- SUMMARY_END -->
 
 ![Actual recorded console output of tl learning walkthrough](assets/learning-recording/walkthrough.gif)
@@ -71,7 +71,7 @@ the [complete transcript](assets/learning-recording/walkthrough.txt).
   application, with an in-memory stream, DuckDB, and a signer generated for one
   run. Its gateway configuration is marked synthetic, cannot be served, and is
   refused by every cloud learning command.
-- **`{{OUTCOME}}`** means the candidate produced an explanation for a wrong-date
+- **`improved`** means the candidate produced an explanation for a wrong-date
   request that the builder chose. It is not a measured operating gain, an
   efficiency claim or a promotion. `--next-inspection-date 2026-07-31` records
   `inconclusive` instead, because the report is selected directly.
@@ -93,8 +93,8 @@ After [installation](run.md), from the checkout:
 
 ```sh
 tl learning replay-walkthrough data/learning-walkthrough/recorded --json
-tl --db data/learning-walkthrough/recorded/world.duckdb --artifact-root data/learning-walkthrough/recorded receipt {{REPORT_RECEIPT}} --json
-tl --artifact-root data/learning-walkthrough/recorded receipt {{EVALUATION_RECEIPT}} --json
+tl --db data/learning-walkthrough/recorded/world.duckdb --artifact-root data/learning-walkthrough/recorded receipt mr-7d9045ba2c349988855e54a1b2916737 --json
+tl --artifact-root data/learning-walkthrough/recorded receipt mr-3a344c906fb8f0e07849e4056c8cc3c5 --json
 ```
 
 The first command rebuilds workflow state from the retained fourteen-column
@@ -111,11 +111,13 @@ Existing directories are never overwritten.
 ## Observed environment
 
 The [capture record](assets/learning-recording/recording.json) binds public
-execution commit `{{EXECUTION_SHA}}`, Python {{PYTHON}} and the pinned DuckDB
+execution commit `933cd94525e20d651c81b192b36cd06d9a552ef2`, Python 3.11.5 and the pinned DuckDB
 runtime. A fresh Windows virtual environment and editable installation took
-**{{INSTALL_SECONDS}} seconds** with the existing pip cache. The workflow took
-**{{WORKFLOW_SECONDS}} seconds**; the process **{{PROCESS_SECONDS}} seconds**. These are one
-laptop's observations, not a benchmark. No model, billing or cloud credentials
+**62.689 seconds** with the existing pip cache. The workflow took
+**6.799 seconds**; the process **11.025 seconds**, while a full private
+engine regression suite ran concurrently on the same laptop. An unloaded run
+of the same command on the builder's checkout took about 4 seconds. These are
+one laptop's observations, not a benchmark. No model, billing or cloud credentials
 were used, and no cloud job was submitted.
 
 Next: [run the agent challenge](assess.md) or [inspect the cloud evidence](evidence.md).
