@@ -235,6 +235,8 @@ from tl.challenge.cli import register as register_challenge
 register_challenge(cli,options,output)
 from tl.bigquery.cli import register as register_bigquery
 register_bigquery(cli,options,output)
+from tl.evolution.cli import register as register_evolution
+register_evolution(cli,options,output)
 
 
 def main():

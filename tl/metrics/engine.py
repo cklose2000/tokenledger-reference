@@ -136,6 +136,15 @@ def replay_receipts(ids,*,db=None,output_root=Path('metrics/out'),ledger=Path('l
         groups[records[key]['run_id']].append(records[key])
     verified=[]
     for run_id,selected in groups.items():
+        if selected[0].get('schema_version') in ('tokenledger-reporting-learning-evaluation/v1',
+                                                'tokenledger-reporting-learning-observation/v1'):
+            from tl.evolution.evidence import replay
+            verified.extend(replay([r['receipt_id'] for r in selected], output_root=output_root, ledger=ledger))
+            continue
+        if selected[0].get('schema_version')=='tokenledger-reporting-learning-walkthrough/v1':
+            from tl.evolution.walkthrough import replay_evaluation
+            verified.extend(replay_evaluation(r['receipt_id'],output_root=output_root,ledger=ledger) for r in selected)
+            continue
         if selected[0].get('schema_version') in ('tokenledger-learning-trial/v1','tokenledger-learning-trial-observation/v1',
                                                'tokenledger-learning-authorization/v1'):
             from tl.learning.runner import replay

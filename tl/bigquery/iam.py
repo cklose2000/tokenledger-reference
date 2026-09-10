@@ -7,6 +7,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 import json
 import time
+import re
 
 from tl.bigquery.config import Binding
 from tl.stream import ValidationError
@@ -22,13 +23,15 @@ ACCOUNT_NAMES = {
 APPEND_PERMISSIONS = ['bigquery.tables.updateData']
 
 
-def plan(binding, operator):
+def plan(binding, operator, *, account_prefix='tl-boundary'):
     if binding.query_principal or not binding.dataset.startswith('tokenledger_iam_'):
         raise ValidationError('IAM bootstrap requires an operator binding to a dedicated tokenledger_iam_ fixture')
     if not operator.startswith('user:') or '@' not in operator or any(c.isspace() for c in operator):
         raise ValidationError('explicit user:EMAIL administrator required')
-    accounts = {role: name+'@'+binding.project+'.iam.gserviceaccount.com'
-                for role, name in ACCOUNT_NAMES.items()}
+    if not isinstance(account_prefix, str) or not re.fullmatch(r'tl-[a-z][a-z0-9-]{1,13}[a-z0-9]', account_prefix):
+        raise ValidationError('use a bounded explicit tl- service-account prefix')
+    accounts = {role: account_prefix+'-'+role+'@'+binding.project+'.iam.gserviceaccount.com'
+                for role in ACCOUNT_NAMES}
     return dict(schema_version='tokenledger-bigquery-iam-plan/v1',
         project=binding.project, dataset=binding.dataset, table=binding.table,
         location=binding.location, operator=operator, accounts=accounts,
@@ -87,11 +90,11 @@ class Admin:
         return policy
 
 
-def bootstrap(binding, operator, directory, *, admin=None):
+def bootstrap(binding, operator, directory, *, admin=None, account_prefix='tl-boundary'):
     from google.cloud import bigquery
     from tl.bigquery.client import Client
     from tl.bigquery.contract import validate_source_table
-    proposed = plan(binding, operator)
+    proposed = plan(binding, operator, account_prefix=account_prefix)
     root = Path(directory)
     if root.exists():
         raise ValidationError('IAM evidence directory already exists; use a new observation directory')
@@ -139,7 +142,7 @@ def bootstrap(binding, operator, directory, *, admin=None):
             account = admin.call('GET', resource, missing=True)
             if account is None:
                 account = admin.call('POST', iam_root+'/serviceAccounts', {
-                    'accountId': ACCOUNT_NAMES[role],
+                    'accountId': email.split('@',1)[0],
                     'serviceAccount': {'displayName': 'Tokenledger boundary '+role}})
             if account.get('disabled') or account.get('email') != email:
                 raise ValidationError('unexpected existing service account state')
