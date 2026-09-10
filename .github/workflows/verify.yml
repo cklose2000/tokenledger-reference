@@ -41,6 +41,12 @@ jobs:
         run: tl --db data/demo/recorded/world.duckdb --artifact-root data/demo/recorded receipt mr-a57e47711e3b91ca3ef32885f5737e63 --json
       - name: Verify the saved cloud observation seal without the large download
         run: tl --artifact-root evidence/bigquery/verification receipt mr-3d66e52715aa14f49be17975a4c4c26a --json
+      - name: Rehearse the reporting-learning loop offline
+        run: tl learning walkthrough --directory data/learning-walkthrough/ci --json
+      - name: Replay the recorded walkthrough from public history
+        run: tl learning replay-walkthrough data/learning-walkthrough/recorded --json
+      - name: Preserve the retained walkthrough
+        run: git diff --exit-code -- data/learning-walkthrough/recorded
   secrets:
     runs-on: ubuntu-22.04
     steps:

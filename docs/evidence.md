@@ -150,6 +150,8 @@ mutations and finalization; general production operation, access review and
 segregation of duties remain separate acceptance work.
 
 The public agent challenge is open-book. Comparative agent accuracy and actual
-token efficiency are unmeasured. The private learning trial completed with an
-inconclusive result and no promotion. Successful self-improvement is outside
-this release's claim.
+token efficiency are unmeasured. The reporting-learning loop is included as a
+[credential-free synthetic walkthrough](learning.md) with a retained recording
+and offline replay. The one actual signed native trial completed with an
+inconclusive result and no promotion; its private receipts are not in this
+repository. Successful self-improvement is outside this release's claim.

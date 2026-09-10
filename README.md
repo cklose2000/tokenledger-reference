@@ -8,7 +8,7 @@ Built from the SOX-controlled subscriber-metrics work I ran at SiriusXM for
 
 [Watch the July number change, then reproduce the original →](docs/demo.md)
 
-**[Run it](docs/run.md)** · **[Understand it](docs/understand.md)** · **[Assess it](docs/assess.md)**
+**[Run it](docs/run.md)** · **[Understand it](docs/understand.md)** · **[Assess it](docs/assess.md)** · **[The learning loop](docs/learning.md)**
 
 ![One physical activity stream, query-time projections, versioned definitions, a reported result and its receipt](docs/assets/one-number.svg)
 
@@ -31,6 +31,23 @@ accounting policy and accountable reporting owners. The
 [adoption map](docs/adoption.md) shows the integration work and a one-output
 migration with reconciliation and rollback.
 
+## How reporting behavior changes
+
+A reader asked the July NRR report for July 1 and got nothing back. That
+mistake became a recorded finding, an independent verification, a bounded
+diagnostic candidate evaluated against frozen cases, a signed one-run approval,
+one next inspection and a recorded outcome. The original report still
+reproduces afterwards. Run the whole loop on a fresh synthetic report:
+
+```sh
+tl learning walkthrough
+```
+
+[Watch the recorded walkthrough and read what each label means](docs/learning.md).
+The walkthrough is a credential-free synthetic rehearsal with a disposable
+signer. The one actual signed native trial completed **inconclusive** with no
+promotion; that honest result is retained, not improved upon.
+
 ## What the comparison found
 
 Thirteen output populations matched an independently implemented baseline in
@@ -47,7 +64,7 @@ comparisons and fingerprints without submitting cloud jobs.
 
 ## Give it to your agent
 
-Start with [AGENTS.md](AGENTS.md). [Learn the workflow](docs/workflow.md) with a
+Start with [AGENTS.md](AGENTS.md). [Follow the workflow](docs/workflow.md) with a
 blank submission, or [verify the visible reference](docs/assess.md#verify-the-reference).
 Reproduce July's token yield, explain the late
 invoice, change the NRR definition while retaining the old result, and diagnose

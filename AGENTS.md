@@ -8,6 +8,13 @@ Run `tl challenge --help` for the release's exact preparation and grading
 commands. The generated challenge manifest supplies concrete source/receipt
 identities, reporting and knowledge cutoffs, units and visible expected outputs.
 
+Then run `tl learning walkthrough --json` once. It rehearses the governed
+reporting-learning loop on a fresh synthetic report and needs `ssh-keygen` on
+PATH. Read `docs/learning.md` for what each label means. It is a synthetic
+rehearsal, never a trial result or an approval; do not describe its `improved`
+status as an efficiency gain. `tl learning replay-walkthrough DIR --json`
+re-validates a walkthrough directory.
+
 Complete every registered task:
 
 1. Reproduce July recognized usage revenue per million tokens. State the fee
@@ -28,7 +35,7 @@ unknown rather than estimating it.
 
 ## Frozen release assignment
 
-Start with [Learn the workflow](docs/workflow.md) and the
+Start with [Follow the workflow](docs/workflow.md) and the
 [blank submission](docs/challenge/answer.blank.json) to construct an answer
 through reporting, population inspection and replay. Explain your source,
 cutoff and definition choices in a separate note. Record solution exposure.

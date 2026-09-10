@@ -34,4 +34,9 @@ bounded recovery before publication.
 the standalone HTML opening instructions and [JSON](architecture/architecture.json).
 The detailed guide labels measured scope and proposed extensions separately.
 
+A report can also be inspected wrongly. [The learning loop](learning.md) shows
+how such a finding becomes a verified case, a bounded candidate, a signed
+one-run trial and a recorded outcome without editing a definition, a number or
+a control.
+
 Next: [operate the example](run.md) or [inspect its evidence](evidence.md).

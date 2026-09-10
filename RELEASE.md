@@ -29,6 +29,11 @@ remains private.
   selected job counters. Its archive is about 387 MiB and is separate from
   installation and the small demo. Original cloud operations, later independent
   restoration and the public packaging check remain distinct evidence scopes.
+- The recorded reporting-learning walkthrough under `data/learning-walkthrough/recorded`
+  executes the public commit named in `docs/assets/learning-recording/recording.json`.
+  Its disposable private signer was deleted before packaging; replay uses the
+  public trust in `gateway.json`. The one actual signed native trial is private,
+  completed inconclusive and is reported, not reproduced, here.
 - The base image pins Python 3.11.5; the package pins the reporting dependencies.
   The optional SSH devcontainer feature supports hosted CLI verification. Its
   provisioning result is recorded separately from the reporting runtime.

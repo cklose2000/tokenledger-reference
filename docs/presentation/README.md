@@ -27,7 +27,8 @@ and final HTML; the upstream receipt is not claimed as validation of new bytes.
 
 The blank answer and JSON schema derive **field structure only** from the frozen
 reference contract. Placeholder strings are deliberately invalid; no business
-values are prefilled. This adds a learning route without changing the executable
+values are prefilled. This adds a guided workflow route (the reader exercise, not
+the reporting-learning loop) without changing the executable
 grader, its answer visibility or its tolerances.
 
 After a presentation edit, use a real browser. Check playback, seek-back from

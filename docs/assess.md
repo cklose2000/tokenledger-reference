@@ -13,7 +13,7 @@ grading against this release's executable.
    definition's replay.
 4. Diagnose the incomplete-source close and demonstrate its bounded recovery.
 
-## Learn the workflow
+## Follow the workflow (reader exercise)
 
 Follow the [ordinary reporting and replay interfaces](workflow.md) to construct
 a submission from source bindings, cutoffs and observed populations. Start with
@@ -54,6 +54,18 @@ This is an open-book reproduction and usability exercise with visible expected
 answers. Copying those answers can demonstrate that the grader runs; it cannot
 establish unseen-task reasoning accuracy. No comparative agent-efficiency result
 is claimed by this release.
+
+## Assess the feedback loop
+
+Reporting behavior changes through a governed loop, not an edit. Run
+`tl learning walkthrough` and read [the learning loop](learning.md): a wrong-date
+inspection becomes a recorded finding, an independent verification, a bounded
+candidate evaluated against frozen cases, a signed one-run approval boundary,
+the first next inspection and its recorded outcome, with the original report
+reproduced afterwards. Eleven refused attempts leave the record unchanged.
+Replay the retained walkthrough with `tl learning replay-walkthrough` and change
+a byte to see it fail. The walkthrough is a synthetic rehearsal; the one actual
+native trial completed inconclusive with no promotion.
 
 For architecture assessment, [inspect the BigQuery comparison](evidence.md).
 It preserves both the lower billed bytes and higher slot time. The optional

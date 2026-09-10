@@ -1,4 +1,8 @@
-# Learn the reporting workflow
+# Follow the reporting workflow
+
+This is the reader exercise: you construct the challenge answer through the
+ordinary interfaces. It is not the reporting-learning loop; that governed
+feedback process is described in [the learning loop](learning.md).
 
 Use the ordinary reporting and replay interfaces to construct an answer. This
 is an open-book exercise: its reference solution is visible in a separate
