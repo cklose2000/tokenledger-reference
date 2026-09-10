@@ -21,9 +21,10 @@ remains private.
   `825696cf31d4c2892078512e612840d791fba2ba`. Later documentation and packaging
   commits retain that revision. The original receipt replays through the
   explicit relocated source and artifact paths in `docs/demo.md`.
-- The refreshed challenge is `data/challenge/rc5`, generated and reference-graded
-  under the same public executable. The older `data/challenge/first` fixture
-  remains available for historical replay. Its grader correctly refuses a
+- The refreshed challenge is `data/challenge/rc6`, generated and reference-graded
+  under this candidate's public executable (`933cd94`). The older
+  `data/challenge/first` and `data/challenge/rc5` fixtures remain available for
+  historical replay. Its grader correctly refuses a
   changed executable; the refresh preserves that guard rather than relaxing it.
 - The optional cloud projection preserves 104 original synthetic Parquets and
   selected job counters. Its archive is about 387 MiB and is separate from

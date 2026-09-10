@@ -19,7 +19,7 @@ use `python` and `tl` in the activated environment. On Windows, you can use
 Keep the retained fixture unchanged. Use a new attempt name on a second run.
 
 ```sh
-python -c "import shutil; shutil.copytree('data/challenge/rc5', 'data/challenge/my-attempt'); shutil.copyfile('docs/challenge/answer.blank.json', 'data/challenge/my-attempt/answer.json')"
+python -c "import shutil; shutil.copytree('data/challenge/rc6', 'data/challenge/my-attempt'); shutil.copyfile('docs/challenge/answer.blank.json', 'data/challenge/my-attempt/answer.json')"
 tl challenge verify data/challenge/my-attempt --json
 ```
 
@@ -226,7 +226,7 @@ late invoice. Run it once from the repository root; use a new name on a repeat.
 This intentionally bypasses the writer to simulate damaged source evidence.
 
 ```sh
-python -c "import shutil; shutil.copytree('data/challenge/rc5','data/challenge/tamper-attempt')"
+python -c "import shutil; shutil.copytree('data/challenge/rc6','data/challenge/tamper-attempt')"
 python -c "import json,duckdb; from decimal import Decimal; c=duckdb.connect('data/challenge/tamper-attempt/business/world.duckdb'); key='demo:late-july:invoice'; sql='SELECT feature_json FROM stream.activity WHERE activity_id=?'; before=c.execute(sql,[key]).fetchall(); assert len(before)==1, 'Expected one invoice'; f=json.loads(before[0][0]); f['net_usd']=str(Decimal(f['net_usd'])+Decimal('0.01')); c.execute('UPDATE stream.activity SET feature_json=? WHERE activity_id=?',[json.dumps(f),key]); after=c.execute(sql,[key]).fetchall(); assert after!=before, 'Mutation did not change source'; c.close(); print('Copied invoice changed by one cent')"
 tl challenge grade data/challenge/tamper-attempt --answer docs/challenge/answer.blank.json --output data/score/tamper-attempt --json
 ```

@@ -3,8 +3,8 @@
 The [agent entry file](../AGENTS.md) points to four concrete tasks in a retained
 synthetic fixture. Give an evaluator the release and that entry file; the task
 contracts contain the required artifacts, quantities and pass/fail conditions.
-The current assignment is `data/challenge/rc5/TASKS.md`. The older `first`
-fixture remains historical replay evidence; use the refreshed assignment for
+The current assignment is `data/challenge/rc6/TASKS.md`. The older `first`
+and `rc5` fixtures remain historical replay evidence; use the refreshed assignment for
 grading against this release's executable.
 
 1. Reproduce July recognized revenue per million tokens, stating its fee basis.
@@ -39,7 +39,7 @@ re-performs the evidence and prints the exact required facts for a task.
 the reference path; it does not show that you constructed an answer yourself.
 
 ```sh
-python -c "import shutil; shutil.copytree('data/challenge/rc5', 'data/challenge/my-reference')"
+python -c "import shutil; shutil.copytree('data/challenge/rc6', 'data/challenge/my-reference')"
 tl challenge task data/challenge/my-reference july_yield --json
 tl challenge grade data/challenge/my-reference --answer data/challenge/my-reference/expected.json --output data/score/my-reference --json
 ```
