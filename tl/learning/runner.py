@@ -48,18 +48,8 @@ def _trust(app):
 
 
 def _signature(plan, signature, trust):
-    # No signing or key enrollment operation exists in the application. The
-    # trusted public key must be provisioned separately by the reviewer.
-    if not trust.is_file() or not signature.is_file():
-        raise ValidationError('Promotion unavailable: reviewer trust and detached signature are required')
-    try:
-        result = subprocess.run(['ssh-keygen', '-Y', 'verify', '-f', str(trust),
-            '-I', PRINCIPAL, '-n', NAMESPACE, '-s', str(signature)],
-            input=plan.read_bytes(), capture_output=True, timeout=15, check=False)
-    except (OSError, subprocess.TimeoutExpired):
-        raise ValidationError('reviewer signature verifier unavailable') from None
-    if result.returncode:
-        raise ValidationError('Promotion unavailable: authorized reviewer signature did not verify')
+    from tl.learning.signatures import verify
+    verify(plan, signature, trust)
 
 
 def _report(app, run_id, *, reperform=True):

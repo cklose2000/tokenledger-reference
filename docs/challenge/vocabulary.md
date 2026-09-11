@@ -121,6 +121,6 @@ inputs match the recovered gate and use its published receipt in your answer.
 These are the frozen `tokenledger-challenge-answer/v1` spellings, checked against
 the [task contract](../../tl/challenge/engine.py) and
 [yield bridge](../../tl/demo/yield_bridge.py). You do not need to read those
-implementations to submit through the learning route. The
+implementations to submit through the guided workflow route. The
 [visible solution route](../assess.md#verify-the-reference) remains separately
 labeled; record any use of it.

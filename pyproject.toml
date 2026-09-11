@@ -15,12 +15,13 @@ dependencies = [
   "pyarrow==18.1.0",
   "PyYAML==6.0.2",
   "pytz==2025.2",
+  "sqlglot==30.18.0",
   "tzdata==2025.2",
 ]
 
 [project.optional-dependencies]
 dev = ["pytest==8.3.5"]
-bigquery = ["sqlglot==30.18.0", "Jinja2==3.1.6", "google-cloud-bigquery==3.45.0", "google-cloud-bigquery-storage==2.41.0", "db-dtypes==1.7.1"]
+bigquery = ["Jinja2==3.1.6", "google-cloud-bigquery==3.45.0", "google-cloud-bigquery-storage==2.41.0", "db-dtypes==1.7.1"]
 
 [project.scripts]
 tl = "tl.cli:main"

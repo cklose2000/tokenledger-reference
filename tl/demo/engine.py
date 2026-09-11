@@ -90,7 +90,9 @@ def run(destination=None,*,customers=28,progress=None):
         'Replay from the repository with the retained source and artifact root:', '', '```powershell',
         f"tl --db '{db}' --artifact-root '{root}' receipt {business['receipt_id']} --json",
         f"tl --db '{db}' --artifact-root '{root}' receipt {business['original_receipt_id']} --json",'```','',
-        'The original disclosure pack is under `pack/`. All reporting populations, including the current July, are under `runs/`. This small functional demo supplies no new architecture speed ranking, agent-efficiency claim or BigQuery result.'])
+        'The original disclosure pack is under `pack/`. All reporting populations, including the current July, are under `runs/`. This small functional demo supplies no new architecture speed ranking, agent-efficiency claim or BigQuery result.','',
+        '## Next: the feedback loop inside reporting','',
+        'Reports like this one can be inspected wrongly. `tl learning walkthrough` rehearses the governed learning loop on a fresh synthetic July NRR report: a wrong-date inspection becomes a recorded finding, an independent verification, a bounded diagnostic candidate evaluated against frozen cases, a signed one-run approval boundary, the first next inspection and its recorded outcome, with the original report reproduced afterwards. The walkthrough is synthetic and credential-free; the one real native trial completed inconclusive with no promotion.'])
     (root/'README.md').write_text('\n'.join(lines)+'\n',encoding='utf-8',newline='\n')
     return dict(status='demonstrated',artifact_root=str(root),bridge=bridge,yield_bridge=business,
         original_receipt_ids=verified_ids,original_reproduced=True,pack=pack,

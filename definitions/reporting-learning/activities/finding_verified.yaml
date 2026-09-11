@@ -1,0 +1,11 @@
+name: finding_verified
+version: v1
+customer_required: true
+description: Authenticated reporting workflow event; never recognized business revenue.
+features:
+  case_id:
+    type: string
+  record_json:
+    type: string
+  record_sha256:
+    type: sha256

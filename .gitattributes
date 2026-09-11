@@ -10,3 +10,5 @@ data/challenge/** -text
 data/demo/recorded/** -text
 docs/assets/recording/** -text
 evidence/bigquery/verification/** -text
+data/learning-walkthrough/recorded/** -text
+docs/assets/learning-recording/** -text

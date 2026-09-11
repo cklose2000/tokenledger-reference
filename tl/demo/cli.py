@@ -28,3 +28,4 @@ def register(cli,options,output):
         click.echo('Original yield receipt reproduced: '+business['original_receipt_id'])
         click.echo(f"Workflow: {result['observed_workflow_seconds']:.3f}s; observation {result['observation_receipt_id']}")
         click.echo('Open: '+str(Path(result['artifact_root'])/'README.md'))
+        click.echo('Next: tl learning walkthrough  (the governed feedback loop on a report like this one; synthetic, no credentials)')

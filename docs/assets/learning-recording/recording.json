@@ -1,0 +1,36 @@
+{
+  "schema_version": "tokenledger-console-recording/v1",
+  "execution_git_sha": "933cd94525e20d651c81b192b36cd06d9a552ef2",
+  "command": [
+    "tl",
+    "learning",
+    "walkthrough",
+    "--directory",
+    "data/learning-walkthrough/recording"
+  ],
+  "capture": "Actual process stdout and stderr, merged; timestamped pipe capture, not a PTY",
+  "started_at": "2026-09-10T19:59:26+00:00",
+  "process_seconds": 11.024767500002781,
+  "workflow_seconds": 6.798665700000129,
+  "process_exit": 0,
+  "installation_seconds": 62.68909970000095,
+  "installation_exit": 0,
+  "platform": "Windows-10-10.0.26200-SP0",
+  "python": "3.11.5",
+  "credentials_disabled": true,
+  "installation_scope": "Fresh venv and editable install in a separate local Git clone; pip cache was not cleared",
+  "concurrent_work": "A full private engine regression suite (pytest, 900+ tests) was running concurrently on the same laptop",
+  "synthetic": true,
+  "native_execution": false,
+  "observation_receipt_id": "mr-0501373d4d3bdad113cb7f1e7897161c",
+  "artifacts": {
+    "walkthrough.cast": {
+      "bytes": 2777,
+      "sha256": "d5c5377adea7e40d68c152b9b6ba732026407dfa9c15bbc82959c2b47d92e07f"
+    },
+    "walkthrough.txt": {
+      "bytes": 1980,
+      "sha256": "7c16b1905111668d771feadc2590aec36acba28ec7e8825ffd11ae10dfde1919"
+    }
+  }
+}

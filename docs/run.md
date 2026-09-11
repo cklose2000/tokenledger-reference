@@ -102,4 +102,18 @@ The demo needs no provider credentials and makes no model call. The optional
 BigQuery evidence package has separate download and verification costs; running
 this demo does not download it or submit cloud jobs.
 
+## Run the feedback loop
+
+```sh
+tl learning walkthrough
+tl learning replay-walkthrough data/learning-walkthrough/<run> --json
+```
+
+The first command creates `data/learning-walkthrough/<run>/`, reports July NRR
+with a receipt, records a wrong-date finding and runs the governed loop to its
+recorded outcome in a few seconds. It needs OpenSSH's `ssh-keygen` on PATH to
+create and verify its disposable signer; Windows, macOS and Linux ship it. The
+second command re-validates that directory and fails on any changed byte.
+[What the labels mean](learning.md).
+
 Next: [follow the number](understand.md) or [run the agent challenge](assess.md).

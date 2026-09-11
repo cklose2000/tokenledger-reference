@@ -1,0 +1,17 @@
+name: nrr-date-diagnostic-cases
+version: v1
+purpose: Frozen builder-known regression cases, not held-out agent scoring.
+population: nrr
+reporting_date: '2026-07-31'
+cases:
+  - {case_id: correct-date, requested_date: '2026-07-31', scenario: original, expected: selected}
+  - {case_id: wrong-grain, requested_date: '2026-07-01', scenario: original, expected: date_grain_mismatch}
+  - {case_id: other-month, requested_date: '2026-06-01', scenario: original, expected: no_matching_date}
+  - {case_id: arbitrary-day, requested_date: '2026-07-30', scenario: original, expected: no_matching_date}
+  - {case_id: unsupported, requested_date: '2026-07-01', scenario: original, population: token_yield, expected: unsupported_population}
+  - {case_id: empty, requested_date: '2026-07-01', scenario: empty, expected: no_population}
+  - {case_id: missing-lens, requested_date: '2026-07-01', scenario: missing_lens, expected: incomplete_population}
+  - {case_id: duplicate-lens, requested_date: '2026-07-01', scenario: duplicate_lens, expected: incomplete_population}
+  - {case_id: ambiguous-dates, requested_date: '2026-07-01', scenario: multiple_dates, expected: ambiguous_population}
+  - {case_id: unavailable, requested_date: '2026-07-31', scenario: unavailable, expected: selected_unavailable}
+  - {case_id: wrong-grain-unavailable, requested_date: '2026-07-01', scenario: unavailable, expected: date_grain_mismatch}

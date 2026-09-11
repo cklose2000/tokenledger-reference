@@ -1,6 +1,6 @@
 {
   "status": "prepared_not_published",
-  "tag": "v0.2.0-rc.5",
+  "tag": "v0.2.0-rc.6",
   "tag_created": false,
   "public_destination": "cklose2000/tokenledger-reference",
   "source_scope": "synthetic only",
@@ -35,15 +35,15 @@
     "incremental_performance": "not_run"
   },
   "challenge": {
-    "historical_fixture_replay": "passed",
+    "historical_fixture_replay": "passed_first_and_rc5",
     "historical_fixture_grade_in_updated_runtime": "correctly_refused",
     "current_runtime_fixture": "passed_four_tasks_reference_answer",
+    "fixture_directory": "data/challenge/rc6",
     "fixture_id": "058168fe58cab620a36e54f2d03ea6b5086fcba385d2b54e3b4d19da34cd164f",
-    "proof_receipt_id": "mr-ae36c1d83735aba3abe252915eb9135b",
-    "reference_score_receipt": "mr-d9a685e6e5d3699ad49c678b984f29f8",
-    "actual_agent_usage": "unobserved",
-    "relocated_grade": "passed_same_deterministic_score_receipt",
-    "working_copy_recipe": "passed_same_score_original_fixture_ledger_unchanged"
+    "proof_receipt_id": "mr-b1d47db5df4352e704f228ebd57d80c2",
+    "reference_score_receipt": "mr-4d79171bcd4afcb4ab62a3116565a79e",
+    "execution_git_sha": "933cd94525e20d651c81b192b36cd06d9a552ef2",
+    "actual_agent_usage": "unobserved"
   },
   "architecture": {
     "artifact": "passed_9_of_9_zero_errors_warnings",
@@ -53,7 +53,7 @@
     "current_reader_browser_checks": "docs/architecture/reader-check.json"
   },
   "matched_agent_benchmark": "not_run",
-  "learning": "completed_inconclusive_no_promotion",
+  "learning": "completed_inconclusive_no_promotion; synthetic walkthrough included",
   "first_time_evaluators": {
     "agent_review_count": 2,
     "human_review_count": 0,
@@ -151,5 +151,59 @@
     "cloud_archive": "retained_asset_size_and_digest_match_manifest",
     "public_release_integration": "pending_private_PR_merge",
     "cloud_jobs_submitted": false
+  },
+  "predecessor": {
+    "tag": "v0.2.0-rc.5",
+    "main": "015683d5754337d4102990a6523909b8ca1e06e9",
+    "draft_release_id": 384927275,
+    "disposition": "reviewed candidate, never published; superseded by this successor candidate, not overwritten"
+  },
+  "reporting_learning_walkthrough": {
+    "status": "recorded_and_replayed",
+    "synthetic": true,
+    "native_execution": false,
+    "engine_revision": "2ea1cf78b10040154798051b3765f7ea041c757a",
+    "execution_git_sha": "933cd94525e20d651c81b192b36cd06d9a552ef2",
+    "recording": "docs/assets/learning-recording/recording.json",
+    "retained_directory": "data/learning-walkthrough/recorded",
+    "workflow_seconds": 6.798665700000129,
+    "process_seconds": 11.024767500002781,
+    "installation_seconds": 62.68909970000095,
+    "concurrent_work": "A full private engine regression suite (pytest, 900+ tests) was running concurrently on the same laptop",
+    "workflow_events": 11,
+    "refused_attempts": 11,
+    "frozen_cases": 11,
+    "outcome_status": "improved",
+    "outcome_meaning": "candidate explained a builder-chosen synthetic wrong-date inspection; not an operating gain",
+    "approval_authority": "disposable synthetic signer; private half deleted before packaging; not Chandler, not enrolled trust",
+    "actual_native_trial": {
+      "status": "inconclusive",
+      "signed_private_revision": "fabd91acc87f8eabe0d91a84a6aabc4221e05ce7",
+      "promotion": false,
+      "ongoing_activation": false,
+      "receipts": "private, not reproduced here"
+    },
+    "relocated_replay": "passed_on_builder_checkout",
+    "local_tests": "see successor_candidate",
+    "ci": "not_run_until_push"
+  },
+  "successor_candidate": {
+    "status": "prepared_not_published",
+    "publication_approval": "pending_exact_release_approval",
+    "independent_qa": "not_run",
+    "private_engine_pr": "pending",
+    "introductions": "none_authorized_or_sent"
+  },
+  "challenge_rc5": {
+    "historical_fixture_replay": "passed",
+    "historical_fixture_grade_in_updated_runtime": "correctly_refused",
+    "current_runtime_fixture": "passed_four_tasks_reference_answer",
+    "fixture_id": "058168fe58cab620a36e54f2d03ea6b5086fcba385d2b54e3b4d19da34cd164f",
+    "proof_receipt_id": "mr-ae36c1d83735aba3abe252915eb9135b",
+    "reference_score_receipt": "mr-d9a685e6e5d3699ad49c678b984f29f8",
+    "actual_agent_usage": "unobserved",
+    "relocated_grade": "passed_same_deterministic_score_receipt",
+    "working_copy_recipe": "passed_same_score_original_fixture_ledger_unchanged",
+    "disposition": "historical fixture at 825696c; replay verifies; grading under the rc6 executable is correctly refused"
   }
 }

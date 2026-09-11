@@ -21,14 +21,20 @@ remains private.
   `825696cf31d4c2892078512e612840d791fba2ba`. Later documentation and packaging
   commits retain that revision. The original receipt replays through the
   explicit relocated source and artifact paths in `docs/demo.md`.
-- The refreshed challenge is `data/challenge/rc5`, generated and reference-graded
-  under the same public executable. The older `data/challenge/first` fixture
-  remains available for historical replay. Its grader correctly refuses a
+- The refreshed challenge is `data/challenge/rc6`, generated and reference-graded
+  under this candidate's public executable (`933cd94`). The older
+  `data/challenge/first` and `data/challenge/rc5` fixtures remain available for
+  historical replay. Its grader correctly refuses a
   changed executable; the refresh preserves that guard rather than relaxing it.
 - The optional cloud projection preserves 104 original synthetic Parquets and
   selected job counters. Its archive is about 387 MiB and is separate from
   installation and the small demo. Original cloud operations, later independent
   restoration and the public packaging check remain distinct evidence scopes.
+- The recorded reporting-learning walkthrough under `data/learning-walkthrough/recorded`
+  executes the public commit named in `docs/assets/learning-recording/recording.json`.
+  Its disposable private signer was deleted before packaging; replay uses the
+  public trust in `gateway.json`. The one actual signed native trial is private,
+  completed inconclusive and is reported, not reproduced, here.
 - The base image pins Python 3.11.5; the package pins the reporting dependencies.
   The optional SSH devcontainer feature supports hosted CLI verification. Its
   provisioning result is recorded separately from the reporting runtime.

@@ -72,4 +72,4 @@ synthetic outputs. BigQuery used **51.47% fewer billed bytes** and **14.96 times
 median slot time**. Test a representative workload before making a performance
 or cost decision. Comparative agent efficiency remains unmeasured.
 
-[Run the example](run.md) · [Learn the workflow](workflow.md) · [Inspect the architecture](architecture/README.md)
+[Run the example](run.md) · [Follow the workflow](workflow.md) · [Inspect the architecture](architecture/README.md)

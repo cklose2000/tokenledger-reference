@@ -63,6 +63,15 @@ class GatewayConfig:
     max_prefix_rows: int = 10_000
     max_prefix_bytes: int = 16_000_000
     max_attempts: int = 3
+    allowed_activities: dict | None = None
+    admission_policy: str | None = None
+    learning_signers: str | None = None
+    # True only for the credential-free reporting-learning walkthrough. Such a
+    # configuration names a visibly synthetic project, producers and origin,
+    # records DuckDB evaluations only, and can never be served or used by the
+    # cloud learning commands. Absent, every historical configuration keeps its
+    # identity and semantics.
+    synthetic_rehearsal: bool | None = None
 
     def __post_init__(self):
         if not isinstance(self.binding, Binding) or not self.binding.query_principal:
@@ -96,12 +105,53 @@ class GatewayConfig:
                     or not isinstance(source, str) or not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9./_-]{0,127}', source)):
                 raise ValidationError('invalid producer identity or fixed source')
         object.__setattr__(self, 'allowed_producers', MappingProxyType(producers))
+        if self.allowed_activities is not None:
+            if (not isinstance(self.allowed_activities, Mapping)
+                    or set(self.allowed_activities) != set(producers)):
+                raise ValidationError('activity capabilities must explicitly cover every producer')
+            capabilities = {}
+            for actor, activities in self.allowed_activities.items():
+                if (not isinstance(activities, (list, tuple)) or not activities
+                        or any(not isinstance(name, str) or not re.fullmatch(r'[a-z][a-z0-9_]{0,127}', name)
+                               for name in activities)
+                        or len(set(activities)) != len(activities)):
+                    raise ValidationError('producer activity capabilities must be a nonempty unique list')
+                capabilities[actor] = tuple(sorted(activities))
+            object.__setattr__(self, 'allowed_activities', MappingProxyType(capabilities))
+        if self.admission_policy is not None:
+            from tl.evolution.admission import POLICY, ACTIVITIES
+            if (self.admission_policy != POLICY or self.allowed_activities is None
+                    or not isinstance(self.learning_signers, str) or len(self.learning_signers) > 4096
+                    or not re.fullmatch(r'chandler (?:namespaces="tokenledger-learning-trial" )?ssh-ed25519 [A-Za-z0-9+/]+=*(?: [^\r\n]{1,160})?\r?\n', self.learning_signers)):
+                raise ValidationError('reporting learning requires explicit capabilities and an enrolled public reviewer key')
+            roles = [set(('finding_submitted', 'candidate_proposed', 'inspection_requested')),
+                     set(('finding_verified', 'candidate_evaluated')),
+                     set(('trial_authorized', 'trial_revoked')), set(('trial_started', 'trial_completed'))]
+            if (set().union(*map(set, self.allowed_activities.values())) != set(ACTIVITIES)
+                    or any(not any(set(names) <= role for role in roles) for names in self.allowed_activities.values())):
+                raise ValidationError('learning producer roles must be separate and cover the closed workflow')
+        elif self.learning_signers is not None:
+            raise ValidationError('reviewer trust requires the reporting learning admission policy')
+        if self.synthetic_rehearsal is not None:
+            from tl.evolution.walkthrough import PROJECT, PRODUCER_DOMAIN, ORIGIN_SUFFIX
+            if (self.synthetic_rehearsal is not True or self.admission_policy is None
+                    or self.binding.project != PROJECT or not urlsplit(self.audience).hostname.endswith(ORIGIN_SUFFIX)
+                    or any(not actor.endswith('@' + PRODUCER_DOMAIN) for actor in self.allowed_producers)):
+                raise ValidationError('synthetic rehearsal requires the walkthrough project, producers and origin')
 
     def as_dict(self):
         from dataclasses import asdict
         result = {name: getattr(self, name) for name in self.__dataclass_fields__}
         result['binding'] = asdict(self.binding)
         result['allowed_producers'] = dict(self.allowed_producers)
+        # Preserve the identity of every historical gateway configuration.
+        if self.allowed_activities is None:
+            result.pop('allowed_activities')
+        else:
+            result['allowed_activities'] = {actor: list(names) for actor, names in self.allowed_activities.items()}
+        for optional in ('admission_policy', 'learning_signers', 'synthetic_rehearsal'):
+            if result[optional] is None:
+                result.pop(optional)
         return result
 
     @property
@@ -254,10 +304,19 @@ class Gateway:
         self.catalog = Catalog(Path(definitions))
         if self.catalog.digest != config.catalog_hash:
             raise ValidationError('gateway activity catalog differs from the configured pin')
+        if config.allowed_activities is not None:
+            names = {name for group in config.allowed_activities.values() for name in group}
+            if not names <= self.catalog.schemas.keys():
+                raise ValidationError('producer capability names an unregistered activity')
         self.client = client
         self.storage = storage
         self.now = now or (lambda: datetime.now(timezone.utc))
         self.sleep = sleep or time.sleep
+
+    def _admit(self, prefix, pending):
+        if self.config.admission_policy is not None:
+            from tl.evolution.admission import validate
+            validate(list(prefix.values()), pending, self.config)
 
     def _ready(self):
         # Called only after authentication, complete request validation and bounds.
@@ -294,7 +353,9 @@ class Gateway:
                     or actual['activity_id'] in rows or actual['_lane'] != 'dev'
                     or actual['_schema_hash'] != self.catalog.digest
                     or actual['_actor'] not in self.config.allowed_producers
-                    or actual['_source'] != self.config.allowed_producers[actual['_actor']]):
+                    or actual['_source'] != self.config.allowed_producers[actual['_actor']]
+                    or (self.config.allowed_activities is not None
+                        and actual['activity'] not in self.config.allowed_activities[actual['_actor']])):
                 raise ValidationError('source is not the unique validated gateway prefix')
             event = Activity(**{key: (_json(actual[key]) if key == 'feature_json' and isinstance(actual[key], str)
                                      else actual[key]) for key in CORE})
@@ -327,8 +388,15 @@ class Gateway:
         for event in request['events']:
             if not isinstance(event, dict) or not REQUIRED <= event.keys() or event.keys() - CORE:
                 raise ValidationError('events accept only ActivitySchema core fields, never provenance or CDC')
+            if (self.config.allowed_activities is not None
+                    and (not isinstance(event['activity'], str)
+                         or event['activity'] not in self.config.allowed_activities[principal])):
+                raise AuthenticationError('principal cannot emit this activity')
             row = prepare_row(Activity(**event), now, self.catalog,
                               source=self.config.allowed_producers[principal], actor=principal, lane='dev')
+            if self.config.admission_policy is not None:
+                from tl.evolution.admission import body
+                body(row)
             if row['activity_id'] in incoming and row != incoming[row['activity_id']]:
                 raise ValidationError('conflicting idempotency key in request')
             incoming[row['activity_id']] = row
@@ -360,6 +428,7 @@ class Gateway:
                     pending.append(dict(row, _stream_position=len(existing) + len(pending) + 1))
             if initial_present is None:
                 initial_present = len(incoming) - len(pending)
+            self._admit(existing, pending)
             if not pending:
                 return dict(status='accepted', accepted=len(incoming), attempted=len(request['events']),
                             duplicates_at_start=initial_present, acknowledged_appended=acknowledged,
@@ -454,6 +523,8 @@ def make_handler(config, definitions, *, gateway_factory=Gateway, verifier=None)
 def serve(config, definitions='definitions/activities', *, host='0.0.0.0', port=8080):
     """Called by the noninteractive tl cloud bigquery gateway serve command."""
     # Fail before accepting traffic if the deployed catalog pin differs.
+    if config.synthetic_rehearsal:
+        raise ValidationError('a synthetic rehearsal configuration is never served')
     Gateway(config, definitions)
     server = ThreadingHTTPServer((host, port), make_handler(config, definitions))
     server.daemon_threads = True

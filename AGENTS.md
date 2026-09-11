@@ -8,6 +8,13 @@ Run `tl challenge --help` for the release's exact preparation and grading
 commands. The generated challenge manifest supplies concrete source/receipt
 identities, reporting and knowledge cutoffs, units and visible expected outputs.
 
+Then run `tl learning walkthrough --json` once. It rehearses the governed
+reporting-learning loop on a fresh synthetic report and needs `ssh-keygen` on
+PATH. Read `docs/learning.md` for what each label means. It is a synthetic
+rehearsal, never a trial result or an approval; do not describe its `improved`
+status as an efficiency gain. `tl learning replay-walkthrough DIR --json`
+re-validates a walkthrough directory.
+
 Complete every registered task:
 
 1. Reproduce July recognized usage revenue per million tokens. State the fee
@@ -28,21 +35,21 @@ unknown rather than estimating it.
 
 ## Frozen release assignment
 
-Start with [Learn the workflow](docs/workflow.md) and the
+Start with [Follow the workflow](docs/workflow.md) and the
 [blank submission](docs/challenge/answer.blank.json) to construct an answer
 through reporting, population inspection and replay. Explain your source,
 cutoff and definition choices in a separate note. Record solution exposure.
 
 The alternative below is **visible reference verification**. It uses
-`data/challenge/rc5/TASKS.md`, exact-answer task output and `expected.json`.
-Fixture `058168fe58cab620a36e54f2d03ea6b5086fcba385d2b54e3b4d19da34cd164f`; proof `mr-ae36c1d83735aba3abe252915eb9135b`.
+`data/challenge/rc6/TASKS.md`, exact-answer task output and `expected.json`.
+Fixture `058168fe58cab620a36e54f2d03ea6b5086fcba385d2b54e3b4d19da34cd164f`; proof `mr-b1d47db5df4352e704f228ebd57d80c2`.
 
 Make a working copy first. Grading appends its elapsed-time observation to the
 working fixture's receipt ledger. Keep the retained release fixture unchanged;
 use a new working directory for each separate attempt.
 
 ```sh
-python -c "import shutil; shutil.copytree('data/challenge/rc5', 'data/challenge/your-attempt')"
+python -c "import shutil; shutil.copytree('data/challenge/rc6', 'data/challenge/your-attempt')"
 tl challenge verify data/challenge/your-attempt --json
 tl challenge task data/challenge/your-attempt july_yield --json
 tl challenge task data/challenge/your-attempt late_invoice --json
@@ -53,4 +60,4 @@ tl challenge grade data/challenge/your-attempt --answer data/challenge/your-atte
 
 The last command is the visible reference answer. Copy and edit the answer
 for your own submission; the grader checks every required field. The saved
-scorecard is `data/challenge/rc5/reference-score/scorecard.md`.
+scorecard is `data/challenge/rc6/reference-score/scorecard.md`.

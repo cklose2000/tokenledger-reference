@@ -11,7 +11,7 @@ from tl.release import IMAGE
 from tl.stream import ValidationError
 
 
-def package(config_path, output, *, root=Path('.')):
+def package(config_path, output, *, root=Path('.'), definitions=Path('definitions/activities')):
     def reject_links(path):
         for part in (Path(path).absolute(), *Path(path).absolute().parents):
             if part.exists() and (part.is_symlink() or getattr(part.lstat(),'st_file_attributes',0) & stat.FILE_ATTRIBUTE_REPARSE_POINT):
@@ -22,11 +22,24 @@ def package(config_path, output, *, root=Path('.')):
     if destination.exists():
         raise ValidationError('gateway build context already exists')
     root = Path(root).resolve()
+    definitions = Path(definitions)
+    definitions = (root / definitions).resolve() if not definitions.is_absolute() else definitions.resolve()
+    reject_links(definitions)
+    if not definitions.is_relative_to(root / 'definitions'):
+        raise ValidationError('gateway catalog must be a reviewed definitions directory in the checkout')
+    catalog_path = definitions.relative_to(root).as_posix()
+    custom = catalog_path != 'definitions/activities'
+    if custom:
+        from tl.stream.events import Catalog
+        if Catalog(definitions).digest != config.catalog_hash:
+            raise ValidationError('packaged activity catalog differs from the configured pin')
     if destination.resolve().is_relative_to(root):
         raise ValidationError('gateway build context must be outside the source checkout')
-    tracked=subprocess.check_output(['git','ls-files','-z','--','tl','definitions/activities'],cwd=root).decode().split('\0')
+    tracked=subprocess.check_output(['git','ls-files','-z','--','tl',catalog_path],cwd=root).decode().split('\0')
     selected={name for name in tracked if name and (name.endswith('.py') or
-              name=='tl/stream/schema.sql' or name.startswith('definitions/activities/') and name.endswith('.yaml'))}
+              name=='tl/stream/schema.sql' or name.startswith(catalog_path+'/') and name.endswith('.yaml'))}
+    if custom and {p.relative_to(root).as_posix() for p in definitions.glob('*.yaml')} - selected:
+        raise ValidationError('gateway catalog contains untracked definitions')
     # These reviewed files may be packaged before their containing private PR.
     selected.add('tl/bigquery/gateway.py')
     destination.mkdir(parents=True)
@@ -40,8 +53,19 @@ def package(config_path, output, *, root=Path('.')):
         target.parent.mkdir(parents=True,exist_ok=True)
         shutil.copyfile(source,target)
     config.save(destination/'gateway.json')
+    # OpenSSH resolves the executing UID even for detached verification. A
+    # numeric Docker USER alone is insufficient: without a passwd entry the
+    # verifier refuses every signature before cryptographic verification.
+    verifier = ("RUN apt-get update && apt-get install -y --no-install-recommends openssh-client passwd "
+                "&& groupadd --gid 10001 tokenledger "
+                "&& useradd --uid 10001 --gid 10001 --no-log-init --create-home "
+                "--home-dir /home/tokenledger --shell /usr/sbin/nologin tokenledger "
+                "&& rm -rf /var/lib/apt/lists/*\n") if config.admission_policy else ''
+    identity_check = ('RUN python -c "import os,pwd; assert os.getuid() == 10001; '
+                      'assert pwd.getpwuid(os.getuid()).pw_name == \'tokenledger\'"\n'
+                      if config.admission_policy else '')
     (destination/'Dockerfile').write_text(f'''FROM {IMAGE}
-WORKDIR /app
+{verifier}WORKDIR /app
 COPY pyproject.toml LICENSE /app/
 COPY tl /app/tl
 COPY definitions /app/definitions
@@ -49,7 +73,7 @@ RUN python -m pip install --no-cache-dir '.[bigquery]'
 COPY gateway.json /app/gateway.json
 ENV PYTHONUNBUFFERED=1
 USER 10001:10001
-CMD ["python", "-m", "tl", "cloud", "bigquery", "gateway-serve", "--gateway-config", "/app/gateway.json", "--json"]
+{identity_check}CMD ["python", "-m", "tl", "--definitions", "/app/{catalog_path}", "cloud", "bigquery", "gateway-serve", "--gateway-config", "/app/gateway.json", "--json"]
 ''', encoding='utf-8')
     files = [dict(path=p.relative_to(destination).as_posix(), sha256=hashlib.sha256(p.read_bytes()).hexdigest())
              for p in sorted(destination.rglob('*')) if p.is_file()]

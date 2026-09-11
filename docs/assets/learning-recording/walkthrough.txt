@@ -1,0 +1,21 @@
+Generate an isolated synthetic business and report July NRR with a receipt.
+Inspect that report with the wrong date grain: the month start against a month-end report.
+Create a disposable synthetic signer and a synthetic gateway with the same admission rules.
+Record the finding. The proposer cannot verify its own claim; a tampered envelope never writes.
+Verify both findings against the retained population. A refuted claim stays on the record.
+Propose the bounded candidate and evaluate its eleven frozen cases in DuckDB against the scalar oracle.
+Approval boundary: prepare the exact one-run plan; expanded, tampered or unsigned approvals fail closed.
+Admit the next inspections. Only the first one after authorization may be claimed, exactly once.
+Measure the claimed inspection with the candidate, record the outcome and close the one-run authority.
+Reproduce the original July report and confirm the business stream holds no learning rows.
+July NRR report: 4 lenses dated 2026-07-31; receipt mr-7d9045ba2c349988855e54a1b2916737
+Wrong-date inspection 2026-07-01: 0 rows selected, no explanation (the finding)
+Workflow events admitted: 11; refused attempts: 11; stream unchanged after each refusal
+Frozen evaluation: 11 cases, DuckDB candidate equals oracle; receipt mr-3a344c906fb8f0e07849e4056c8cc3c5
+Approval: Disposable synthetic signer generated in this directory. Not Chandler, not enrolled trust, not a real trial authorization.
+Next inspection 2026-07-01: diagnostic date_grain_mismatch, suggested date 2026-07-31; outcome improved
+The candidate explained a builder-chosen synthetic wrong-date inspection. Not a measured operating gain.
+Actual native signed trial (fabd91a): inconclusive, no promotion, no ongoing activation
+Original report reproduced; learning rows in business stream: 0
+Workflow: 6.799s; walkthrough receipt mr-0501373d4d3bdad113cb7f1e7897161c
+Open: C:\tokenledger-demo\rc6-933cd94\data\learning-walkthrough\recording\README.md

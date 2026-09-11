@@ -62,20 +62,22 @@ def register(cli,options,output):
 
     @group.command('iam-plan')
     @click.option('--operator',required=True,help='Explicit user:EMAIL privileged administrator.')
+    @click.option('--account-prefix',default='tl-boundary',show_default=True)
     @options
-    def iam_plan(ctx,operator,json_output):
+    def iam_plan(ctx,operator,account_prefix,json_output):
         """Describe an isolated boundary fixture; no cloud calls."""
         from tl.bigquery.iam import plan
-        output(plan(Binding.read(ctx.obj['bigquery_config']),operator),json_output)
+        output(plan(Binding.read(ctx.obj['bigquery_config']),operator,account_prefix=account_prefix),json_output)
 
     @group.command('iam-bootstrap')
     @click.option('--operator',required=True,help='Explicit user:EMAIL privileged administrator.')
+    @click.option('--account-prefix',default='tl-boundary',show_default=True)
     @click.option('--output','directory',type=click.Path(path_type=Path),required=True)
     @options
-    def iam_bootstrap(ctx,operator,directory,json_output):
+    def iam_bootstrap(ctx,operator,account_prefix,directory,json_output):
         """Create scoped boundary identities and a pinned stream; no acceptance inferred."""
         from tl.bigquery.iam import bootstrap
-        output(bootstrap(Binding.read(ctx.obj['bigquery_config']),operator,directory),json_output)
+        output(bootstrap(Binding.read(ctx.obj['bigquery_config']),operator,directory,account_prefix=account_prefix),json_output)
 
     @group.command('gateway-serve')
     @click.option('--gateway-config',type=click.Path(exists=True,path_type=Path),required=True)
@@ -86,7 +88,7 @@ def register(cli,options,output):
         from tl.bigquery.gateway import GatewayConfig,serve
         config=GatewayConfig.read(gateway_config)
         output(dict(status='starting',gateway_identity=config.identity),json_output)
-        serve(config,port=port)
+        serve(config,ctx.obj['definitions'],port=port)
 
     @group.command('gateway-package')
     @click.option('--gateway-config',type=click.Path(exists=True,path_type=Path),required=True)
@@ -95,7 +97,7 @@ def register(cli,options,output):
     def gateway_package(ctx,gateway_config,directory,json_output):
         """Create an allowlisted container build context without credentials/history."""
         from tl.bigquery.gateway_package import package
-        result=package(gateway_config,directory)
+        result=package(gateway_config,directory,definitions=ctx.obj['definitions'])
         output(dict(status='packaged',gateway_identity=result['gateway_identity'],
                     directory=str(directory),deployment='not_run'),json_output)
 
