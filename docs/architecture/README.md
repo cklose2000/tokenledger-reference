@@ -50,6 +50,12 @@ pairs. Native used **51.47% fewer billed bytes** and **14.96 times median slot
 time** across three measured pairs. The first pair was slower. Read the
 [complete evidence and scope](../evidence.md).
 
+Warmup is excluded from performance statistics. Accounted wall sums disjoint
+intervals, not contiguous latency. List-price arithmetic is not an invoice.
+Grok QA is agent-assisted engineering review, not an accounting audit.
+Inventories containing retained experiments do not describe the native source
+footprint. This static export is a selected explanatory map, not that inventory.
+
 The diagram shows the implemented reporting path. Incremental cloud performance,
 general production admission and comparative agent efficiency are subsequent
 experiments. They are not additional green paths on this measured map. The

@@ -72,6 +72,28 @@ for the archive and verification artifacts, beyond the installed environment.
 This is a planning allowance, not a measured peak-memory guarantee. The verifier
 reads the closed archive directly and does not extract a second copy.
 
+The independent restoration of the original sealed packages required about
+**18 GiB free disk**. That observed workspace requirement covers a different,
+larger restore path than this public ZIP verifier. Reserve at least 18 GiB when
+following a sealed-package restore recipe; do not present the 1 GiB public-ZIP
+allowance as the measured requirement of that restore. The ZIP's rc.5 filename
+and pinned checksum are deliberately retained unchanged in rc.6.
+
+Disable bytecode before any sealed-inventory execution. Extra `__pycache__`
+files change a sealed directory's inventory and previously broke restoration.
+Do not install packages or write outputs inside a sealed evidence directory.
+
+```sh
+export PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0
+```
+
+PowerShell equivalent:
+
+```powershell
+$env:PYTHONDONTWRITEBYTECODE='1'
+$env:PYTHONHASHSEED='0'
+```
+
 After downloading `bigquery-populations-v0.2.0-rc.5.zip` from this release's
 assets, run from its checkout:
 

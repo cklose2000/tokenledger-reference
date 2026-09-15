@@ -1,16 +1,39 @@
 # tokenledger: one activity stream, every reported number reproducible.
 
-**A runnable reference implementation for data and finance engineering teams.**
-Report a business metric, explain a change and reproduce the original result.
+**The data model agents actually work on.**
 
 Built from the SOX-controlled subscriber-metrics work I ran at SiriusXM for
 19 years. For AI businesses that meter tokens and seats.
 
-[Watch the July number change, then reproduce the original →](docs/demo.md)
+[![Silent July demonstration, historical recording; successor capture pending](docs/assets/recording/demo.gif)](docs/demo.md)
 
-**[Run it](docs/run.md)** · **[Understand it](docs/understand.md)** · **[Assess it](docs/assess.md)** · **[The learning loop](docs/learning.md)**
+Historical recording at `825696c`. The successor recording and its execution
+SHA will be bound separately; this preview retains the original timing.
 
 ![One physical activity stream, query-time projections, versioned definitions, a reported result and its receipt](docs/assets/one-number.svg)
+
+The activity stream feeds query-time scaffolds and projections. Versioned
+definitions govern reported metrics. Receipts bind each result to its inputs,
+definition, query, execution revision and reporting/knowledge cutoffs.
+
+**[Run](docs/run.md)** · **[Understand](docs/understand.md)** · **[Assess](docs/assess.md)**
+
+## One July number, one late invoice, original replay
+
+| July recognized usage | Original knowledge: October 1 | Later knowledge: October 3 |
+|---|---:|---:|
+| Revenue net of discounts, USD | 30,579.81 | 33,579.81 |
+| Revenue net of discounts and fees, USD | 30,543.74 | 33,543.74 |
+| Raw tokens, each counted once | 19,210,131,257 | 19,210,131,257 |
+| Net of discounts, USD / million tokens | 1.591858462126 | 1.748026057228 |
+| Net of discounts and fees, USD / million tokens | 1.589980807074 | 1.746148402176 |
+
+Reporting cutoff: July 31, 2026. Both knowledge cutoffs are in 2026 at 00:00 UTC.
+The late invoice adds USD 3,000.00: account **1100 AR debit 3,000.00** and
+account **4000 usage revenue credit 3,000.00**. These are the two sides of one
+entry, not two revenue changes. Tokens and fees do not change. The original
+receipt still reproduces after the append. [Exact values and receipt bindings](docs/assets/demo-summary.json)
+and [replay commands](docs/demo.md) retain the proof.
 
 A late invoice changes July's recognized revenue per million tokens. The token
 count stays fixed. The accounting bridge explains the change, and the original
@@ -55,6 +78,10 @@ four native BigQuery pairs: one warmup and three measured pairs. Native used
 **51.47% fewer billed bytes** and **14.96× median slot time**. It was slower in
 the first measured pair. These results belong together.
 
+Warmup is excluded from performance statistics. Accounted wall sums disjoint
+intervals, not contiguous latency. List-price arithmetic is not an invoice.
+Grok QA is agent-assisted engineering review, not an accounting audit.
+
 [Read the measurement methods, individual pairs and limitations](docs/evidence.md).
 The [earlier local tenfold hypothesis failed](docs/evidence.md#the-hypothesis-that-failed):
 82 versus 20 relations, with faster baseline builds. That report is preserved.
@@ -74,6 +101,20 @@ grader and keep failures visible.
 This is an **open-book reproduction exercise**. Comparative agent accuracy and
 token efficiency remain unmeasured. A reproducible result alone does not prove
 source completeness, accounting-policy approval or SOX operating effectiveness.
+
+## Status and limits
+
+![DuckDB demo: shipped](https://img.shields.io/badge/DuckDB_demo-shipped-green)
+![BigQuery scratch: shipped with limits](https://img.shields.io/badge/BigQuery_scratch-shipped_with_limits-blue)
+![Production IAM: not established](https://img.shields.io/badge/Production_IAM-not_established-lightgrey)
+![Agent eval: unmeasured](https://img.shields.io/badge/Agent_eval-unmeasured-lightgrey)
+![Learning improvement: not claimed](https://img.shields.io/badge/Learning_improvement-not_claimed-lightgrey)
+
+Controls demo exits **2**: IAM, audit logs and independent approval evidence
+are incomplete. Production IAM and segregation of duties are not established.
+L1 is inconclusive, with no promotion and no self-improvement claim. Catalog
+4 versus 82 is not a total-complexity reduction. Local DuckDB seconds do not
+establish cloud performance. [Candidate gates](release-status.json).
 
 Built by [Chandler Klose](https://github.com/cklose2000).
 [Apache-2.0](LICENSE) · [Cite this work](CITATION.cff) · [Release scope](RELEASE.md)

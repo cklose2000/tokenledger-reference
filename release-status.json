@@ -205,5 +205,20 @@
     "relocated_grade": "passed_same_deterministic_score_receipt",
     "working_copy_recipe": "passed_same_score_original_fixture_ledger_unchanged",
     "disposition": "historical fixture at 825696c; replay verifies; grading under the rc6 executable is correctly refused"
+  },
+  "audience_increment": {
+    "status": "in_preparation_not_approved",
+    "base_reference_sha": "3272f680ff945daa7639bd3aad06b28659b5c9c7",
+    "accepted_engine_sha": "088cb267bd4575d0afbf3c1b3b38d9f1f949e797",
+    "hosted_codespaces": {
+      "status": "not_run",
+      "blocker": "Exact successor not provisioned; historical hosted check is e41438d only"
+    },
+    "uncoached_evaluation": {
+      "status": "not_run",
+      "blocker": "Chandler participant list and invitation authorization pending"
+    },
+    "independent_qa": "Grok review of successor pending",
+    "publication": "pending_exact_bytes_and_destination_approval"
   }
 }

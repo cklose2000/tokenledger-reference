@@ -6,16 +6,16 @@ the runnable reference implementation.
 
 Use a Git clone, rather than a source ZIP, so the retained receipt history is
 available. On Windows, follow the short-path clone below. On macOS or Linux,
-for the published release:
+for the private draft rc.6 base (3272f68):
 
 ```sh
 git clone https://github.com/cklose2000/tokenledger-reference.git
 cd tokenledger-reference
-git checkout v0.2.0-rc.5
+git checkout --detach 3272f680ff945daa7639bd3aad06b28659b5c9c7
 ```
 
-During candidate review, use the exact supplied candidate commit instead of
-the release tag. Publication and hosted setup status are in
+For successor review, use the exact SHA in the approval packet. Draft rc.6 has
+no published tag; these commands pin its retained base. Publication and hosted setup status are in
 [release status](../release-status.json).
 
 On Windows PowerShell, choose a new, short destination such as `C:\tl-reference`
@@ -26,7 +26,7 @@ with `Filename too long`.
 ```powershell
 git clone --config core.longpaths=true https://github.com/cklose2000/tokenledger-reference.git C:\tl-reference
 Set-Location C:\tl-reference
-git checkout v0.2.0-rc.5
+git checkout --detach 3272f680ff945daa7639bd3aad06b28659b5c9c7
 ```
 
 During private review, replace the tag with the supplied exact commit. The clone
@@ -40,6 +40,8 @@ Then install and run from Windows PowerShell:
 
 ```powershell
 python --version
+$env:PYTHONDONTWRITEBYTECODE='1'
+$env:PYTHONHASHSEED='0'
 python -m venv .venv
 .\.venv\Scripts\python.exe --version
 .\.venv\Scripts\python.exe -m pip install -e '.[dev]'
@@ -51,6 +53,7 @@ On macOS or Linux:
 ```sh
 python3.11 -m venv .venv
 . .venv/bin/activate
+export PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0
 python --version
 python -m pip install -e ".[dev]"
 tl demo
@@ -62,6 +65,10 @@ patch version. The checked-in devcontainer pins the reference interpreter and
 base image. Hosted provisioning is a separately recorded acceptance check.
 
 ## Use GitHub Codespaces
+
+**Successor candidate: not_run.** The linked hosted observation below applies
+to `e41438d`, not rc.6 or this successor. An actual instance must install and
+operate the exact frozen successor before this gate passes.
 
 On the repository's `main` branch, choose **Code > Codespaces > Create codespace**.
 The two-core machine is sufficient for this example. Wait for the post-creation

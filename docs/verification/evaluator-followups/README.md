@@ -53,8 +53,8 @@ seals and enforces exact equality between the player's events and original cast
 and transcript. Its `--check` detects stale generated presentation.
 
 [Browser measurements](../../architecture/reader-check.json) bind the final
-HTML. The default diagram fits 1440×900, 1600×1000, 1920×1080 and 2048×1320.
-Smaller windows scroll vertically. The 1280×720 scrolled finder at 125% zoom
+HTML. The default diagram fits 1440Ã—900, 1600Ã—1000, 1920Ã—1080 and 2048Ã—1320.
+Smaller windows scroll vertically. The 1280Ã—720 scrolled finder at 125% zoom
 retains its heading and close control; Escape returns focus. Chapter text is
 available in full, and advanced controls remain reachable. Player seeking and
 exact final transcript checks passed. These are bounded Chrome checks, not an
@@ -107,3 +107,9 @@ The comparison still states **51.47% fewer billed bytes** with **14.96 times
 median slot time**, including the slower first pair and the failed tenfold
 hypothesis. Comparative agent efficiency is unmeasured. L1 remains completed
 inconclusive with no promotion.
+
+
+Comparison qualification: warmup is excluded from performance statistics; native
+was slower in the first measured pair. Accounted wall sums disjoint intervals,
+not contiguous latency. List-price arithmetic is not an invoice. Grok QA is
+agent-assisted engineering review, not an accounting audit.

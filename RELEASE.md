@@ -1,6 +1,8 @@
 # Reference release candidate
 
-Prepared September 8, 2026 as **v0.2.0-rc.5**. This is the separate public-only
+Draft **v0.2.0-rc.6** targets 3272f680ff945daa7639bd3aad06b28659b5c9c7
+(September 10, 2026). This successor extends that base; the approval packet
+pins its exact bytes. Both rc.5 and rc.6 remain unpublished drafts. This is the separate public-only
 candidate, extending the prior candidate at `29c1cf3`. Its initial commits
 assembled reviewable groups from an existing implementation; they do not claim
 an earlier public development timeline. Intermediate assembly commits are not
@@ -61,3 +63,9 @@ after actual first-time evaluator observations and resulting repairs. No
 invitations, posts or endorsements are implied by these prepared materials.
 Until that approval, the tag and asset URL in the manifest are proposed release
 coordinates; they are not a claim that a public download already exists.
+
+
+Comparison qualification: warmup is excluded from performance statistics; native
+was slower in the first measured pair. Accounted wall sums disjoint intervals,
+not contiguous latency. List-price arithmetic is not an invoice. Grok QA is
+agent-assisted engineering review, not an accounting audit.
