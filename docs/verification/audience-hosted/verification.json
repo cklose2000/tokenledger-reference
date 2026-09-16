@@ -1,0 +1,143 @@
+{
+  "schema_version": "audience-hosted/v1",
+  "actor": "GPT-6",
+  "actor_basis": "explicit_caller_claim",
+  "independent_qa": false,
+  "execution_sha": "0ce1bbf391c6ac779285fd8ad0f261bd7a4cef0a",
+  "started_utc": "2026-09-16T14:49:00.971671+00:00",
+  "python": "3.11.5 (main, Sep 20 2023, 10:46:56) [GCC 12.2.0]",
+  "provisioning": {
+    "status": "completed",
+    "machine": "basicLinux32gb",
+    "create_command_seconds": 5.4659606,
+    "limitation": "CLI creation duration is not total readiness or image/postCreate installation time; those were not separately instrumented."
+  },
+  "commands": [
+    {
+      "name": "venv",
+      "argv": [
+        "/usr/local/bin/python",
+        "-m",
+        "venv",
+        "/tmp/tl-audience-venv-20260916"
+      ],
+      "exit": 0,
+      "seconds": 3.60092295000004,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "install",
+      "argv": [
+        "/tmp/tl-audience-venv-20260916/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "-e",
+        ".[dev]"
+      ],
+      "exit": 0,
+      "seconds": 11.524631548000002,
+      "stdout_sha256": "3485fea1c6d818eb138fe679ca463ed06185810c62b71ff0319f0b466e828eb4",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "demo",
+      "argv": [
+        "/tmp/tl-audience-venv-20260916/bin/tl",
+        "demo",
+        "--directory",
+        "data/demo/hosted-20260916",
+        "--json"
+      ],
+      "exit": 0,
+      "seconds": 7.019907496000087,
+      "stdout_sha256": "1a64a9f9548e5d19614b9f55de9a243343cb30534ec65a1a4ea2ba729d6adf1e",
+      "stderr_sha256": "8a9aab64900326cd328354f95e2f52af7f4a1748bc947e7160bdad1ee36a2b95"
+    },
+    {
+      "name": "challenge-prepare",
+      "argv": [
+        "/tmp/tl-audience-venv-20260916/bin/tl",
+        "challenge",
+        "prepare",
+        "--directory",
+        "data/challenge/hosted-20260916",
+        "--json"
+      ],
+      "exit": 0,
+      "seconds": 10.848160997999912,
+      "stdout_sha256": "695bb3d5deca0b7d217a3a29f5d25b1f0fd542e51c9f37a9a8ef458406aafd30",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "challenge-verify",
+      "argv": [
+        "/tmp/tl-audience-venv-20260916/bin/tl",
+        "challenge",
+        "verify",
+        "data/challenge/hosted-20260916",
+        "--json"
+      ],
+      "exit": 0,
+      "seconds": 3.147586338999986,
+      "stdout_sha256": "2a11b448c8680aad22391b59bcdd2026c162379f5b1e70c301822c11f51a305b",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "challenge-grade",
+      "argv": [
+        "/tmp/tl-audience-venv-20260916/bin/tl",
+        "challenge",
+        "grade",
+        "data/challenge/hosted-20260916",
+        "--answer",
+        "data/challenge/hosted-20260916/expected.json",
+        "--output",
+        "data/score/hosted-20260916",
+        "--json"
+      ],
+      "exit": 0,
+      "seconds": 3.2361372770000116,
+      "stdout_sha256": "53b27a6373c634f3afeb5a88dbcba207abf9aa2b4f356070c8bf7b7222160acd",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "retained-receipt",
+      "argv": [
+        "/tmp/tl-audience-venv-20260916/bin/tl",
+        "--db",
+        "data/demo/audience/world.duckdb",
+        "--artifact-root",
+        "data/demo/audience",
+        "receipt",
+        "mr-16259514a4d2d12bcdc5b11ad84a7209",
+        "--json"
+      ],
+      "exit": 0,
+      "seconds": 1.2582593260000294,
+      "stdout_sha256": "c5a4ba6729a3c7e7938e10ad3c574264883f1199fda8818897306fc7605e630b",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "nrr-receipt",
+      "argv": [
+        "/tmp/tl-audience-venv-20260916/bin/tl",
+        "--db",
+        "data/demo/recorded/world.duckdb",
+        "--artifact-root",
+        "data/demo/recorded",
+        "receipt",
+        "mr-fd1a138b3be0457f060a81a70341be67",
+        "--json"
+      ],
+      "exit": 0,
+      "seconds": 1.7986966420000954,
+      "stdout_sha256": "d0b26efdc14fb0246a19c6bccb94ed701e01890fafdc7b4189038bd5ed87e14d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "status": "passed",
+  "challenge_scope": "open-book reference-answer onboarding check; not a held-out or matched-agent benchmark",
+  "finished_utc": "2026-09-16T14:49:43.411390+00:00"
+}

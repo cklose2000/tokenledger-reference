@@ -7,8 +7,8 @@ Built from the SOX-controlled subscriber-metrics work I ran at SiriusXM for
 
 [![Silent July demonstration: 55 seconds including final reading hold](docs/assets/audience-recording/demo.gif)](docs/demo.md)
 
-Historical recording at `825696c`. The successor recording and its execution
-SHA will be bound separately; this preview retains the original timing.
+Recorded at `d83e34f`: 14.45 seconds of process execution plus a declared
+40.55-second final reading hold, at original speed. [Capture provenance](docs/assets/audience-recording/recording.json).
 
 ![One physical activity stream, query-time projections, versioned definitions, a reported result and its receipt](docs/assets/one-number.svg)
 
@@ -16,7 +16,7 @@ The activity stream feeds query-time scaffolds and projections. Versioned
 definitions govern reported metrics. Receipts bind each result to its inputs,
 definition, query, execution revision and reporting/knowledge cutoffs.
 
-**[Run](docs/run.md)** Â· **[Understand](docs/understand.md)** Â· **[Assess](docs/assess.md)**
+**[Run](docs/run.md)** | **[Understand](docs/understand.md)** | **[Assess](docs/assess.md)**
 
 ## One July number, one late invoice, original replay
 
@@ -117,4 +117,4 @@ L1 is inconclusive, with no promotion and no self-improvement claim. Catalog
 establish cloud performance. [Candidate gates](release-status.json).
 
 Built by [Chandler Klose](https://github.com/cklose2000).
-[Apache-2.0](LICENSE) Â· [Cite this work](CITATION.cff) Â· [Release scope](RELEASE.md)
+[Apache-2.0](LICENSE) | [Cite this work](CITATION.cff) | [Release scope](RELEASE.md)

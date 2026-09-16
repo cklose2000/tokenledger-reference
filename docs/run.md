@@ -66,11 +66,15 @@ base image. Hosted provisioning is a separately recorded acceptance check.
 
 ## Use GitHub Codespaces
 
-**Successor candidate: not_run.** The linked hosted observation below applies
-to `e41438d`, not rc.6 or this successor. An actual instance must install and
-operate the exact frozen successor before this gate passes.
+**Audience successor: verified at `0ce1bbf` on September 16, 2026.**
+Fresh isolated installation, demo, challenge prepare/verify/open-book grade,
+and retained July and NRR receipt replay passed. [Commands, timings and raw
+outputs](verification/audience-hosted/verification.json) bind that execution.
+The instance was stopped after collecting evidence. Final documentation and
+process-receipt packaging follows that execution without runtime changes.
+The historical observation below remains scoped to its original revision.
 
-On the repository's `main` branch, choose **Code > Codespaces > Create codespace**.
+On the reviewed `increment/audience-reference-20260915` branch, choose **Code > Codespaces > Create codespace**.
 The two-core machine is sufficient for this example. Wait for the post-creation
 package installation to finish, then use the terminal:
 

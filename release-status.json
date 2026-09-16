@@ -16,8 +16,11 @@
   },
   "recording": "docs/assets/audience-recording/recording.json",
   "codespaces": {
-    "status": "not_run",
-    "blocker": "Exact successor not yet provisioned; no existing reference Codespace available"
+    "status": "passed",
+    "execution_sha": "0ce1bbf391c6ac779285fd8ad0f261bd7a4cef0a",
+    "evidence": "docs/verification/audience-hosted/verification.json",
+    "instance": "stopped_after_evidence_download",
+    "scope": "Fresh isolated venv/install, demo, open-book challenge prepare/verify/grade and two retained receipt replays; final documentation packaging is separate."
   },
   "uncoached_evaluators": {
     "status": "not_run",
