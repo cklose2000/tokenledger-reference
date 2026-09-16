@@ -1,0 +1,22 @@
+{
+  "schema_version": "tokenledger-console-recording/v1",
+  "execution_git_sha": "d83e34f27cdb0f4b19593e0711fd11b897da92c2",
+  "command": [
+    "tl",
+    "demo",
+    "--directory",
+    "data/demo/audience"
+  ],
+  "capture": "Unedited stdout and stderr merged, timestamped pipe capture, not PTY",
+  "process_seconds": 14.452750399999786,
+  "workflow_seconds": 10.740720599998895,
+  "duration_seconds": 55.0,
+  "final_hold_seconds": 40.547249600000214,
+  "speed_factor": 1,
+  "process_exit": 0,
+  "python": "3.11.5",
+  "concurrency": "Engine and reference regression suites running on same host",
+  "observation_receipt_id": "mr-476fde1c5dcc249f9394cc0828e30e47",
+  "synthetic": true,
+  "installation_seconds": 46.675989400002436
+}

@@ -5,7 +5,7 @@
 Built from the SOX-controlled subscriber-metrics work I ran at SiriusXM for
 19 years. For AI businesses that meter tokens and seats.
 
-[![Silent July demonstration, historical recording; successor capture pending](docs/assets/recording/demo.gif)](docs/demo.md)
+[![Silent July demonstration: 55 seconds including final reading hold](docs/assets/audience-recording/demo.gif)](docs/demo.md)
 
 Historical recording at `825696c`. The successor recording and its execution
 SHA will be bound separately; this preview retains the original timing.
@@ -16,7 +16,7 @@ The activity stream feeds query-time scaffolds and projections. Versioned
 definitions govern reported metrics. Receipts bind each result to its inputs,
 definition, query, execution revision and reporting/knowledge cutoffs.
 
-**[Run](docs/run.md)** · **[Understand](docs/understand.md)** · **[Assess](docs/assess.md)**
+**[Run](docs/run.md)** Â· **[Understand](docs/understand.md)** Â· **[Assess](docs/assess.md)**
 
 ## One July number, one late invoice, original replay
 
@@ -75,7 +75,7 @@ promotion; that honest result is retained, not improved upon.
 
 Thirteen output populations matched an independently implemented baseline in
 four native BigQuery pairs: one warmup and three measured pairs. Native used
-**51.47% fewer billed bytes** and **14.96× median slot time**. It was slower in
+**51.47% fewer billed bytes** and **14.96Ã— median slot time**. It was slower in
 the first measured pair. These results belong together.
 
 Warmup is excluded from performance statistics. Accounted wall sums disjoint
@@ -117,4 +117,4 @@ L1 is inconclusive, with no promotion and no self-improvement claim. Catalog
 establish cloud performance. [Candidate gates](release-status.json).
 
 Built by [Chandler Klose](https://github.com/cklose2000).
-[Apache-2.0](LICENSE) · [Cite this work](CITATION.cff) · [Release scope](RELEASE.md)
+[Apache-2.0](LICENSE) Â· [Cite this work](CITATION.cff) Â· [Release scope](RELEASE.md)

@@ -6,12 +6,12 @@ the runnable reference implementation.
 
 Use a Git clone, rather than a source ZIP, so the retained receipt history is
 available. On Windows, follow the short-path clone below. On macOS or Linux,
-for the private draft rc.6 base (3272f68):
+for the frozen audience execution candidate (successor of private draft rc.6):
 
 ```sh
 git clone https://github.com/cklose2000/tokenledger-reference.git
 cd tokenledger-reference
-git checkout --detach 3272f680ff945daa7639bd3aad06b28659b5c9c7
+git checkout --detach d83e34f27cdb0f4b19593e0711fd11b897da92c2
 ```
 
 For successor review, use the exact SHA in the approval packet. Draft rc.6 has
@@ -26,7 +26,7 @@ with `Filename too long`.
 ```powershell
 git clone --config core.longpaths=true https://github.com/cklose2000/tokenledger-reference.git C:\tl-reference
 Set-Location C:\tl-reference
-git checkout --detach 3272f680ff945daa7639bd3aad06b28659b5c9c7
+git checkout --detach d83e34f27cdb0f4b19593e0711fd11b897da92c2
 ```
 
 During private review, replace the tag with the supplied exact commit. The clone

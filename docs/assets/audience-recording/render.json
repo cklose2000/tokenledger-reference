@@ -1,0 +1,31 @@
+{
+  "method": "Pillow 11.1.0 renders unedited timestamped terminal output; durations quantized to centiseconds; final reading hold declared in recording.json; no speed-up, narration or overlays",
+  "duration_seconds": 54.99,
+  "frames": 8,
+  "dimensions": [
+    1500,
+    1000
+  ],
+  "files": {
+    "demo.cast": {
+      "bytes": 2548,
+      "sha256": "b44725e5d6fbb45dcc708acb41b52dda4b5b3dbf591770b0850f17d9fa6c25b3"
+    },
+    "demo.gif": {
+      "bytes": 83295,
+      "sha256": "0bd3babc2c51b8542e03b319ff3b62a02c7675ab4e34335bb151a1f93123d713"
+    },
+    "demo.txt": {
+      "bytes": 1665,
+      "sha256": "5f2bb279da49d32ce3ef17847b7f944c88df5b8132736baf5f8cbaea97391aa7"
+    },
+    "poster.png": {
+      "bytes": 115833,
+      "sha256": "6702e378cdd2181ab54b0eb9cfd0d8209f9c76092db432945a30007926eb3fda"
+    },
+    "recording.json": {
+      "bytes": 752,
+      "sha256": "cbb7a567ecde4a2df16b29d4248a8171b95e9eb095bd78ac4722d626e7980c92"
+    }
+  }
+}
