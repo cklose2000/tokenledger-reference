@@ -8,7 +8,8 @@ Built from the SOX-controlled subscriber-metrics work I ran at SiriusXM for
 [![Silent July demonstration: 55 seconds including final reading hold](docs/assets/audience-recording/demo.gif)](docs/demo.md)
 
 Recorded at `d83e34f`: 14.45 seconds of process execution plus a declared
-40.55-second final reading hold, at original speed. [Capture provenance](docs/assets/audience-recording/recording.json).
+40.55-second final reading hold, at original speed. The displayed checkout path
+is replaced with a relative path; all other output and timestamps are unchanged. [Capture provenance](docs/assets/audience-recording/recording.json).
 
 ![One physical activity stream, query-time projections, versioned definitions, a reported result and its receipt](docs/assets/one-number.svg)
 
@@ -75,7 +76,7 @@ promotion; that honest result is retained, not improved upon.
 
 Thirteen output populations matched an independently implemented baseline in
 four native BigQuery pairs: one warmup and three measured pairs. Native used
-**51.47% fewer billed bytes** and **14.96Ã— median slot time**. It was slower in
+**51.47% fewer billed bytes** and **14.96 times median slot time**. It was slower in
 the first measured pair. These results belong together.
 
 Warmup is excluded from performance statistics. Accounted wall sums disjoint

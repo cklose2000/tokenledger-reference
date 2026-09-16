@@ -6,7 +6,7 @@
   "accepted_engine_sha": "088cb267bd4575d0afbf3c1b3b38d9f1f949e797",
   "tag_created": false,
   "public_destination": "cklose2000/tokenledger-reference",
-  "publication_approval": "pending_exact_bytes_and_destination",
+  "publication_approval": "No for 897284f; successor not approved",
   "local_verification": "docs/verification/audience-local.json",
   "local_tests": {
     "passed": 88,
@@ -26,7 +26,7 @@
     "status": "not_run",
     "blocker": "Chandler participant list and invitations not authorized"
   },
-  "independent_qa": "Grok successor review pending; prior review at 3272f68 passed with documentation findings",
+  "independent_qa": "Grok 4.6 pass with findings on 897284f; successor corrections require review",
   "production_iam": "not_established",
   "matched_agent_benchmark": "not_run",
   "learning": "inconclusive_no_promotion",
@@ -255,5 +255,6 @@
       "independent_qa": "Grok review of successor pending",
       "publication": "pending_exact_bytes_and_destination_approval"
     }
-  }
+  },
+  "historical_status_scope": "historical_status_at_3272f68 is an immutable historical snapshot, not current readiness. Use top-level codespaces for the executed hosted result."
 }

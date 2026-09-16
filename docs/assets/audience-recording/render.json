@@ -1,5 +1,5 @@
 {
-  "method": "Pillow 11.1.0 renders unedited timestamped terminal output; durations quantized to centiseconds; final reading hold declared in recording.json; no speed-up, narration or overlays",
+  "method": "Pillow 11.1.0 renders timestamped display transcript; only Open path normalized as disclosed in recording.json. Durations quantized to centiseconds; declared final reading hold; no speed-up, narration or overlays.",
   "duration_seconds": 54.99,
   "frames": 8,
   "dimensions": [
@@ -8,24 +8,28 @@
   ],
   "files": {
     "demo.cast": {
-      "bytes": 2548,
-      "sha256": "b44725e5d6fbb45dcc708acb41b52dda4b5b3dbf591770b0850f17d9fa6c25b3"
+      "bytes": 2497,
+      "sha256": "8432cfa10586637ac0486b7308482ae8dda250227a185c21bf8ea7d28d44cde5"
     },
     "demo.gif": {
-      "bytes": 83295,
-      "sha256": "0bd3babc2c51b8542e03b319ff3b62a02c7675ab4e34335bb151a1f93123d713"
+      "bytes": 82038,
+      "sha256": "c51d6210f7833d4edce5329b0bfc6aec6d9432206710eb0dc1786026dd8919a5"
     },
     "demo.txt": {
-      "bytes": 1665,
-      "sha256": "5f2bb279da49d32ce3ef17847b7f944c88df5b8132736baf5f8cbaea97391aa7"
+      "bytes": 1641,
+      "sha256": "904e0a8e4337416ba0de1e34d1bb1f0a59ec79d2bf93734af53bf967d5d7ca1f"
     },
     "poster.png": {
-      "bytes": 115833,
-      "sha256": "6702e378cdd2181ab54b0eb9cfd0d8209f9c76092db432945a30007926eb3fda"
+      "bytes": 114098,
+      "sha256": "7cb6a525d675613a19f641bf5439910e4194d03e90adf2cfcb3a2740df38c5ab"
+    },
+    "README.md": {
+      "bytes": 1763,
+      "sha256": "47c5a4803115bdcb73a87e3e5d5ae13b53eba09bbdc94150efc7eacce98a17dc"
     },
     "recording.json": {
-      "bytes": 752,
-      "sha256": "cbb7a567ecde4a2df16b29d4248a8171b95e9eb095bd78ac4722d626e7980c92"
+      "bytes": 1348,
+      "sha256": "47efbca349f6436253043a6ac3eab31b633c0ed28182c71fc0994d8d994fd8a8"
     }
   }
 }

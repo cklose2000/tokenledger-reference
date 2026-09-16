@@ -1,0 +1,56 @@
+{
+  "schema_version": "audience-findings-correction/v1",
+  "actor": "GPT-6",
+  "actor_basis": "explicit_caller_claim",
+  "independent_qa": false,
+  "reviewed_reference_sha": "897284fa3466b1509d032b7cfba00ef842636b2e",
+  "prior_qa": {
+    "reviewer": "Grok 4.6",
+    "verdict": "pass_with_findings",
+    "publication": "No",
+    "scope": "Prior exact bytes only; not successor approval",
+    "static_media": "poster, GIF hold, SVG and Archify HTML inspected",
+    "interactive_controls": "not exercised"
+  },
+  "corrections": [
+    {
+      "finding": 1,
+      "change": "README uses ASCII 14.96 times; paired claims preserved."
+    },
+    {
+      "finding": 2,
+      "change": "Explicit top-level scope note identifies historical_status_at_3272f68 as historical; current hosted result remains top-level. Historical observations not rewritten."
+    },
+    {
+      "finding": 4,
+      "change": "Only the recording Open path changed to a portable relative path. Raw source hashes and source revision bound in recording.json; timestamps and all other output identical."
+    },
+    {
+      "finding": 5,
+      "change": "Seven SVG middots use XML numeric character references; rendered raster inspected."
+    }
+  ],
+  "builder_visual_check": {
+    "poster": "inspected",
+    "gif_final_frame": "inspected",
+    "svg_raster": "inspected",
+    "interactive_chromium": "not_run"
+  },
+  "gif": {
+    "frames": 8,
+    "duration_ms": 54990,
+    "source_duration_unchanged": true
+  },
+  "files": {
+    "README.md": "3565d54ddddcb241a4f96f97f2c164bae93e876c9ba546b94587a4886d463ef9",
+    "docs/assets/one-number.svg": "b11bfdd5a7d8a24ad9c897c78ee1ccd7dd3b1fb7c3affbfd3eebdb55a8a41d52",
+    "docs/assets/audience-recording/demo.cast": "8432cfa10586637ac0486b7308482ae8dda250227a185c21bf8ea7d28d44cde5",
+    "docs/assets/audience-recording/demo.txt": "904e0a8e4337416ba0de1e34d1bb1f0a59ec79d2bf93734af53bf967d5d7ca1f",
+    "docs/assets/audience-recording/demo.gif": "c51d6210f7833d4edce5329b0bfc6aec6d9432206710eb0dc1786026dd8919a5",
+    "docs/assets/audience-recording/poster.png": "7cb6a525d675613a19f641bf5439910e4194d03e90adf2cfcb3a2740df38c5ab",
+    "docs/assets/audience-recording/recording.json": "47efbca349f6436253043a6ac3eab31b633c0ed28182c71fc0994d8d994fd8a8",
+    "docs/assets/audience-recording/render.json": "24cdf63db93b2f3f39de7faadf1c192191e2b0db5f69cb14dd1b1b7f3b74a439",
+    "docs/verification/audience-findings/one-number.png": "ab3b796a3d4ba9c3aa32642f4906a2b4a3b28ed63e0191accba019f8435a8f95"
+  },
+  "publication": "Not approved; previous No remains binding for 897284f; successor requires exact-byte decision."
+}
