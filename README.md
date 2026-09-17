@@ -5,6 +5,8 @@
 Built from the SOX-controlled subscriber-metrics work I ran at SiriusXM for
 19 years. For AI businesses that meter tokens and seats.
 
+![Business events flow into one append-only activity stream; a versioned definition produces a reported number; a receipt reproduces the original after a late invoice](docs/assets/hero.svg)
+
 [![Silent July demonstration: 55 seconds including final reading hold](docs/assets/audience-recording/demo.gif)](docs/demo.md)
 
 Recorded at `d83e34f`: 14.45 seconds of process execution plus a declared
