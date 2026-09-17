@@ -12,3 +12,5 @@ docs/assets/recording/** -text
 evidence/bigquery/verification/** -text
 data/learning-walkthrough/recorded/** -text
 docs/assets/learning-recording/** -text
+data/demo/audience/** -text
+docs/assets/audience-recording/** -text

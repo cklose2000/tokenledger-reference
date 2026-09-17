@@ -93,3 +93,9 @@ were performed for this increment.
 The measured cloud trade-off remains 51.47% fewer billed bytes with 14.96 times
 median slot time. L1 remains inconclusive with no promotion. Publication and
 general production admission remain separate decisions.
+
+
+Comparison qualification: warmup is excluded from performance statistics; native
+was slower in the first measured pair. Accounted wall sums disjoint intervals,
+not contiguous latency. List-price arithmetic is not an invoice. Grok QA is
+agent-assisted engineering review, not an accounting audit.

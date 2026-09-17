@@ -1,0 +1,78 @@
+{
+  "actor": "GPT-6",
+  "actor_basis": "caller_claim",
+  "independent_qa": false,
+  "sha": "d83e34f27cdb0f4b19593e0711fd11b897da92c2",
+  "python": "3.11.5",
+  "commands": [
+    {
+      "name": "venv",
+      "exit": 0,
+      "seconds": 25.315920700002607,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "install",
+      "exit": 0,
+      "seconds": 46.675989400002436,
+      "stdout_sha256": "bc44d644d7bb70e73f2a734a4b5fecd3a292dbb42cc1f3e7b655fb813186d428",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "challenge-prepare",
+      "exit": 0,
+      "seconds": 14.723621899996942,
+      "stdout_sha256": "63a4109c9e408109e2b48686c3a057fcef0b2bab87756f70c9313e735e09a7a9",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "challenge-verify",
+      "exit": 0,
+      "seconds": 3.6383725000014238,
+      "stdout_sha256": "840dd53272c2f7e566a1ea0ede65aaca72727fbb266700fc1ca3213b2405edeb",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "challenge-grade",
+      "exit": 0,
+      "seconds": 3.76834659999804,
+      "stdout_sha256": "4843a113d50cc4566ed12cfe9ceb346282daf5e146d8548efd6f6b122b80eb6a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "original-receipt",
+      "exit": 0,
+      "seconds": 4.205680400002166,
+      "stdout_sha256": "b2bb7d1182a0aa81f58092a5f81d343d1e0d91ca1d0e842dc9208c0fce147fd1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "new-original-receipt",
+      "exit": 0,
+      "seconds": 1.342475800000102,
+      "stdout_sha256": "e44c90ca722e78707040e79a7da312dc1fc74f2a5002a9bb72ace588654c39f7",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "nrr-receipt",
+      "exit": 0,
+      "seconds": 5.075115499999811,
+      "stdout_sha256": "f188f671ec3c1b5f037e61158df297960f19c86fb27cb6eaf9961ab4e94cd2ad",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "learning-walkthrough",
+      "exit": 0,
+      "seconds": 4.999782299997605,
+      "stdout_sha256": "853fe7354cb077f1d985ebb9f138473223644f337f70b4067d7bd2b75cf6d6de",
+      "stderr_sha256": "db9c418f072b0cf1ff89f0276dbfd84d57cdc721a9b52e3cb728afa8ab628b59"
+    }
+  ],
+  "scope": "Clean local checkout; synthetic fixtures; no cloud jobs; pip cache retained",
+  "disk_bytes": {
+    ".venv": 231143594,
+    "data/demo/audience": 4725512,
+    "data/challenge/audience": 6831007
+  }
+}

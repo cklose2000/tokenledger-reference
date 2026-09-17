@@ -72,4 +72,10 @@ synthetic outputs. BigQuery used **51.47% fewer billed bytes** and **14.96 times
 median slot time**. Test a representative workload before making a performance
 or cost decision. Comparative agent efficiency remains unmeasured.
 
-[Run the example](run.md) · [Follow the workflow](workflow.md) · [Inspect the architecture](architecture/README.md)
+[Run the example](run.md) Â· [Follow the workflow](workflow.md) Â· [Inspect the architecture](architecture/README.md)
+
+
+Comparison qualification: warmup is excluded from performance statistics; native
+was slower in the first measured pair. Accounted wall sums disjoint intervals,
+not contiguous latency. List-price arithmetic is not an invoice. Grok QA is
+agent-assisted engineering review, not an accounting audit.

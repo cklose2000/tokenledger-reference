@@ -1,0 +1,30 @@
+{
+  "status": "selected_for_owner_review",
+  "actor": "GPT-6",
+  "independent_qa": false,
+  "execution_sha": "d83e34f27cdb0f4b19593e0711fd11b897da92c2",
+  "files": {
+    "docs/assets/one-number.svg": "b11bfdd5a7d8a24ad9c897c78ee1ccd7dd3b1fb7c3affbfd3eebdb55a8a41d52",
+    "docs/architecture/index.html": "2f04ed3d17d866b66b07b13b442d0dfaac7a4b809f18347b410e3922a37a3295",
+    "docs/architecture/architecture.json": "1cc95a8616c540e98d37c3b57e9fe5ce04c3666f2c2d442a9fd72e95d001a335",
+    "docs/architecture/README.md": "eb23b713f9b81c7faff343f7526bc14bfa10b451783bdf8f2911419d07b6f0b8"
+  },
+  "svg_components": 5,
+  "svg_text_title_description": true,
+  "capture_final_frame": "visually_inspected",
+  "current_browser_rendering": {
+    "status": "static_review_complete_with_findings_on_prior_candidate",
+    "reviewer": "Grok 4.6",
+    "reference_sha": "897284fa3466b1509d032b7cfba00ef842636b2e",
+    "interactive_play_pause_seek": "not_run",
+    "successor_scope": "Builder inspected corrected poster, final GIF frame and SVG raster; no independent successor approval."
+  },
+  "archify": "Retained sanitized HTML and readable Markdown/JSON; original artifact and reader review receipts preserved; no localhost refresh service; no new Chandler approval claimed",
+  "prior_independent_review": {
+    "reviewer": "Grok 4.6",
+    "reference_sha": "897284fa3466b1509d032b7cfba00ef842636b2e",
+    "status": "pass_with_findings",
+    "scope": "Poster, GIF hold, SVG and Archify HTML inspected; no interactive Chromium play/pause/seek."
+  },
+  "successor_media_review": "Builder corrected-media inspection completed; verification in docs/verification/audience-findings/verification.json. Prior independent review does not approve changed bytes."
+}

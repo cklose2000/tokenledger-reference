@@ -1,0 +1,35 @@
+{
+  "method": "Pillow 11.1.0 renders timestamped display transcript; only Open path normalized as disclosed in recording.json. Durations quantized to centiseconds; declared final reading hold; no speed-up, narration or overlays.",
+  "duration_seconds": 54.99,
+  "frames": 8,
+  "dimensions": [
+    1500,
+    1000
+  ],
+  "files": {
+    "demo.cast": {
+      "bytes": 2497,
+      "sha256": "8432cfa10586637ac0486b7308482ae8dda250227a185c21bf8ea7d28d44cde5"
+    },
+    "demo.gif": {
+      "bytes": 82038,
+      "sha256": "c51d6210f7833d4edce5329b0bfc6aec6d9432206710eb0dc1786026dd8919a5"
+    },
+    "demo.txt": {
+      "bytes": 1641,
+      "sha256": "904e0a8e4337416ba0de1e34d1bb1f0a59ec79d2bf93734af53bf967d5d7ca1f"
+    },
+    "poster.png": {
+      "bytes": 114098,
+      "sha256": "7cb6a525d675613a19f641bf5439910e4194d03e90adf2cfcb3a2740df38c5ab"
+    },
+    "README.md": {
+      "bytes": 1763,
+      "sha256": "47c5a4803115bdcb73a87e3e5d5ae13b53eba09bbdc94150efc7eacce98a17dc"
+    },
+    "recording.json": {
+      "bytes": 1348,
+      "sha256": "47efbca349f6436253043a6ac3eab31b633c0ed28182c71fc0994d8d994fd8a8"
+    }
+  }
+}

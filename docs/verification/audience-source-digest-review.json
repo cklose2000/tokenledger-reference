@@ -1,0 +1,34 @@
+{
+  "findings": 25,
+  "classification": "public source hashes, not credentials",
+  "new_allowlist_blocks": 1,
+  "named_manifest_paths": [
+    "data/demo/audience/pack/2026-07-31/ed3f7cfd76df49cca45d1cb63ac55ad3/run.json",
+    "data/demo/audience/runs/3bc3eecbb82d4b16b28d6b54a1ee482b/run.json",
+    "data/demo/audience/runs/47af8f2445bb42cd9e68f02ecf62c19f/run.json",
+    "data/demo/audience/runs/d68b9f3e7fa348d6950565d0041c3005/run.json",
+    "data/demo/audience/runs/ed3f7cfd76df49cca45d1cb63ac55ad3/run.json"
+  ],
+  "verified_source_files": [
+    {
+      "path": "tl/bigquery/access.py",
+      "sha256": "6b723cc5a6a2bc0bcffbf0b3c36122b0c04df25de85a5a4f17213d8f59a8acd2"
+    },
+    {
+      "path": "tl/bigquery/auth.py",
+      "sha256": "c40a68af8e9ee4cc4b7938a6465487bdfe4eddfe6e92fa91ca7089a3a7cdcf54"
+    },
+    {
+      "path": "tl/views/sql/token_ledger.sql",
+      "sha256": "3c937b8e464b0bdb51c79718e520be67314f5ad3a8c9e9fbf731b5d4ab8b9d80"
+    },
+    {
+      "path": "scaffolds/token_ledger.sql",
+      "sha256": "bf5190dd7efe70995f72eb575f27ef69b2c77a3e67b944504090e1bf714b9788"
+    },
+    {
+      "path": "definitions/activities/tokens_processed.yaml",
+      "sha256": "b9b040257545749347192641d585bb47543e03e02a95367968c55a29fbb63d5d"
+    }
+  ]
+}

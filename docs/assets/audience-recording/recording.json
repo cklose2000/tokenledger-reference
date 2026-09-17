@@ -1,0 +1,30 @@
+{
+  "schema_version": "tokenledger-console-recording/v1",
+  "execution_git_sha": "d83e34f27cdb0f4b19593e0711fd11b897da92c2",
+  "command": [
+    "tl",
+    "demo",
+    "--directory",
+    "data/demo/audience"
+  ],
+  "capture": "Timestamped merged stdout/stderr pipe capture, not PTY; display derivative replaces the single machine-local Open path with a relative path. All other output and timestamps unchanged.",
+  "process_seconds": 14.452750399999786,
+  "workflow_seconds": 10.740720599998895,
+  "duration_seconds": 55.0,
+  "final_hold_seconds": 40.547249600000214,
+  "speed_factor": 1,
+  "process_exit": 0,
+  "python": "3.11.5",
+  "concurrency": "Engine and reference regression suites running on same host",
+  "observation_receipt_id": "mr-476fde1c5dcc249f9394cc0828e30e47",
+  "synthetic": true,
+  "installation_seconds": 46.675989400002436,
+  "display_derivative": {
+    "source_reference_sha": "897284fa3466b1509d032b7cfba00ef842636b2e",
+    "source_cast_sha256": "b44725e5d6fbb45dcc708acb41b52dda4b5b3dbf591770b0850f17d9fa6c25b3",
+    "source_transcript_sha256": "5f2bb279da49d32ce3ef17847b7f944c88df5b8132736baf5f8cbaea97391aa7",
+    "transformation": "Only the Open line checkout prefix is removed and path separators made portable. Original raw bytes remain at the source revision.",
+    "replacements": 1,
+    "new_execution": false
+  }
+}

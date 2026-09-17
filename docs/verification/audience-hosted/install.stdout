@@ -1,0 +1,65 @@
+Obtaining file:///workspaces/tokenledger-reference
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Checking if build backend supports build_editable: started
+  Checking if build backend supports build_editable: finished with status 'done'
+  Getting requirements to build editable: started
+  Getting requirements to build editable: finished with status 'done'
+  Preparing editable metadata (pyproject.toml): started
+  Preparing editable metadata (pyproject.toml): finished with status 'done'
+Collecting click==8.1.8 (from tokenledger==0.2.0)
+  Obtaining dependency information for click==8.1.8 from https://files.pythonhosted.org/packages/7e/d4/7ebdbd03970677812aac39c869717059dbb71a4cfc033ca6e5221787892c/click-8.1.8-py3-none-any.whl.metadata
+  Using cached click-8.1.8-py3-none-any.whl.metadata (2.3 kB)
+Collecting duckdb==1.5.5 (from tokenledger==0.2.0)
+  Obtaining dependency information for duckdb==1.5.5 from https://files.pythonhosted.org/packages/b5/55/f9641a4eebcc2f4df631287d6c3b9ed2eea3b92644f93acbad825e3972b6/duckdb-1.5.5-cp311-cp311-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl.metadata
+  Using cached duckdb-1.5.5-cp311-cp311-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl.metadata (4.2 kB)
+Collecting numpy==1.26.4 (from tokenledger==0.2.0)
+  Obtaining dependency information for numpy==1.26.4 from https://files.pythonhosted.org/packages/3a/d0/edc009c27b406c4f9cbc79274d6e46d634d139075492ad055e3d68445925/numpy-1.26.4-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata
+  Using cached numpy-1.26.4-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (61 kB)
+Collecting pyarrow==18.1.0 (from tokenledger==0.2.0)
+  Obtaining dependency information for pyarrow==18.1.0 from https://files.pythonhosted.org/packages/5e/b5/9e14e9f7590e0eaa435ecea84dabb137284a4dbba7b3c337b58b65b76d95/pyarrow-18.1.0-cp311-cp311-manylinux_2_28_x86_64.whl.metadata
+  Using cached pyarrow-18.1.0-cp311-cp311-manylinux_2_28_x86_64.whl.metadata (3.3 kB)
+Collecting PyYAML==6.0.2 (from tokenledger==0.2.0)
+  Obtaining dependency information for PyYAML==6.0.2 from https://files.pythonhosted.org/packages/75/e4/2c27590dfc9992f73aabbeb9241ae20220bd9452df27483b6e56d3975cc5/PyYAML-6.0.2-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata
+  Using cached PyYAML-6.0.2-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (2.1 kB)
+Collecting pytz==2025.2 (from tokenledger==0.2.0)
+  Obtaining dependency information for pytz==2025.2 from https://files.pythonhosted.org/packages/81/c4/34e93fe5f5429d7570ec1fa436f1986fb1f00c3e0f43a589fe2bbcd22c3f/pytz-2025.2-py2.py3-none-any.whl.metadata
+  Using cached pytz-2025.2-py2.py3-none-any.whl.metadata (22 kB)
+Collecting sqlglot==30.18.0 (from tokenledger==0.2.0)
+  Obtaining dependency information for sqlglot==30.18.0 from https://files.pythonhosted.org/packages/08/9f/3dd2ec8dd84a33e0092f1c815267bc055073f9e833b93e389c59c10f62cc/sqlglot-30.18.0-py3-none-any.whl.metadata
+  Using cached sqlglot-30.18.0-py3-none-any.whl.metadata (25 kB)
+Collecting tzdata==2025.2 (from tokenledger==0.2.0)
+  Obtaining dependency information for tzdata==2025.2 from https://files.pythonhosted.org/packages/5c/23/c7abc0ca0a1526a0774eca151daeb8de62ec457e77262b66b359c3c7679e/tzdata-2025.2-py2.py3-none-any.whl.metadata
+  Using cached tzdata-2025.2-py2.py3-none-any.whl.metadata (1.4 kB)
+Collecting pytest==8.3.5 (from tokenledger==0.2.0)
+  Obtaining dependency information for pytest==8.3.5 from https://files.pythonhosted.org/packages/30/3d/64ad57c803f1fa1e963a7946b6e0fea4a70df53c1a7fed304586539c2bac/pytest-8.3.5-py3-none-any.whl.metadata
+  Using cached pytest-8.3.5-py3-none-any.whl.metadata (7.6 kB)
+Collecting iniconfig (from pytest==8.3.5->tokenledger==0.2.0)
+  Obtaining dependency information for iniconfig from https://files.pythonhosted.org/packages/cb/b1/3846dd7f199d53cb17f49cba7e651e9ce294d8497c8c150530ed11865bb8/iniconfig-2.3.0-py3-none-any.whl.metadata
+  Using cached iniconfig-2.3.0-py3-none-any.whl.metadata (2.5 kB)
+Collecting packaging (from pytest==8.3.5->tokenledger==0.2.0)
+  Obtaining dependency information for packaging from https://files.pythonhosted.org/packages/63/34/ba1c580383c9eada3711951fef0795c80b829a078d72188184bcab9dd527/packaging-26.3-py3-none-any.whl.metadata
+  Using cached packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+Collecting pluggy<2,>=1.5 (from pytest==8.3.5->tokenledger==0.2.0)
+  Obtaining dependency information for pluggy<2,>=1.5 from https://files.pythonhosted.org/packages/54/20/4d324d65cc6d9205fabedc306948156824eb9f0ee1633355a8f7ec5c66bf/pluggy-1.6.0-py3-none-any.whl.metadata
+  Using cached pluggy-1.6.0-py3-none-any.whl.metadata (4.8 kB)
+Using cached click-8.1.8-py3-none-any.whl (98 kB)
+Using cached duckdb-1.5.5-cp311-cp311-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl (21.5 MB)
+Using cached numpy-1.26.4-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (18.3 MB)
+Using cached pyarrow-18.1.0-cp311-cp311-manylinux_2_28_x86_64.whl (40.1 MB)
+Using cached pytest-8.3.5-py3-none-any.whl (343 kB)
+Using cached pytz-2025.2-py2.py3-none-any.whl (509 kB)
+Using cached PyYAML-6.0.2-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (762 kB)
+Using cached sqlglot-30.18.0-py3-none-any.whl (748 kB)
+Using cached tzdata-2025.2-py2.py3-none-any.whl (347 kB)
+Using cached pluggy-1.6.0-py3-none-any.whl (20 kB)
+Using cached iniconfig-2.3.0-py3-none-any.whl (7.5 kB)
+Using cached packaging-26.3-py3-none-any.whl (129 kB)
+Building wheels for collected packages: tokenledger
+  Building editable for tokenledger (pyproject.toml): started
+  Building editable for tokenledger (pyproject.toml): finished with status 'done'
+  Created wheel for tokenledger: filename=tokenledger-0.2.0-0.editable-py3-none-any.whl size=11855 sha256=636b99c14eba447f5d7eb7edb9f3fcd154ad9427ebb3c8b7f03491e6eb4c346a
+  Stored in directory: /tmp/pip-ephem-wheel-cache-pjd_ziyc/wheels/6a/d5/e3/94f7a69be53eb667ae8e42eb401a30c41ccd811d1e121f6448
+Successfully built tokenledger
+Installing collected packages: pytz, tzdata, sqlglot, PyYAML, pyarrow, pluggy, packaging, numpy, iniconfig, duckdb, click, tokenledger, pytest
+Successfully installed PyYAML-6.0.2 click-8.1.8 duckdb-1.5.5 iniconfig-2.3.0 numpy-1.26.4 packaging-26.3 pluggy-1.6.0 pyarrow-18.1.0 pytest-8.3.5 pytz-2025.2 sqlglot-30.18.0 tokenledger-0.2.0 tzdata-2025.2

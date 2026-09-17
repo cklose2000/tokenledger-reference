@@ -6,16 +6,16 @@ the runnable reference implementation.
 
 Use a Git clone, rather than a source ZIP, so the retained receipt history is
 available. On Windows, follow the short-path clone below. On macOS or Linux,
-for the published release:
+for the frozen audience execution candidate (successor of private draft rc.6):
 
 ```sh
 git clone https://github.com/cklose2000/tokenledger-reference.git
 cd tokenledger-reference
-git checkout v0.2.0-rc.5
+git checkout --detach d83e34f27cdb0f4b19593e0711fd11b897da92c2
 ```
 
-During candidate review, use the exact supplied candidate commit instead of
-the release tag. Publication and hosted setup status are in
+For successor review, use the exact SHA in the approval packet. Draft rc.6 has
+no published tag; these commands pin its retained base. Publication and hosted setup status are in
 [release status](../release-status.json).
 
 On Windows PowerShell, choose a new, short destination such as `C:\tl-reference`
@@ -26,7 +26,7 @@ with `Filename too long`.
 ```powershell
 git clone --config core.longpaths=true https://github.com/cklose2000/tokenledger-reference.git C:\tl-reference
 Set-Location C:\tl-reference
-git checkout v0.2.0-rc.5
+git checkout --detach d83e34f27cdb0f4b19593e0711fd11b897da92c2
 ```
 
 During private review, replace the tag with the supplied exact commit. The clone
@@ -40,6 +40,8 @@ Then install and run from Windows PowerShell:
 
 ```powershell
 python --version
+$env:PYTHONDONTWRITEBYTECODE='1'
+$env:PYTHONHASHSEED='0'
 python -m venv .venv
 .\.venv\Scripts\python.exe --version
 .\.venv\Scripts\python.exe -m pip install -e '.[dev]'
@@ -51,6 +53,7 @@ On macOS or Linux:
 ```sh
 python3.11 -m venv .venv
 . .venv/bin/activate
+export PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0
 python --version
 python -m pip install -e ".[dev]"
 tl demo
@@ -63,7 +66,15 @@ base image. Hosted provisioning is a separately recorded acceptance check.
 
 ## Use GitHub Codespaces
 
-On the repository's `main` branch, choose **Code > Codespaces > Create codespace**.
+**Audience successor: verified at `0ce1bbf` on September 16, 2026.**
+Fresh isolated installation, demo, challenge prepare/verify/open-book grade,
+and retained July and NRR receipt replay passed. [Commands, timings and raw
+outputs](verification/audience-hosted/verification.json) bind that execution.
+The instance was stopped after collecting evidence. Final documentation and
+process-receipt packaging follows that execution without runtime changes.
+The historical observation below remains scoped to its original revision.
+
+On the reviewed `increment/audience-reference-20260915` branch, choose **Code > Codespaces > Create codespace**.
 The two-core machine is sufficient for this example. Wait for the post-creation
 package installation to finish, then use the terminal:
 
