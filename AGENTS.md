@@ -3,6 +3,10 @@
 Work only on synthetic fixtures created under a new local data directory. Never
 read local personal accounts, configure cloud access or publish this repository.
 
+For the retained rc.6 exercise, use `git checkout --detach v0.2.0-rc.6`
+before installation. Its grader requires the recorded executable; later source
+changes can still replay the evidence but cannot grade that frozen attempt.
+
 Install the pinned package from this checkout, then run `tl demo --json`.
 Run `tl challenge --help` for the release's exact preparation and grading
 commands. The generated challenge manifest supplies concrete source/receipt

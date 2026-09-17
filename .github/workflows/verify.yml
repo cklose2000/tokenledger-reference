@@ -35,8 +35,15 @@ jobs:
         run: tl challenge verify data/challenge/rc6 --json
       - name: Copy the fixture for the evaluator's working attempt
         run: python -c "import shutil; shutil.copytree('data/challenge/rc6', 'data/challenge/ci-attempt')"
-      - name: Grade the visible reference answer
-        run: tl challenge grade data/challenge/ci-attempt --answer data/challenge/ci-attempt/expected.json --output data/score/ci-reference --json
+      - name: Check out the retained challenge executable
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: 933cd94525e20d651c81b192b36cd06d9a552ef2
+          path: .retained-rc6
+          fetch-depth: 0
+      - name: Grade the visible reference answer with its original executable
+        working-directory: .retained-rc6
+        run: python -m tl challenge grade ../data/challenge/ci-attempt --answer ../data/challenge/ci-attempt/expected.json --output ../data/score/ci-reference --json
       - name: Preserve the retained release fixture
         run: git diff --exit-code -- data/challenge/rc5 data/challenge/rc6
       - name: Reproduce the recording's original number
