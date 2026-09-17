@@ -151,8 +151,8 @@ individually runnable releases. No original private Git objects are copied.
 
 The allowlist includes generic runtime, definitions, SQL, independent baseline
 and selected synthetic regression tests. It excludes all original ledgers,
-generated reports, personal evidence, private application configuration, hiring
-strategy, private module plans and working development instructions.
+generated reports, personal evidence, private application configuration,
+private module plans and working development instructions.
 
 Source file bytes are selected from committed Git blobs, never arbitrary working
 tree contents. Release receipt fixtures must be regenerated under these public
