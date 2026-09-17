@@ -1,12 +1,12 @@
 {
-  "status": "prepared_not_published",
+  "status": "published",
   "candidate": "audience successor of draft rc.6",
   "base_reference_sha": "3272f680ff945daa7639bd3aad06b28659b5c9c7",
   "execution_git_sha": "d83e34f27cdb0f4b19593e0711fd11b897da92c2",
   "accepted_engine_sha": "088cb267bd4575d0afbf3c1b3b38d9f1f949e797",
-  "tag_created": false,
+  "tag_created": true,
   "public_destination": "cklose2000/tokenledger-reference",
-  "publication_approval": "No for 897284f; successor not approved",
+  "publication_approval": "approved_by_Chandler_2026-09-16_on_84ac935",
   "local_verification": "docs/verification/audience-local.json",
   "local_tests": {
     "passed": 88,
@@ -30,7 +30,7 @@
   "production_iam": "not_established",
   "matched_agent_benchmark": "not_run",
   "learning": "inconclusive_no_promotion",
-  "nrr_signoff": "pending_Chandler",
+  "nrr_signoff": "approved_2026-09-16: headline NRR is v3 (floor USD 100,000); shipped default remains v2 until a successor release changes DEFAULT_VERSIONS and re-prepares fixtures",
   "filing_critique": "out_of_scope_no_verified_filing_used",
   "historical_status_at_3272f68": {
     "status": "prepared_not_published",
@@ -256,5 +256,10 @@
       "publication": "pending_exact_bytes_and_destination_approval"
     }
   },
-  "historical_status_scope": "historical_status_at_3272f68 is an immutable historical snapshot, not current readiness. Use top-level codespaces for the executed hosted result."
+  "historical_status_scope": "historical_status_at_3272f68 is an immutable historical snapshot, not current readiness. Use top-level codespaces for the executed hosted result.",
+  "tag": "v0.2.0-rc.6",
+  "published_at": "2026-09-17T01:39:40Z",
+  "approved_bytes": "84ac935",
+  "merge_commit": "0843b56f696da7e50d7654c18fb46d920fce0ee0",
+  "release_url": "https://github.com/cklose2000/tokenledger-reference/releases/tag/v0.2.0-rc.6"
 }
