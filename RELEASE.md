@@ -11,7 +11,7 @@ individually runnable releases. Original private Git objects are excluded.
 The reference contains generic runtime, definitions, SQL, the independently
 implemented baseline, selected regression tests and synthetic demonstration
 fixtures. It excludes personal usage, accounts, signing material, private
-application configuration and hiring strategy. The active engine repository
+application configuration. The active engine repository
 remains private.
 
 ## What is pinned
