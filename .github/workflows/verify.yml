@@ -52,8 +52,9 @@ jobs:
         run: tl --artifact-root evidence/bigquery/verification receipt mr-3d66e52715aa14f49be17975a4c4c26a --json
       - name: Rehearse the reporting-learning loop offline
         run: tl learning walkthrough --directory data/learning-walkthrough/ci --json
-      - name: Replay the recorded walkthrough from public history
-        run: tl learning replay-walkthrough data/learning-walkthrough/recorded --json
+      - name: Replay the recorded walkthrough with its original executable
+        working-directory: .retained-rc6
+        run: python -m tl learning replay-walkthrough ../data/learning-walkthrough/recorded --json
       - name: Preserve the retained walkthrough
         run: git diff --exit-code -- data/learning-walkthrough/recorded
   secrets:
