@@ -55,17 +55,29 @@ Use Python 3.11.5 from this checkout. The fixture is synthetic, the local engine
 is DuckDB, and the demo requires no model, billing or cloud credentials.
 [Installation and environment options](docs/run.md).
 
-The same late-evidence pattern on a decision model: meter the call, bill later,
-replay after the list price moves. No TypeSafe or OpenRouter credentials:
+## A named decision model, same late-evidence pattern
+
+tokenledger does not call Jev. It meters it.
+
+Jev is TypeSafe's typed decision model
+([`typesafe/jev-1.13`](https://docs.typesafe.ai/introduction/quickstart)).
+One real OpenRouter Decisions probe is scaled to a September close in integer
+cents, then billed later at a hiked list price. Tokens do not change. The
+original receipt still reproduces.
+
+| | Observed call | Worked close |
+|---|---:|---:|
+| Input tokens | 307 | 1,000,000 |
+| List input, USD / million tokens | 0.042 | 0.042, then 0.084 |
+| Amount, USD | 0.000012894 | 42.00 list, then 84.00 invoice |
 
 ```sh
 tl demo-jev
 ```
 
-One OpenRouter Decisions probe (307 input tokens at $0.042/Mtok, output free,
-**$0.000012894**) is scaled to a September close in integer cents, then billed
-at $0.084/Mtok. Tokens do not change. The original receipt still reproduces.
+No TypeSafe or OpenRouter credentials.
 [Jev spend demonstration](docs/demo-jev-spend.md).
+Probe facts: [jev-openrouter-probe.json](docs/examples/jev-openrouter-probe.json).
 
 Reuse the activity envelope, validated writer, snapshots and receipts. Applying
 them to another business requires its source contracts, customer identities,
