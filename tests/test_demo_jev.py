@@ -20,6 +20,7 @@ def test_demo_jev_hike_keeps_tokens_and_replays_original(tmp_path):
     assert observed["input_tokens"] == 307 and observed["output_tokens"] == 20
     assert observed["cost_usd"] == "0.000012894"
     assert observed["list_price_input_usd_per_mtok"] == 0.042
+    assert answer["worked_close"]["output_tokens"] == round(20 / 307 * 1_000_000) == 65147
     business = answer["yield_bridge"]
     assert business["delta"]["tokens"] == 0 and business["original"]["tokens"] > 0
     assert business["delta"]["net_revenue_cents"] == 8400
