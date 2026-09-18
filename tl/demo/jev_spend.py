@@ -197,7 +197,7 @@ def run(destination=None, *, customers=7, progress=None):
         "## Worked close (same rates, integer cents)",
         "",
         f"Input {worked['input_tokens']} tokens at ${worked['original_list_usd_per_mtok']}/Mtok rates to ${worked['original_rated_usd']}.",
-        f"Output {worked['output_tokens']} tokens remain free. The hiked invoice is ${worked['hiked_invoice_usd']}.",
+        f"Output {worked['output_tokens']} tokens ({worked['output_identity']}). The hiked invoice is ${worked['hiked_invoice_usd']}.",
         "",
         business["revenue_basis"] + ".",
         "",

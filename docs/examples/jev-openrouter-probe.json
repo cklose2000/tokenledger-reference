@@ -1,7 +1,7 @@
 {
   "schema_version": "tokenledger-jev-probe/v1",
-  "synthetic": true,
-  "note": "Calibrated to one OpenRouter Decisions call. No API key, account id, or generation id.",
+  "synthetic": false,
+  "note": "Observed from one OpenRouter Decisions call on 2026-09-18. Rates and token counts are real; no API key, account id, or generation id is recorded. The worked close below is synthetic.",
   "observed": {
     "at": "2026-09-18T00:00:00Z",
     "route": "OpenRouter Decisions API to TypeSafe",
@@ -17,6 +17,7 @@
     "reason": "One call is 0.0012894 USD cents; native money is integer cents.",
     "input_tokens": 1000000,
     "output_tokens": 65147,
+    "output_identity": "20 / 307 * 1000000 = 65146.58, rounded to 65147; output tokens stay free",
     "original_list_usd_per_mtok": 0.042,
     "hiked_list_usd_per_mtok": 0.084,
     "original_rated_usd": "42.00",
