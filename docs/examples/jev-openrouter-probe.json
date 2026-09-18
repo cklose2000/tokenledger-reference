@@ -1,0 +1,25 @@
+{
+  "schema_version": "tokenledger-jev-probe/v1",
+  "synthetic": true,
+  "note": "Calibrated to one OpenRouter Decisions call. No API key, account id, or generation id.",
+  "observed": {
+    "at": "2026-09-18T00:00:00Z",
+    "route": "OpenRouter Decisions API to TypeSafe",
+    "model": "typesafe/jev-1.13-20260917",
+    "input_tokens": 307,
+    "output_tokens": 20,
+    "list_price_input_usd_per_mtok": 0.042,
+    "list_price_output_usd_per_mtok": 0.0,
+    "cost_usd": "0.000012894",
+    "identity": "307 * 0.042 / 1e6 = 0.000012894; output tokens are free"
+  },
+  "worked_close": {
+    "reason": "One call is 0.0012894 USD cents; native money is integer cents.",
+    "input_tokens": 1000000,
+    "output_tokens": 65147,
+    "original_list_usd_per_mtok": 0.042,
+    "hiked_list_usd_per_mtok": 0.084,
+    "original_rated_usd": "42.00",
+    "hiked_invoice_usd": "84.00"
+  }
+}

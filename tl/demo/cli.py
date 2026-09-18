@@ -29,3 +29,25 @@ def register(cli,options,output):
         click.echo(f"Workflow: {result['observed_workflow_seconds']:.3f}s; observation {result['observation_receipt_id']}")
         click.echo('Open: '+str(Path(result['artifact_root'])/'README.md'))
         click.echo('Next: tl learning walkthrough  (the governed feedback loop on a report like this one; synthetic, no credentials)')
+
+    @cli.command('demo-jev')
+    @click.option('--directory',type=click.Path(path_type=Path),help='New isolated directory; default data/demo-jev/<unique-run>. Never overwrites.')
+    @click.option('--customers',default=7,type=click.IntRange(7,28),show_default=True)
+    @options
+    def demo_jev(ctx,directory,customers,json_output):
+        """Admit Jev usage at observed list prices, then a hiked late invoice."""
+        from tl.demo.jev_spend import run
+        result=run(directory,customers=customers,progress=lambda message:click.echo(message,err=True))
+        if json_output: output(result,True);return
+        observed=result['observed_probe']
+        business=result['yield_bridge']
+        click.echo('Observed OpenRouter Jev call:')
+        click.echo(f"  {observed['input_tokens']} input + {observed['output_tokens']} output tokens")
+        click.echo(f"  {observed['list_price_input_usd_per_mtok']} USD/Mtok input, output free")
+        click.echo(f"  exact cost {observed['cost_usd']} USD")
+        click.echo('Worked September close (1,000,000 input tokens at the same rates):')
+        click.echo(business['revenue_basis']+'.')
+        click.echo(f"Tokens unchanged: {business['original']['tokens']}; recognized revenue change: {business['delta']['net_revenue_cents']} USD cents")
+        click.echo('Yield bridge receipt: '+business['receipt_id'])
+        click.echo('Original yield receipt reproduced: '+business['original_receipt_id'])
+        click.echo('Open: '+str(Path(result['artifact_root'])/'README.md'))

@@ -46,6 +46,7 @@ python -m venv .venv
 .\.venv\Scripts\python.exe --version
 .\.venv\Scripts\python.exe -m pip install -e '.[dev]'
 .\.venv\Scripts\tl.exe demo
+.\.venv\Scripts\tl.exe demo-jev
 ```
 
 On macOS or Linux:
@@ -57,6 +58,7 @@ export PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0
 python --version
 python -m pip install -e ".[dev]"
 tl demo
+tl demo-jev
 ```
 
 Confirm Python **3.11.5** for the frozen historical receipts. `python` and
@@ -102,7 +104,9 @@ bases, admits designated late evidence, explains the signed accounting bridge
 and replays the original receipt. It prints the receipt IDs and the location
 of a run-specific README. Each invocation uses a fresh directory.
 
-For machine-readable output, run `tl demo --json`.
+For machine-readable output, run `tl demo --json`. A second command, `tl demo-jev`,
+applies the same late-evidence pattern to a decision-model rate change. See
+[Jev token economics](demo-jev-spend.md). It also requires no credentials.
 
 Generation, reporting, the bridge and replay are included in the workflow time.
 Installation and hosted provisioning are separate. The under-60-second target
