@@ -55,6 +55,18 @@ Use Python 3.11.5 from this checkout. The fixture is synthetic, the local engine
 is DuckDB, and the demo requires no model, billing or cloud credentials.
 [Installation and environment options](docs/run.md).
 
+The same late-evidence pattern on a decision model: meter the call, bill later,
+replay after the list price moves. No TypeSafe or OpenRouter credentials:
+
+```sh
+tl demo-jev
+```
+
+One OpenRouter Decisions probe (307 input tokens at $0.042/Mtok, output free,
+**$0.000012894**) is scaled to a September close in integer cents, then billed
+at $0.084/Mtok. Tokens do not change. The original receipt still reproduces.
+[Jev spend demonstration](docs/demo-jev-spend.md).
+
 Reuse the activity envelope, validated writer, snapshots and receipts. Applying
 them to another business requires its source contracts, customer identities,
 accounting policy and accountable reporting owners. The

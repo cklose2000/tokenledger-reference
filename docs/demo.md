@@ -74,5 +74,10 @@ container for merged stdout/stderr from a pipe, rather than a PTY. The
 derived images. Workflow observation:
 `mr-e152a368dd26fe7ef6459e10db26be6e`.
 
+The same late-evidence pattern applies to a decision model. `tl demo-jev`
+meters a Jev/OpenRouter call, then a later invoice at a hiked list price.
+Tokens do not change. The original receipt still reproduces. See
+[Jev token economics](demo-jev-spend.md).
+
 Next: [follow the number through the model](understand.md) or
 [give the four-task challenge to your agent](assess.md).
